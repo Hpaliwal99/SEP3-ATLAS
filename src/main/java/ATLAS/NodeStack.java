@@ -4,7 +4,15 @@ import java.util.*;
 
 public class NodeStack {
     public NodeStack(String input) {
-        Queue<String> q = new LinkedList<>();
 
+        for (String x: ProcessString(input)) {
+            System.out.println(x);
+        }
+    }
+
+    private Queue<String> ProcessString(String s) {
+        Queue<String> q = new LinkedList<>();
+        q.addAll(Arrays.asList(s.split(" ")));
+        return q;
     }
 }
