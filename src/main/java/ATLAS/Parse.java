@@ -1,110 +1,114 @@
 package ATLAS;
 import java.util.*;
 
-class Node{
-    String Predicate;
-    String keyword;
-    List<Node> children = new ArrayList<>();
-
-    Node(String predicate, String keyword){
-        this.Predicate = predicate;
-        this.keyword = keyword;
-    }
-}
 
 public class Parse {
     private Queue<String> predicates = new LinkedList<>();
     private Queue<String> keywords = new LinkedList<>();
-    private int index = 0;
+    public Node head = null;
 
     public Node parse(String input){
-        return parseNode(input);
+        this.head = parseNode(input);
+        return head;
     }
+
     private Node parseNode(String input){
-        //character processing needed
+        int index = 0;
+        String[] tokens = input.replace(")", "").split("\\(");
+        tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
+        System.out.println(Arrays.toString(tokens));
+        String predicate = "";
+        String keyword = "";
 
-        if (tokens.length >= 2){
-            keyword = tokens[tokens.length - 1];
-            for (int i = 0; i < tokens.length - 1; i++){
-                predicate += tokens[i] + " ";
+        Node current = null;
+
+        for (String token : tokens) {
+            String[] tokenList = token.split(" ");
+            if (tokenList.length >= 2){
+                keyword = tokenList[tokenList.length - 1];
+                predicate = String.join(" ", Arrays.copyOfRange(tokenList, 0, tokenList.length-1));
+//                System.out.println(predicate); // Debug Line
+                predicates.add(predicate);
+                keywords.add(keyword);
             }
-            predicate = predicate.trim();
-            predicates.add(predicate);
-            keywords.add(keyword);
-        }
-        else if (tokens.length == 1){
-            predicate = tokens[0];
-            keyword = "";
-            keywords.add(keyword);
-            predicates.add(predicate);
-        }
-        Node node = new Node(predicate, keyword);
-        node.children = children;
+            else if (tokenList.length == 1){
+                predicate = tokenList[0];
+                keyword = "";
+                keywords.add(keyword);
+                predicates.add(predicate);
+            }
+            if (index == 0) {
+                head = new Node(predicate, keyword, index);
+                current = head;
+                index++;
+            } else {
+                current.children = new Node(predicate, keyword, index);
+                current = current.children;
+                index++;
 
-        return node;
+            }
+        }
+
+
+        return head;
     }
 
-    public void printIndent(Node node, int depth){
-        if(node == null) return;
-
-        for(int i = 0; i < depth; i++){
-            System.out.print("  ");
-        }
-        System.out.print("(" + node.Predicate);
-        if(node.keyword != null){
-            System.out.print(" " + node.keyword);
-        }
-        if(node.children.isEmpty()){
-            System.out.print(")");
-            return;
-        }
-        System.out.println();
-
-        for(Node child : node.children){
-            printIndent(child, depth + 1);
+    public void printIndent(Node node){
+        Node current = node;
+        if(node == null) {
+            System.out.println("Object is empty");
         }
 
-        System.out.print(")");
+        while (current != null) {
+            System.out.print(current.depth + " "); //Debug for depth/line count
+            for(int i = 0; i < current.depth; i++){
+                System.out.print("  ");
+            }
+            System.out.print("(" + current.Predicate);
+            if(current.keyword != null){
+                System.out.print(" " + current.keyword);
+            }
+
+            if (current.children == null){
+                for (int i = 0; i <= current.depth; i++){
+                    System.out.print(")");
+                }
+            }
+            System.out.println();
+
+            current = current.children;
+        }
+
     }
+
     public void printQueues(){
         System.out.println("predicates: " + predicates);
         System.out.println("keywords: " + keywords);
     }
 
     public String toFlat(Node node){
-        if(node == null) return "";
-
-        String result = "(" + node.Predicate;
-        if(node.keyword != null){
-            result += " " + node.keyword;
+        if(node == null) {
+            return "";
+        } else {
+            String result = "(" + node.Predicate;
+            if (node.keyword != null) {
+                result += " " + node.keyword;
+            }
+            return result + " " + toFlat(node.children) + ")";
         }
-        for(Node child : node.children){
-            result += " " + toFlat(child);
-        }
-        result += ")";
-        return result;
     }
+
     private int counter = 0;
     public void replaceKeywords(Node node){
-        if(node == null) return;
-        if(node.keyword != ""){
-            node.keyword = String.valueOf(counter++);
-        }
-        for(Node child : node.children){
-            replaceKeywords(child);
+        if(node == null) {
+            return;
+        } else {
+            if (!Objects.equals(node.keyword, "")) {
+                node.keyword = String.valueOf(counter++);
+            }
+
+            replaceKeywords(node.children);
         }
     }
-    public static void main(String[] args){
-        String input = "(work in scientist (some lab (that (conduct experiment))))";
-        Parse parse1 = new Parse();
-        Node root = parse1.parse(input);
 
-        parse1.printIndent(root, 0);
-        System.out.println();
-        System.out.println(parse1.toFlat(root));
-        parse1.printQueues();
-
-        parse1.replaceKeywords(root);
-        System.out.println(parse1.toFlat(root));
-    }
 }
