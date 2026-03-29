@@ -1,7 +1,7 @@
 package ATLAS;
 import java.util.*;
 
-class Node{
+public class Node{
     String Predicate;
     String keyword;
     Node children = null;
