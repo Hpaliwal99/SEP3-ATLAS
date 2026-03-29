@@ -49,10 +49,13 @@ public class Parse {
     }
 
 
-    private Node parseNode(String input){
+    private Node parseNode(String input) throws ParseException {
         int index = 0;
         String[] tokens = input.replace(")", "").split("\\(");
         tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
+        if(tokens.length == 0){
+            throw new ParseException("No tokens found after stripping parentheses.", 0);
+        }
         System.out.println(Arrays.toString(tokens));
         String predicate = "";
         String keyword = "";
@@ -85,7 +88,9 @@ public class Parse {
 
             }
         }
-
+        if(head == null){
+            throw new ParseException("parsing produced nothing", 0);
+        }
 
         return head;
     }
@@ -93,7 +98,8 @@ public class Parse {
     public void printIndent(Node node){
         Node current = node;
         if(node == null) {
-            System.out.println("Object is empty");
+            System.out.println("[ERROR] Cannot print: Node is empty.");
+            return;
         }
 
         while (current != null) {
