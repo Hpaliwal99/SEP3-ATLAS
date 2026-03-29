@@ -1,4 +1,5 @@
 package ATLAS;
+import java.text.ParseException;
 import java.util.*;
 
 
@@ -7,10 +8,46 @@ public class Parse {
     private Queue<String> keywords = new LinkedList<>();
     public Node head = null;
 
-    public Node parse(String input){
+
+    private void checkInput(String input) throws ParseException {
+        if(input == null){
+            throw new ParseException("Input can't be null", 0);
+        }
+
+        if(input.isBlank()){
+            throw new ParseException("Input can't be blank or empty", 0);
+        }
+
+        String trimmed = input.strip();
+        if(trimmed.charAt(0) != '('){
+            throw new ParseException("Input must begin with (", 0);
+        }
+
+        int depth = 0;
+        for (int i = 0; i < trimmed.length(); i++) {
+            char c = trimmed.charAt(i);
+            if (c == '(') {
+                depth++;
+            } else if (c == ')') {
+                depth--;
+                if (depth < 0) {
+                    throw new ParseException(
+                            "Unexpected closing ')' with no matching '('.", i);
+                }
+            }
+        }
+
+        if(trimmed.contains("()")){
+            throw new ParseException("Empty parenthesised group '()' found", 0);
+        }
+    }
+
+    public Node parse(String input) throws ParseException {
+        checkInput(input);
         this.head = parseNode(input);
         return head;
     }
+
 
     private Node parseNode(String input){
         int index = 0;
