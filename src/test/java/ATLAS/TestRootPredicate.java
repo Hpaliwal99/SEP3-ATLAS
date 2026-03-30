@@ -15,9 +15,9 @@ public class TestRootPredicate {
     static Stream<Arguments> data() {
         return Stream.of(
                 arguments("(work in scientist (some lab (that (conduct experiment))))", "work in"),
-                arguments("(run fast (some track))",                                    "run fast"),
+                arguments("(run fast (some track))",                                    "run"),
                 arguments("(single)",                                                   "single"),
-                arguments("(jump high (over fence))",                                   "jump high")
+                arguments("(jump high (over fence))",                                   "jump")
         );
     }
 

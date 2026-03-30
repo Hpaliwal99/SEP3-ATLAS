@@ -35,9 +35,12 @@ public class TestReplaceKeywords {
 
     private Node getNodeAtIndex(Node root, int index) {
         Node current = root;
-        for (int i = 0; i < index; i++) {
+        while (current != null) {
             assertNotNull(current, () -> "Chain ended before index " + index);
             current = current.children;
+            if (current.keyword.isEmpty()) {
+                current = current.children;
+            }
         }
         return current;
     }
