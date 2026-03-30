@@ -22,23 +22,23 @@ public class TestReplaceKeywords {
 
     @ParameterizedTest
     @MethodSource("data")
-    void testReplaceKeywords(String input, int nodeIndex, String expectedKeyword) throws ParseException {
+    void testReplaceKeywords(String input, int keyIndex, String expectedKeyword) throws ParseException {
         Parse parser = new Parse();
         Node root = parser.parse(input);
         parser.replaceKeywords(root);
 
-        Node node = getNodeAtIndex(root, nodeIndex);
+        Node node = getNodeAtIndex(root, keyIndex);
 
-        assertNotNull(node, () -> "Node at index " + nodeIndex + " should not be null");
-        assertEquals(expectedKeyword, node.keyword, "Keyword mismatch at index " + nodeIndex);
+        assertNotNull(node, () -> "Node at index " + keyIndex + " should not be null");
+        assertEquals(expectedKeyword, node.keyword, "Keyword mismatch at index " + keyIndex);
     }
 
     private Node getNodeAtIndex(Node root, int index) {
         Node current = root;
-        while (current != null) {
+        for (int i = 0; i < index; i++) {
             assertNotNull(current, () -> "Chain ended before index " + index);
             current = current.children;
-            if (current.keyword.isEmpty()) {
+            if (current.keyword.isEmpty() && current != null) {
                 current = current.children;
             }
         }
