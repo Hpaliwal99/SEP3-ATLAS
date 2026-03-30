@@ -4,10 +4,24 @@ import java.util.*;
 
 
 public class Parse {
+
     private Queue<String> predicates = new LinkedList<>();
     private Queue<String> keywords = new LinkedList<>();
-    public Node head = null;
 
+
+    private Node head = null;
+
+    public Queue<String> getPredicates() {
+        return predicates;
+    }
+
+    public Queue<String> getKeywords() {
+        return keywords;
+    }
+
+    public Node getHead() {
+        return this.head;
+    }
 
     private void checkInput(String input) throws ParseException {
         if(input == null){
@@ -45,7 +59,7 @@ public class Parse {
     public Node parse(String input) throws ParseException {
         checkInput(input);
         this.head = parseNode(input);
-        return head;
+        return this.head;
     }
 
 
@@ -78,8 +92,8 @@ public class Parse {
                 predicates.add(predicate);
             }
             if (index == 0) {
-                head = new Node(predicate, keyword, index);
-                current = head;
+                this.head = new Node(predicate, keyword, index);
+                current = this.head;
                 index++;
             } else {
                 current.children = new Node(predicate, keyword, index);
@@ -88,11 +102,11 @@ public class Parse {
 
             }
         }
-        if(head == null){
+        if(this.head == null){
             throw new ParseException("parsing produced nothing", 0);
         }
 
-        return head;
+        return this.head;
     }
 
     public void printIndent(Node node){
@@ -152,6 +166,41 @@ public class Parse {
 
             replaceKeywords(node.children);
         }
+    }
+
+    public Boolean compare(Parse p1) throws ParseException {
+        List<String[]> result = new ArrayList<>();
+        if(p1.getHead() == null || this.head == null){
+            throw new ParseException("Nodes can't be null", ((this.head == null) ? 1 : 2));
+        }
+
+        if (p1.getPredicates().size() != this.getPredicates().size()) {
+            return false;
+        }
+
+        return p1.getPredicates().equals(this.getPredicates());
+
+    }
+
+    public LinkedList<String[]> getKeywordMapping(Parse p1) throws ParseException {
+        LinkedList<String[]> result = new LinkedList<>();
+        if(this.head == null){ // Clean this
+            return result;
+        }
+
+        if (compare(p1)) {
+            String[] p1keywords = p1.getKeywords().toArray(new String[0]);
+            int i = 0;
+            for (String key : this.keywords) {
+                result.add(new String[] {key, p1keywords[i++]});
+            }
+        } else {
+            System.out.println("Structure not equal");
+            return result;
+        }
+
+        return result;
+
     }
 
 }

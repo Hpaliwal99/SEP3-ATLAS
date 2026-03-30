@@ -4,7 +4,17 @@ Sprint 1
 1) string to OOP
 2) OOP to string
 3) OOP to skeleton
+4) Testing
 
 Sprint 2
 1) OOP to OOP paired mapping
-2) String to String paired mapping
+2) adopt code for "*".
+3) String to String paired mapping
+4) Testing
+5) make tostring for keyword mapping
+
+
+Misc
+1) Redo printIndent to output string?
+2) Distribute functions
+3) Make replace return new object
