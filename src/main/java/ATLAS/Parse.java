@@ -178,6 +178,21 @@ public class Parse {
             return false;
         }
 
+        List<String> p1Keywords = new ArrayList<>(p1.getKeywords());
+        List<String> p2Keywords = new ArrayList<>(this.getKeywords());
+
+        for(int i = 0; i < p1Keywords.size(); i++){
+            String p1Keyword = p1Keywords.get(i);
+            String p2Keyword = p2Keywords.get(i);
+            if(p1Keyword.isEmpty() || p2Keyword.isEmpty()){
+                continue;
+            }
+            if(p1Keyword.charAt(0) == '*' ^ p2Keyword.charAt(0) == '*'){
+                return false;
+            }
+        }
+
+
         return p1.getPredicates().equals(this.getPredicates());
 
     }
