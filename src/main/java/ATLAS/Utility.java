@@ -17,6 +17,7 @@ public class Utility {
         }
         return tokens;
     }
+
     public static Boolean StringCompare(String A, String B) throws ParseException {
         LinkedList<String[]> tokensA = Utility.tokenizer(A);
         LinkedList<String[]> tokensB = Utility.tokenizer(B);
@@ -55,36 +56,28 @@ public class Utility {
         }
         return true;
 
-
     }
 
+    public static LinkedList<String[]> getStringKeywordMapping(String A, String B) throws ParseException {
+        LinkedList<String[]> result = new LinkedList<>();
 
-//    public static LinkedList<String[]> getStringKeywordMapping(String p1, String p2) throws ParseException {
-//
-//    }
-//
-//    public static LinkedList<String[]> getStringKeywordMapping(String p1, String p2) throws ParseException {
-//        LinkedList<String[]> result = new LinkedList<>();
-//
-////        if(p1.getHead() == null || p2.getHead() == null){
-////            throw new ParseException("Nodes can't be null", ((p1.getHead() == null) ? 1 : 2));
-////        }
-//
-//        if (Utility.StringCompare(p1, p2)) {
-//            String[] p1keywords = p1.getKeywords().toArray(new String[0]);
-//            int i = 0;
-//            for (String key : p2.getKeywords()) {
-//                result.add(new String[] {key, p1keywords[i++]});
-//            }
-//        } else {
-//            System.out.println("Structure not equal");
-//            return result;
-//        }
-//
-//        return result;
-//
-//    }
+        if (Utility.StringCompare(A,B)) {
+            LinkedList<String[]> tokensA = Utility.tokenizer(A);
+            LinkedList<String[]> tokensB = Utility.tokenizer(B);
 
+            for(int i = 0; i < tokensA.size(); i++){
+                String[] TA = tokensA.get(i);
+                String[] TB = tokensB.get(i);
+                if (TA.length >= 2){
+                    result.add(new String[]{TA[TA.length-1],TB[TB.length-1]});
+                }
+            }
+        } else {
+            return result;
+        }
+
+        return result;
+    }
 
     public static Boolean compare(Parse p1, Parse p2) throws ParseException {
 
@@ -124,9 +117,11 @@ public class Utility {
 
         if (Utility.compare(p1, p2)) {
             String[] p1keywords = p1.getKeywords().toArray(new String[0]);
+
+            // Add check for length >= 2
             int i = 0;
             for (String key : p2.getKeywords()) {
-                result.add(new String[] {key, p1keywords[i++]});
+                result.add(new String[] { p1keywords[i++], key });
             }
         } else {
             System.out.println("Structure not equal");
