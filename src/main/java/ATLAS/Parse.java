@@ -168,54 +168,8 @@ public class Parse {
         }
     }
 
-    public Boolean compare(Parse p1) throws ParseException {
-        List<String[]> result = new ArrayList<>();
-        if(p1.getHead() == null || this.head == null){
-            throw new ParseException("Nodes can't be null", ((this.head == null) ? 1 : 2));
-        }
-
-        if (p1.getPredicates().size() != this.getPredicates().size()) {
-            return false;
-        }
-
-        List<String> p1Keywords = new ArrayList<>(p1.getKeywords());
-        List<String> p2Keywords = new ArrayList<>(this.getKeywords());
-
-        for(int i = 0; i < p1Keywords.size(); i++){
-            String p1Keyword = p1Keywords.get(i);
-            String p2Keyword = p2Keywords.get(i);
-            if(p1Keyword.isEmpty() || p2Keyword.isEmpty()){
-                continue;
-            }
-            if(p1Keyword.charAt(0) == '*' ^ p2Keyword.charAt(0) == '*'){
-                return false;
-            }
-        }
 
 
-        return p1.getPredicates().equals(this.getPredicates());
 
-    }
-
-    public LinkedList<String[]> getKeywordMapping(Parse p1) throws ParseException {
-        LinkedList<String[]> result = new LinkedList<>();
-        if(this.head == null){ // Clean this
-            return result;
-        }
-
-        if (compare(p1)) {
-            String[] p1keywords = p1.getKeywords().toArray(new String[0]);
-            int i = 0;
-            for (String key : this.keywords) {
-                result.add(new String[] {key, p1keywords[i++]});
-            }
-        } else {
-            System.out.println("Structure not equal");
-            return result;
-        }
-
-        return result;
-
-    }
 
 }

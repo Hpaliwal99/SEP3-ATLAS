@@ -32,9 +32,10 @@ public class Main {
         System.out.println();
         parse1.printIndent(root);
 
-        System.out.println(parse1.compare(parse2));
-        LinkedList<String[]> u = parse1.getKeywordMapping(parse2);
-        System.out.println(Arrays.deepToString(u.toArray()));//make custom tostring
+        System.out.println(Utility.compare(parse1, parse2));
+        LinkedList<String[]> u = Utility.getKeywordMapping(parse1, parse2);
+        System.out.println(Arrays.deepToString(u.toArray()));//make custom toString
+        System.out.println(Utility.StringCompare(input1, input2));
 
     }
 }
