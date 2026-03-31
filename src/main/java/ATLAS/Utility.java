@@ -132,6 +132,10 @@ public class Utility {
 
     }
 
+    public static String toStringLL (LinkedList<String[]> list) {
+        return Arrays.deepToString(list.toArray());
+    }
+
 }
 
 
