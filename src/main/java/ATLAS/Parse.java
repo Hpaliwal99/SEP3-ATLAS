@@ -65,27 +65,23 @@ public class Parse {
 
     private Node parseNode(String input) throws ParseException {
         int index = 0;
-        String[] tokens = input.replace(")", "").split("\\(");
-        tokens = Arrays.copyOfRange(tokens, 1, tokens.length);
-        if(tokens.length == 0){
-            throw new ParseException("No tokens found after stripping parentheses.", 0);
-        }
-        System.out.println(Arrays.toString(tokens));
+
+        LinkedList<String[]> tokens = Utility.tokenizer(input);
+        System.out.println(Utility.toStringLL(tokens));
+
         String predicate = "";
         String keyword = "";
 
         Node current = null;
 
-        for (String token : tokens) {
-            String[] tokenList = token.split(" ");
-            if (tokenList.length >= 2){
+        for (String[] tokenList : tokens) {
+            if (tokenList.length >= 2) {
                 keyword = tokenList[tokenList.length - 1];
-                predicate = String.join(" ", Arrays.copyOfRange(tokenList, 0, tokenList.length-1));
+                predicate = String.join(" ", Arrays.copyOfRange(tokenList, 0, tokenList.length - 1));
 //                System.out.println(predicate); // Debug Line
                 predicates.add(predicate);
                 keywords.add(keyword);
-            }
-            else if (tokenList.length == 1){
+            } else if (tokenList.length == 1) {
                 predicate = tokenList[0];
                 keyword = "";
                 keywords.add(keyword);
@@ -109,32 +105,46 @@ public class Parse {
         return this.head;
     }
 
-    public void printIndent(Node node){
+    public String printIndent(Node node){
+        StringBuilder sb = new StringBuilder();
         Node current = node;
+
         if(node == null) {
-            System.out.println("[ERROR] Cannot print: Node is empty.");
-            return;
+            throw new IllegalArgumentException("[ERROR] Cannot print: Node is empty.");
+//            System.out.println("[ERROR] Cannot print: Node is empty.");
+//            return "";
         }
 
         while (current != null) {
-            System.out.print(current.depth + " "); //Debug for depth/line count
+            sb.append(current.depth).append(" ");  //Debug for depth/line count
+//            System.out.print(current.depth + " "); //Debug for depth/line count
+
             for(int i = 0; i < current.depth; i++){
-                System.out.print("  ");
+                sb.append("  ");
+//                System.out.print("  ");
             }
-            System.out.print("(" + current.Predicate);
+            sb.append("(");
+            sb.append(current.Predicate);
+//            System.out.print("(" + current.Predicate);
             if(current.keyword != null){
-                System.out.print(" " + current.keyword);
+                sb.append(" ");
+                sb.append(current.keyword);
+//                System.out.print(" " + current.keyword);
             }
 
             if (current.children == null){
                 for (int i = 0; i <= current.depth; i++){
-                    System.out.print(")");
+                    sb.append(")");
+//                    System.out.print(")");
                 }
             }
-            System.out.println();
+            sb.append("\n");
+//            System.out.println();
 
             current = current.children;
         }
+
+        return sb.toString();
 
     }
 

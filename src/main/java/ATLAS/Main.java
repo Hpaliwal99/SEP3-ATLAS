@@ -19,7 +19,7 @@ public class Main {
 
         System.out.println();
         System.out.println("Printing Parse:");
-        parse1.printIndent(root);
+        System.out.println(parse1.printIndent(root));
         System.out.println();
         System.out.println("Printing flattened Parse:");
         System.out.println(parse1.toFlat(root));
@@ -30,7 +30,7 @@ public class Main {
         parse1.replaceKeywords(root);
         System.out.println(parse1.toFlat(root));
         System.out.println();
-        parse1.printIndent(root);
+        System.out.println(parse1.printIndent(root));
 
         System.out.println(Utility.compare(parse1, parse2));
         System.out.println(Utility.toStringLL(Utility.getKeywordMapping(parse1, parse2))); //make custom toString
