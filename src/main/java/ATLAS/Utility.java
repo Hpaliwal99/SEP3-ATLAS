@@ -3,6 +3,7 @@ package ATLAS;
 import java.text.ParseException;
 import java.util.*;
 
+
 public class Utility {
 
     public static LinkedList<String[]> tokenizer(String a) throws ParseException {
@@ -142,11 +143,17 @@ public class Utility {
         if (Utility.compare(p1, p2)) {
             String[] p1keywords = p1.getKeywords().toArray(new String[0]);
 
-            // Add check for length >= 2
+
             int i = 0;
             for (String key : p2.getKeywords()) {
-                result.add(new String[] { p1keywords[i++], key });
+                if (!key.isEmpty()) {
+                    result.add(new String[] { p1keywords[i++], key });
+                }
+                else  {
+                    i++;
+                }
             }
+
         } else {
             System.out.println("Structure not equal");
             return result;

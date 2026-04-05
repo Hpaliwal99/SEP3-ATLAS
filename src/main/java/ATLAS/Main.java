@@ -10,8 +10,10 @@ import java.util.LinkedList;
 public class Main {
     public static void main(String[] args) throws ParseException {
 
-        String input1 = "(work in *scientist (some lab (that (conduct experiment))))";
-        String input2 = "(work in *priest (some church (that (conduct sermon))))";
+//        String input1 = "(work in *scientist (some lab (that (conduct experiment))))";
+        String input1 = "(Some artist (create art (with paint)))";
+//        String input2 = "(work in *priest (some church (that (conduct sermon))))";
+        String input2 = "(Some programmer (create code (with computer)))";
         Parse parse1 = new Parse();
         Parse parse2 = new Parse();
         Node root = parse1.parse(input1);

@@ -5,12 +5,13 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import java.text.ParseException;
+import java.util.LinkedList;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
-public class TestCompare {
+public class TestKeywordMapping {
 
     public static Stream<Arguments> data() {
         StringBuilder input1 = new StringBuilder("(work in scientist (some lab (that (conduct experiment))))");
@@ -18,30 +19,30 @@ public class TestCompare {
         String input3 = "(null)";
         StringBuilder input4 = new StringBuilder("(Some artist (create art (with paint)))");
         StringBuilder input5 = new StringBuilder("(Some programmer (create code (with computer)))");
+        String output1 = "[[*scientist, *priest], [lab, church], [experiment, sermon]]";
+        String output2 = "[[artist, programmer], [art, code], [paint, computer]]";
         return Stream.of(
-                arguments(input1.toString(), input2.toString(), true),
-                arguments(input1.insert(8, '*').toString(), input2.toString(), false),
-                arguments(input3, input4.toString(), false),
-                arguments(input4.toString(), input5.toString(), true),
-                arguments(input4.insert(5, '*').toString(), input5.insert(5, '*').toString(), true)
+                arguments(input1.insert(9, '*').toString(), input2.insert(9, '*').toString(), output1),
+                arguments(input4.toString(), input5.toString(), output2)
         );
     }
 
     @ParameterizedTest
     @MethodSource("data")
-    public void testCompare(String A, String B, boolean expected) throws ParseException {
+    public void testKeywordMapping(String A, String B, String output) throws ParseException {
+
         Parse parserA = new Parse();
         Node rootA = parserA.parse(A);
         Parse parserB = new Parse();
         Node rootB = parserB.parse(B);
 
-        assertEquals(expected, Utility.compare(parserA, parserB), "Comparison not as expected");
+        String StringOut1 = Utility.toStringLL(Utility.getKeywordMapping(parserA, parserB));
+        String StringOut2 = Utility.toStringLL(Utility.getStringKeywordMapping(A, B));
+
+        assertEquals(output, StringOut1);
+        assertEquals(output, StringOut2);
+
     }
 
-    @ParameterizedTest
-    @MethodSource("data")
-    public void testStringCompare(String A, String B, Boolean expected) throws ParseException {
 
-        assertEquals(expected, Utility.StringCompare(A, B), "Comparison not as expected");
-    }
 }

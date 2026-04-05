@@ -111,35 +111,27 @@ public class Parse {
 
         if(node == null) {
             throw new IllegalArgumentException("[ERROR] Cannot print: Node is empty.");
-//            System.out.println("[ERROR] Cannot print: Node is empty.");
-//            return "";
         }
 
         while (current != null) {
             sb.append(current.depth).append(" ");  //Debug for depth/line count
-//            System.out.print(current.depth + " "); //Debug for depth/line count
 
             for(int i = 0; i < current.depth; i++){
                 sb.append("  ");
-//                System.out.print("  ");
             }
             sb.append("(");
             sb.append(current.Predicate);
-//            System.out.print("(" + current.Predicate);
             if(current.keyword != null){
                 sb.append(" ");
                 sb.append(current.keyword);
-//                System.out.print(" " + current.keyword);
             }
 
             if (current.children == null){
                 for (int i = 0; i <= current.depth; i++){
                     sb.append(")");
-//                    System.out.print(")");
                 }
             }
             sb.append("\n");
-//            System.out.println();
 
             current = current.children;
         }
