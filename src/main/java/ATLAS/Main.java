@@ -1,8 +1,9 @@
 package ATLAS;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
-import java.text.ParseException;
-import java.util.*;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
@@ -57,6 +58,14 @@ public class Main {
 //        }
         for(Rule r : rulesUtil.getRules("load")){
             System.out.println(r.toString());
+        }
+
+        List<Node> out = rulesUtil.rewrite("(are_chronicled_in *hero myth)");
+        Parse parse = new Parse();
+
+        for (Node node : out) {
+            System.out.println(parse.printIndent(node));
+            System.out.println(parse.toFlat(node));
         }
 
 

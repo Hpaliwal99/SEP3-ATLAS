@@ -66,12 +66,13 @@ public class Rule {
         }
 
         String verbPreposition = leftOfAmp;
-        if(leftOfAmp.contains(":")){
+        if(leftOfAmp.contains(":")) {
             String[] colonSplit = leftOfAmp.split(":", 2);
-            System.out.println("colonSplit length: " + colonSplit.length + " | value: " + Arrays.toString(colonSplit));
-            if (colonSplit.length < 2) {
-                throw new IllegalArgumentException("Malformed rule - expected something after ':' in: " + leftOfAmp);
-            }
+
+//            System.out.println("colonSplit length: " + colonSplit.length + " | value: " + Arrays.toString(colonSplit));
+//            if (colonSplit.length < 2) {
+//                throw new IllegalArgumentException("Malformed rule - expected something after ':' in: " + leftOfAmp);
+//            }
             verbPreposition = colonSplit[0];
             colonArgument = colonSplit[1];
 

@@ -13,4 +13,8 @@ public class Node{
         this.depth = index;
         this.children = null;
     }
+
+    public String toString(){
+        return "[" + Predicate + "] [" + keyword + "] :" + depth;
+    }
 }
