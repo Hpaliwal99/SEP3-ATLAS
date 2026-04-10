@@ -19,8 +19,18 @@ public class Rule {
         parseRule(line);
     }
 
+    @Override
+    public String toString() {
+        return "Rule{verb=" + preposition +
+                ", arg=" + colonArgument +
+                ", by=" + byWord + "}";
+    }
+
     private void parseRule(String line){
-        String[] parts = line.split(" ");
+        String[] parts = line.trim().split("\\s+",2);
+        if(parts.length < 2){
+            return;
+        }
         originalPredicate = parts[0];
 
         String rightSide = parts[1];
@@ -55,18 +65,34 @@ public class Rule {
             byWord = null;
         }
 
-        String[] colonSplit = leftOfAmp.split(":");
-        String verbPreposition = colonSplit[0];
-        colonArgument = colonSplit[1];
+        String verbPreposition = leftOfAmp;
+        if(leftOfAmp.contains(":")){
+            String[] colonSplit = leftOfAmp.split(":", 2);
+            System.out.println("colonSplit length: " + colonSplit.length + " | value: " + Arrays.toString(colonSplit));
+            if (colonSplit.length < 2) {
+                throw new IllegalArgumentException("Malformed rule - expected something after ':' in: " + leftOfAmp);
+            }
+            verbPreposition = colonSplit[0];
+            colonArgument = colonSplit[1];
 
-        if(colonArgument.endsWith("*")){
-            starAfterWord = true;
-            colonArgument = colonArgument.replace("*", "");
+            if(colonArgument.endsWith("*")){
+                starAfterWord = true;
+                colonArgument = colonArgument.substring(0, colonArgument.length() - 1);
+            }
+
         }
+
 
         String[] vp = verbPreposition.split("_");
         newVerb = vp[0];
-        preposition = vp[1];
+        if(vp.length > 1){
+            preposition = vp[1];
+        }
+        else {
+            preposition = null;
+        }
+
+
     }
 
 

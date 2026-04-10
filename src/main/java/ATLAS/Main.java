@@ -43,12 +43,22 @@ public class Main {
         Map<String, List<Rule>> ruleMap =  rulesUtil.getRuleMap();
 
         int i = 0;
-        for (Map.Entry<String, List<Rule>> entry : ruleMap.entrySet()) {
-            if (i > 5) break;
-            System.out.println(entry);
-            i++;
-
+//        for (Map.Entry<String, List<Rule>> entry : ruleMap.entrySet()) {
+//            if (i > 5) break;
+//            System.out.println(entry);
+//            i++;
+//
+//        }
+//        for (Map.Entry<String, List<Rule>> entry : ruleMap.entrySet()) {
+//            System.out.println("KEY: " + entry.getKey());
+//            for (Rule r : entry.getValue()) {
+//                System.out.println("  RULE: " + r);
+//            }
+//        }
+        for(Rule r : rulesUtil.getRules("load")){
+            System.out.println(r.toString());
         }
+
 
     }
 }

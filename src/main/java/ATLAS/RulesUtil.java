@@ -27,8 +27,10 @@ public class RulesUtil {
                 rulePart = rulePart.trim();
 
                 Rule r = new Rule(predicate + " " + rulePart);
-                ruleMap.putIfAbsent(r.originalPredicate, new ArrayList<Rule>());
-                ruleMap.get(r.originalPredicate).add(r);
+                String basePredicate = predicate.split(":")[0];
+
+                ruleMap.putIfAbsent(basePredicate, new ArrayList<Rule>());
+                ruleMap.get(basePredicate).add(r);
 
             }
         }

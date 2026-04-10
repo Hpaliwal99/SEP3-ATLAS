@@ -1,0 +1,2338 @@
+Predicate	Abstraction
+dislike	!respect_as:friend&disliking
+distrust	!respect_as:confidante&distrusting
+harden_toward	!respect_as:ally&hardening
+lose_faith_in	!respect_as:guide&doubting
+seek_pardon_for	seek_from:pardon*&repenting
+seek_treatment_for	seek_for:treatment*&seeking_treatment
+remove	!carry_as:addition&removing
+take_off	!carry_as:clothing&taking_off
+settle_with	respect_with:deal&setting
+drop	!carry_as:burden&dropping
+unload	!carry_as:load&unloading
+unpack	!carry_as:luggage&unpacking
+are_disobeyed_by	<!respect_as:authority&disobeying
+lose_control_over	<!respect_as:leader&rejecting_control
+undermine	!support_as:leader&undermining, !respect_as:leader&undermining
+are_mystified_by	!identify_in:meaning*, <imbue_with:confusion&being_mystified, imbue_with:mystery&being_mystified
+disappoint	!respect_for:competence, imbue_with:disappointment
+disillusion	!respect_for:behaviour&not_impressing, imbue_with:disillusionment&disillusioning
+fail_to_impress	!respect_for:performance, imbue_with:disappointment, <identify_as:poor_candidate&ranking
+flunk	^!respect_for:teacher&flunking, ^reject_for:teacher&flunking
+are_overshadowed_by	<!respect_as:equal&overshadowing
+fall_short_of	!respect_for:judge*&falling_short
+anger	imbue_with:anger&angering
+annoy	imbue_with:frustration&annoying
+displease	imbue_with:displeasure&displeasing
+lose_favor_with	<!respect_as:favorite&losing_faith, imbue_with:disappoint&losing_favor
+offend	imbue_with:indignation&offending
+fail_to_deliver_for	<!respect_for:achievement&failing, !provide_to:delivery*&failing
+condescend_to	!respect_as:equal&condescending
+disrespect	!respect_as:friend&disrespecting
+fail_to_reward	!respect_as:achiever&&not_rewarding, !enhance_with:reward&not_rewarding, !provide_to:reward*&not_rewarding
+calm	imbue_with:calm&calming
+calm_down	imbue_with:tranquility&calming
+relax	imbue_with:relaxation&relaxing
+prolong	enhance_in:duration&prolonging
+ignore	!respect_as:source&ignoring
+tune_out	!respect_as:communicator&tuning_out
+forget	!respect_as:memory&forgetting
+are_bored_by	!respect_as:entertainment&yawning
+underestimate	!respect_as:rival&underestimating
+are_distrusted_by	<!respect_as:confidante&doubting, imbue_with:doubt&sowing_doubt
+are_isolated_by	<!respect_as:colleague&isolating
+disobey	!respect_as:leader&disobeying
+are_uncovered_by	<identify_of:intention*&uncovering
+are_benched_by	<!deploy_as:player&benching
+are_recalled_by	<!deploy_as:representative&recalling
+are_hindered_by	<!support_as:collaborator&hindering, <damage_with:obstacle&hindering
+are_undermined_by	<!support_as:ally&undermining, <damage_with:subversion&undermining
+are_disappointed_by	!respect_for:performance&critiquing, <imbue_with:disappointment&disappointing
+are_disillusioned_by	!respect_for:behaviour&losing_faith, <imbue_with:disillusionment&disillusioning
+are_dissatisfied_by	!respect_as:service&complaining
+are_failed_by	!respect_for:competence&judging, <imbue_with:disillusionment&failing
+are_suspected_by	<!respect_for:honesty&suspecting, <identify_as:suspect&suspecting
+are_unimpressed_by	!respect_for:achievement&critiquing, identify_as:poor_candidate&evaluating
+are_unimpressed_with	identify_as:poor_candidate&evaluating
+fail	!respect_for:grade&flunking, identify_as:failure&flunking
+are_bored_with	!respect_as:entertainment&yawning, <imbue_with:interest&boring
+are_offended_by	<imbue_with:indignation&offending
+are_tired_of	!respect_for:variety&tiring, <imbue_with:interest&boring
+lose_interest_in	<imbue_with:interest&boring
+tire_of	<imbue_with:interest&boring
+are_discouraged_by	<!imbue_with:enthusiasm&discouraging
+are_forgotten_by	<!respect_as:memory&forgetting
+are_underestimated_by	<!respect_as:rival&underestimating
+are_accepted_by	<respect_as:member&accepting
+are_invited_by	<respect_as:invitee&inviting
+are_trusted_by	<respect_as:confidante&trusting, imbue_with:trust&gaining_trust
+are_welcomed_by	<respect_as:new_arrival&welcoming
+qualify_for	<respect_as:candidate&accepting, obtain_for:qualification*&qualifying
+are_trusted_with	respect_as:priority&convincing, identify_as:priority&caring
+are_appointed_by	<appoint_as:appointee&appointing
+are_booked_by	<appoint_as:performer&booking
+are_commissioned_by	<appoint_as:expert&commissioning
+are_deputized_by	<appoint_as:deputy&deputizing
+are_hired_by	<appoint_as:employee&hiring
+are_recruited_by	<appoint_as:recruit&recruiting
+are_retained_by	<appoint_as:representative&retaining
+are_appointed_for	^appoint_for:official&appointing
+are_booked_at	^appoint_for:agent&booking
+are_booked_for	^appoint_for:organizer&booking
+are_hired_for	^appoint_for:employer&hiring
+are_appointed_to	^appoint_for:superior&appointing
+are_attracted_by	<attract_with:quality&attracting, <imbue_with:desire&attracting
+are_attracted_to	<attract_with:quality&attracting, <imbue_with:desire&attracting
+are_captivated_by	<attract_with:fascination&captivating, <imbue_with:desire&captivation
+are_charmed_by	<attract_with:charm&charming
+are_fascinated_by	<attract_with:fascination&fascinating
+are_intrigued_by	<attract_with:intrigue&intriguing
+are_invited_to	^attract_to:host&inviting
+are_lured_by	<attract_with:lure&luring
+are_seduced_by	<attract_with:wile&seducing, <imbue_with:desire&seducing
+fall_for	<attract_with:allure&alluring
+are_cared_for_by	<tend_with:care&caring
+are_loved_by	<tend_with:love&loving
+are_nurtured_by	<tend_with:nurturie&nurturing
+are_pampered_by	<tend_with:indulgence&pampering
+are_pitied_by	<tend_with:pity&pitying
+are_raised_by	<tend_with:parenting&raising
+are_served_by	<tend_with:service&serving
+are_tended_by	<tend_with:attention&tending
+are_carried_by	<carry_as:cargo&carrying
+are_driven_by	<carry_as:passenger&driving, <propel_with:vehicle
+are_captured_by	<catch_as:captive&capturing
+are_caught_by	<catch_as:fugitive&catching
+are_caught_in	^catch_in:detector&detecting
+are_kidnapped_by	<catch_as:kidnap_victim&kidnapping
+are_celebrated_with	^respect_with:celebrant&celebrating
+are_chronicled_by	<communicate_about:history*&chronicling, <produce_of:chronicle*&chronicling
+are_chronicled_in	^<communicate_about:historian&chronicling
+are_commemorated_by	^respect_with:admirer&commemorating
+are_questioned_for	communicate_about:answer*&answering
+are_remembered_in	<communicate_about:memory*&remembering
+are_reported_by	<communicate_about:report*&reporting
+are_advised_by	<communicate_to:advice*&advising
+are_grilled_by	<communicate_to:tough_question*&grilling
+are_interviewed_by	<communicate_to:query*&interviewing
+are_questioned_by	<communicate_to:question*&questioning
+debrief	communicate_to:question*&debriefing, <communicate_to:account*&recalling
+are_contradicted_by	<communicate_to:opposition*&contradicting
+are_blackmailed_by	<control_with:blackmail&blackmailing
+are_bought_by	<control_with:payoff&buying
+are_bound_by	<control_with:restraint&binding
+are_brainwashed_by	<control_with:brainwashing&brainwashing, <control_of:mind*&mind_control
+are_brainwashed_in	<control_with:mind_control&brainwashing
+are_commanded_by	<control_with:command&commanding
+are_controlled_by	<control_with:leverage&controlling
+are_enslaved_by	<control_with:slavery&enslaving, <control_of:freedom*&enslaving
+are_handled_by	<control_with:pversight&handling
+are_led_by	<control_with:leadership&leading
+are_managed_by	<control_with:management&managing
+are_mollified_by	<control_with:appeasement&mollifying
+are_obeyed_by	control_with:order&ordering
+are_overwhelmed_by	<control_with:force&overwhelming
+are_repressed_by	<control_with:repression&repressing
+are_reprogrammed_by	<control_with:mind_control&reprogramming
+are_ruled_by	<control_with:decree&ruling
+are_subdued_by	<control_with:superior_force&subduing
+are_supervised_by	<control_with:supervision&supervising
+are_suppressed_by	<control_with:suppression&suppressing, <control_of:freedom*&suppressing
+are_tamed_by	<imbue_with:docility&taming
+bow_before	<control_with:religion&commanding
+bow_down_to	<control_with:authority&commanding
+obey	<control_with:order&commanding
+yield_to	<control_with:force&subduing
+are_controlled_with	^control_with:master&controlling
+are_restrained_with	<control_with:restraint&restraining
+are_confused_with	<copy_from:appearance*&copying
+are_copied_by	<copy_from:style*&copying
+are_imitated_by	<copy_from:mannerism&imitating
+are_copied_from	copy_from:form*&copying
+are_accused_by	<communicate_to:accusation*&accusing
+are_charged_by	<communicate_to:charge*&charging
+are_chastised_by	<communicate_to:complaint*&chastising
+are_criticized_by	<communicate_about:criticism*&criticising
+are_critiqued_by	<communicate_about:critique*&critiquing
+are_debunked_by	<communicate_about:exposé*&debunking, <damage_with:evidence&debunking
+are_denounced_by	<communicate_about:denunciation*&denouncing
+are_despised_by	<communicate_about:hate*&despising
+are_disgusted_by	communicate_about:disgust*&reviling
+are_fined_by	<damage_with:fine&fining
+are_humiliated_by	<communicate_to:humiliation*&humiliating, <damage_with:humiliation&humiliating
+are_prosecuted_by	<communicate_about:accusation*&prosecuting, <oppose_with:prosecution&prosecuting
+are_resented_by	<communicate_about:resentment*&resenting
+are_scolded_by	<communicate_to:telling_off*&scolding
+are_sued_by	<communicate_to:legal_complaint*&suing
+are_taunted_by	<communicate_to:taunt*&taunting, <propel_at:taunt*&taunting
+disgust	<communicate_about:disgust*&reviling
+are_accused_of	^identity_with:accuser&accusing
+are_charged_with	^identify_with:prosecutor&charging
+are_committed_for	^control_for:doctor&committing
+are_convicted_for	^control_for:judge&convicting
+are_criticized_for	^!respect_for:hater&criticizing
+are_despised_for	^!respect_for:hater&despising
+are_indicted_for	^control_for:prosecutor&indicting
+are_suspected_of	^!respect_for:skeptic&suspecting
+are_convicted_of	^control_for:jury&convicting
+are_abused_by	<damage_with:abuse&abusing
+are_aged_by	<damage_with:wrinkle&aging
+are_assaulted_by	<damage_with:assault&assaulting
+are_attacked_by	<damage_with:attack&attacking
+are_betrayed_by	<damage_with:betrayal&betraying
+are_bitten_by	<damage_with:teeth&biting
+are_bruised_by	<damage_with:bruise&bruising
+are_corrupted_by	<damage_with:corruption&corrupting, <imbue_with:greed&corrupting
+are_crippled_by	<damage_with:paralysis&crippling
+are_crucified_by	<damage_with:crucifixion&crucifying
+are_damaged_by	<damage_with:malice&damaging
+are_deflowered_by	<damage_with:fornication&deflowering
+are_deranged_by	<damage_with:madness&deranging
+are_driven_mad_by	<damage_with:frustration&enraging
+are_harassed_by	<damage_with:harassment&harassing
+are_hurt_by	<damage_with:pain&hurting
+are_infected_by	<damage_with:infection&infecting
+are_injured_by	<damage_with:injury&injuring
+are_insulted_by	<damage_with:insult&insulting, <communicate_to:insult*&insulting, <propel_at:insult*&insulting
+are_maimed_by	<damage_with:disfigurement&maiming
+are_mistreated_by	<damage_with:abuse&mistreating
+are_overcome_by	<damage_with:persistence&overcoming
+are_persecuted_by	<damage_with:persecution&persecuting
+are_polarized_by	<damage_with:polarization&polarizing
+are_punished_by	<damage_with:punishment&punishing, <control_with:punishment&disciplining
+are_savaged_by	<damage_with:savagery&savaging
+are_scarred_by	<damage_with:disfigurement&scarring
+are_sickened_by	<damage_with:disgust&sickening
+are_spoiled_by	<damage_with:indulgence&spoiling
+are_tarnished_by	<damage_with:stain&tarnishing
+are_tortured_by	<damage_with:torture&torturing
+are_traumatized_by	<damage_with:trauma&traumatizing
+are_twisted_by	<damage_with:evil&twisting
+are_victimized_by	<damage_with:persecution&victimizing
+are_whipped_by	<damage_with:whip&whipping
+are_wounded_by	<damage_with:wound&wounding
+fall_off	<damage_with:fall&throwing
+are_punished_for	^damage_for:punisher&punishing
+are_infested_with	<damage_with:infestation&infesting
+are_punished_with	^damage_with:punisher&punishing
+undermine_with	damage_with:rival*&undermining
+are_cheated_by	<deceive_with:fraud&cheating
+are_deceived_by	<deceive_with:deception&deceiving, <control_with:deception&deceving
+are_fooled_by	<deceive_with:foolery&fooling, <control_with:foolery&fooling
+are_tricked_by	<deceive_with:trickery&tricking, <control_with:trickery&tricking
+are_deposed_by	<stop_with:unseating&deposing
+are_toppled_by	<stop_with:force&toppling
+are_deployed_by	<deploy_with:mission&deploying
+are_dispatched_by	<deploy_with:purpose&dispatching
+are_fielded_by	<deploy_with:field_position&fielding
+are_installed_by	<deploy_with:authority&installing, <deploy_as:instrument&installing
+appear_in	perform_for:appearance&appearing
+are_cast_in	perform_for:role&acting
+are_deployed_in	^deploy_with:dispatcher&dispatching
+are_deployed_on	^deploy_with:dispatcher&deploying
+are_sent_on	^deploy_with:sender&sending
+are_killed_by	<damage_with:death&killing, <stop_with:death&killing
+are_ruined_by	<damage_with:destruction&ruining, <stop_with:ruination&ruining
+are_smashed_by	<damage_with:destruction&smashing
+blow_up	<damage_with:explosion&blowing_up
+are_anointed_by	<appoint_with:blessing&anointing
+are_canonized_in	<appoint_with:sainthood&canonizing
+are_deified_by	<appoint_with:godhood&deifying
+are_elected_by	<appoint_with:election&electing
+are_elevated_by	<appoint_with:authority&elevating, <imbue_with:statue&elevating
+are_ennobled_by	<appoint_with:nobility&ennobling, <imbue_with:nobility&ennobling
+are_promoted_by	<appoint_with:promotion&promoting
+rise_through	obtain_with:advancement&rising
+are_dressed_by	<enhance_with:fashion&dressing
+are_hardened_by	<enhance_with:hardship&hardening, <imbue_with:cynicism&hardening
+are_strengthened_by	<enhance_with:strength&strengthening
+develop_via	<enhance_with:experience&developing
+gain_experience_in	<enhance_with:experience&developing
+cultivate	<enhance_with:cultivation&cultivating
+are_inoculated_with	<enhance_with:inoculation&inoculating
+are_exploited_by	<control_with:opportunism&exploiting
+are_overworked_by	<control_with:demand&overworking
+are_pushed_too_far_by	<control_with:demand&pushing
+are_underpaid_by	<control_with:stinginess&underpaying, <!respect_as:paid_worker&underpaying
+are_defrauded_by	<control_with:fraud&defrauding, <deceive_with:fraud&defrauding
+are_healed_by	<fix_with:cure&healing
+are_treated_by	<fix_with:treatment&treating
+are_cured_of	^<fix_for:healer&curing
+are_treated_for	^<fix_for:therapist&treating
+are_treated_in	<fix_with:treatment&treating
+receive_treatment_in	<fix_with:treatment&treating
+are_treated_with	^fix_with:therapist&treating
+are_studied_in	<perform_of:study&studying
+are_studied_by	^<inform_about:teacher&teaching, <perform_of:study&studying
+are_forgiven_by	<provide_to:forgiveness*&forgiving
+are_freed_by	<provide_to:freedom*&freeing
+are_liberated_by	<provide_to:liberty*&liberating
+are_released_by	<provide_to:release*&releasing
+are_forgiven_for	^<fix_for:forgiver&forgiving
+are_frequented_by	<propel_to:self*&frequenting
+are_received_by	<respect_as:welcome_guest&receiving
+are_visited_by	<propel_to:self*&visiting
+are_assisted_by	<provide_to:assistance*&assisting
+are_counseled_by	<provide_to:counsel*&counselling
+are_helped_by	<provide_to:help*&helping
+are_eluded_by	seek_without:success&losing, !catch_with:ease&losing
+are_committed_to	<fix_for:madness&committing
+are_detained_by	<hold_in:detention&detaining
+are_held_by	<hold_in:grasp&holding
+are_imprisoned_by	<hold_in:prison&imprisoning
+are_imprisoned_for	^hold_for:prison&imprisoning
+are_incarcerated_for	^hold_for:prison&incarcerating
+are_jailed_for	^hold_for:jail&jailing
+serve_time_for	^hold_for:jail&jailing
+are_held_in	^hold_in:captor&holding
+are_imprisoned_in	^hold_in:jailer&imprisoning
+are_branded_with	^identify_with:owner&branding
+are_covered_in	^identify_with:observer&uncovering
+are_depicted_with	^identify_with:illustrator&depicting
+are_identified_by	^identify_with:onlooker&identifying
+are_impressed_by	respect_for:achievement&being_impressed, <imbue_with:respect&impressing
+are_guided_by	<provide_to:guidance*&guiding, <control_with:guidance&guiding
+are_indoctrinated_by	<provide_to:indoctrination*&indoctrinating, <control_with:doctrine&indoctrinating
+are_influenced_by	<provide_to:influence*&influencing, <control_with:influence&influencing
+are_inspired_by	<provide_to:inspiration*, <imbue_with:inspiration
+are_mentored_by	<provide_to:mentoring*&mentoring
+are_nurtured_in	<provide_to:nurture*&nurturing
+are_radicalized_in	<provide_to:radical_worldview*&radicalizing, <imbue_with:radical_worldview&radicalizing
+are_shaped_by	<provide_to:shape*&shaping, <control_of:shape*&shaping
+vote_in	<provide_to:vote*&voting, communicate_about:vote*&voting
+are_manipulated_with	^control_with:manipulator&manipulating
+are_manipulated_by	<control_with:manipulation&manipulating
+are_informed_by	<inform_with:information&informing, <enhance_with:information&informing
+are_instructed_by	<inform_with:instruction&instructing
+are_taught_by	<inform_with:instruction&teaching, <enhance_with:knowledge&teaching
+are_tutored_by	<inform_with:instruction&tutoring
+learn_from	<inform_with:wisdom&teaching, <enhance_with:wisdom&teaching
+learn_via	<inform_with:educational_value&teaching
+listen_to	<inform_with:speech&speaking
+read	<inform_with:text&being_read
+read_in	<inform_with:collection&being_read
+study_in	<inform_with:educational_content&teaching
+study_using	<inform_with:educational_content&facilitating
+learn	obtain_from:competence&learning
+learn_about	obtain_from:understanding&learning, ^inform_about:teacher&teaching
+are_educated_in	<inform_with:education&educating
+are_taught_in	<inform_with:education&teaching
+learn_in	<inform_with:educational_content&teaching
+study_under	<inform_with:knowledge&teaching
+are_conscripted_into	enter_as:conscript&being_conscripted
+are_drafted_into	enter_as:draftee&being_drafted
+are_drawn_into	<attract_with:inevitability&drawing_in
+are_forced_into	<attract_with:force&forcing, <control_with:force&forcing
+are_inducted_into	<attract_with:ritual&inducting, enter_as:new_member&joining
+are_infiltrated_by	<enter_as:spy&infiltrating
+are_initiated_into	enter_as:initiate&being_initiated
+enlist	<enter_as:enlisted_member&enlisting
+are_owed_by	<provide_to:IOU*
+are_bugged_by	<observe_with:listening_device&bugging
+are_guarded_by	<observe_with:oversight&guarding
+are_monitored_by	<observe_with:oversight&monitoring
+are_observed_by	<observe_with:observation&observing
+are_photographed_by	<observe_with:camera&photographing
+are_spotted_by	<observe_with:opportunism&spotting
+are_bought_off_by	<control_with:payoff&bribing
+are_robbed_by	<obtain_from:belonging*&robbing
+are_entertained_by	<perform_for:fun_activity*&entertaining
+are_convinced_by	<control_with:conviction&convincing
+are_lobbied_by	<communicate_to:special_interest*, <control_with:political_pressure
+are_persuaded_by	<control_with:persuasion
+are_delighted_by	<imbue_with:delight&delighting
+bask_on	<imbue_with:laziness&relaxing, perform_on:relaxation*&basking
+enjoy	<imbue_with:joy&pleasing
+get_high_on	<imbue_with:high&elevating
+get_high_with	<imbue_with:high&elevating
+indulge_in	<imbue_with:pleasure&delighting
+relax_in	<imbue_with:calm&relaxing
+relax_on	<imbue_with:calm&relaxing
+celebrate	<imbue_with:joy&pleasing
+are_marketed_by	<enhance_with:market_appeal&marketing
+are_popularized_by	<enhance_with:popularity&popularizing
+are_marketed_with	<enhance_with:brand_recognition&marketing
+are_created_by	<produce_with:creativity&creating
+descend_from	<produce_with:heritage&parenting
+are_thrown_by	<propel_with:force&throwing
+are_defended_by	<protect_with:dedication&defending
+are_insured_by	<protect_with:insurance&insuring
+are_protected_by	<protect_with:coverage&protecting
+are_rescued_by	<protect_with:intercession&rescuing
+are_saved_by	<protect_with:intercession&saving
+are_shielded_by	<protect_with:shield&shielding
+are_wrapped_in	<protect_with:covering&wrapping
+are_preserved_in	<protect_with:preservation&preserving
+are_sold_by	<provide_as:asset&selling
+borrow_from	<provide_as:asset&lending
+buy_from	<provide_as:asset&selling
+import_from	<provide_as:resource&exporting
+inherit_from	<provide_as:legacy&bequeathing
+order_from	<provide_as:asset&fulfilling
+rent_from	<provide_as:resource&renting
+buy_at	<provide_as:asset&selling
+are_supplied_by	<provide_to:supply*&supplying
+collect_from	gather_from:due*&collecting, <provide_to:due*&contributing
+are_awarded	^<provide_to:benefactor&awarding
+borrow	^<provide_to:lender&lending
+are_abandoned_by	<reject_with:abandonment&abandoning
+are_banished_by	<reject_with:banishment&banishing
+are_defrocked_by	<reject_with:excommunication&defrocking
+are_disavowed_by	<reject_with:disavowal&disavowing
+are_dismissed_by	<reject_with:dismissal&dismissal, <reject_as:appointee&dismissing
+are_divorced_by	<reject_with:divorce&divorcing, <reject_as:partner&divorcing
+are_dumped_by	<reject_with:breakup&dumping, <reject_as:possession&dumping
+are_ejected_by	<reject_with:force&ejecting
+are_evicted_by	<reject_with:eviction&evicting, <reject_as:tenant&evicting
+are_exorcized_by	<reject_with:exorcism&exorcizing, <reject_as:influence&exorcizing
+are_expelled_by	<reject_with:expulsion&expelling, <reject_as:member&expelling
+are_fired_by	<reject_with:termination&firing, <reject_as:employee&firing
+are_ignored_by	<reject_with:ignorance&ignoring, <reject_as:influence&ignoring
+are_rebuffed_by	<reject_with:cold_shoulder&rebuffing, <reject_as:ally&rebuffing
+are_refused_payment_by	<reject_to:payment*&refusing_payment, <reject_as:creditor&refusing_payment
+are_rejected_by	<reject_with:rejection&rejecting
+are_repelled_by	<reject_with:repulsion&repelling
+are_scorned_by	<reject_with:contempt&scorning
+are_shunned_by	<reject_with:contempt&shunning
+are_silenced_by	<reject_with:gag&silencing
+are_spurned_by	<reject_with:coldness&spurning, <reject_as:ally&spurning
+flunk_out_of	<reject_for:failure&flunking, <reject_as:student&flunking
+are_renounced_for	^reject_for:critic&renouncing
+are_sentenced_for	^reject_for:judge&sentencing, ^hold_for:judge&sentencing
+are_shunned_for	^reject_for:critic&shunning
+are_barred_from	^reject_from:proprietor&banning
+are_discharged_from	^reject_from:superior&discharging
+are_dismissed_from	^reject_from:employer&dismissing
+are_disqualified_from	^reject_from:judge&disqualifying
+are_evicted_from	^reject_from:proprietor&evicting, <reject_as:tenant&evicting
+are_excluded_from	^reject_from:central_figure&excluding
+are_exiled_from	^reject_from:ruler&exiling
+are_expelled_from	^reject_from:superior&expelling, <reject_as:member&expelling
+are_fired_from	^reject_from:employer&firing
+are_suspended_from	^reject_from:principal&suspending
+are_toppled_from	^reject_from:usurper&toppling
+are_booed_by	<reject_with:boo&booing, <communicate_to:disapproval*&booing
+are_admired_by	<respect_with:admiration&admiring
+are_celebrated_in	<respect_with:celebration&celebrating
+are_complimented_by	<respect_with:compliment&complimenting, <communicate_to:compliment*&complimenting
+are_flattered_by	<respect_with:flattery&flattering, <communicate_to:flattery*&flattering
+are_respected_by	<respect_with:sincerity&respecting
+are_venerated_by	<respect_with:veneration&venerating, <respect_as:idol&venerating
+are_worshipped_by	<respect_with:worship&worshipping, <respect_as:divinity&worhipping
+tower_over	<respect_with:awe&looking_up, !respect_as:equal&towerinr
+are_celebrated_for	^respect_for:admirer&celebrating, ^identify_with:admirer&celebrating
+are_famous_for	^respect_for:admirer&looking_up, ^identify_with:admirer&looking_up
+are_worshipped_in	^respect_in:worshipper&worshipping
+are_appeased_by	<control_with:appeasement&appeasing, obtain_from:payoff*&acquiescing
+are_paid_by	<enhance_with:payment&paying
+are_repaid_by	<enhance_with:repayment&repaying
+are_rewarded_by	<enhance_with:reward&rewarding
+are_tipped_by	<enhance_with:tip&tipping
+benefit_from	<enhance_with:benefit&benefitting
+live_off	<enhance_with:living_cost&supporting, obtain_from:living_cost*&supporting
+profit_from	<enhance_with:profit&enriching
+are_decorated_for	^enhance_for:superior&decorating
+are_paid_for	^enhance_for:client&paying
+are_rewarded_for	<enhance_for:benefactor&rewarding
+charge_for	^enhance_for:client&paying, obtain_for:fee*&charging
+are_rewarded_with	^enhance_with:admirer&rewarding
+are_encouraged_by	<imbue_with:enthusiasm&encouraging
+are_energized_by	<imbue_with:energy&energizing, <enhance_with:energy&energizing
+are_fueled_by	<imbue_with:fuel&fuelling, <enhance_with:energy&fuelling
+are_incited_by	<imbue_with:spark&inciting, <provide_to:motivation*&inciting
+are_motivated_by	<imbue_with:motivation&motivating, <provide_to:motivation*&motivating
+are_passionate_about	<imbue_with:passion&arousing
+are_radicalized_by	<imbue_with:fundamentalism&radicalizing
+are_roused_by	<imbue_with:excitement&rousing
+are_woken_by	<imbue_with:consciousness&waking
+are_inflamed_with	<imbue_with:fire&inflaming
+are_chased_by	<seek_with:haste&chasing, <seek_as:target&chasing
+are_followed_by	<seek_with:loyalty, <respect_as:influence&following
+are_haunted_by	<seek_with:despair
+are_hunted_by	<seek_with:hunt&hunting, <seek_as:prey&hunting
+are_pursued_by	<seek_with:determination&pursuing, <seek_as:target&pursuing
+are_stalked_by	<seek_with:obsession&stalking, <seek_as:obsession&stalking
+are_tracked_by	<seek_with:close_observation&observation, <seek_as:elusive_prey&tracking
+are_sought_for	^seek_for:seeker&seeking
+are_wanted_for	^seek_for:judge&wanting
+are_chosen_by	<select_with:choice&choosing, <select_as:preference&choosing
+are_selected_by	<select_with:selection&selecting, <select_as:preference&selecting
+are_assigned_to	^select_for:superior&assigning
+are_elected_to	^select_for:electorate&electing
+are_reelected_to	^select_for:electorate&reelecting
+are_selected_for	^select_for:selector&select_for
+are_arrested_by	<stop_with:arrest_warrant&arresting
+are_beaten_by	<stop_with:force&beating
+are_brought_down_by	^stop_with:rival&bringing_down
+are_conquered_by	<stop_with:conquest&conquering
+are_defeated_by	<stop_with:victory&defeating
+are_deposed_in	^stop_with:rival&deposing, <stop_with:ruin&deposing
+are_overthrown_by	<stop_with:overthrow&overthrowing
+are_paralyzed_by	<stop_with:paralysis&paralyzing
+are_supplanted_by	<stop_with:replacement&supplanting
+are_thwarted_by	<stop_with:opposition&thwarting
+are_toppled_in	^stop_with:enemy&toppling, <stop_with:upheaval&toppling
+are_usurped_by	<stop_with:replacement&usurping
+cede_power_to	provide_to:power*&ceding, <obtain_from:power*&gaining
+die_from	<stop_with:death&killing, <damage_with:death&killing
+lose_to	<stop_with:victory&defeating
+surrender_to	<stop_with:victory&defeating
+are_arrested_at	^stop_at:arresting_officer&arresting
+are_arrested_for	^stop_for:arresting_officer&arresting
+are_arrested_for_killing	^stop_for:arresting_officer&arresting
+are_opposed_by	<oppose_with:opposition&opposing
+are_nominated_for	^support_for:nominator&nominating, ^select_for:nominator&nominating
+are_backed_by	<support_with:finance&backing
+are_facilitated_by	<support_with:resource&facilitating
+are_favored_by	<support_with:favor&favoring, <identify_as:favorite&favoring
+are_financed_by	<support_with:finance&financing
+are_funded_by	<support_with:finance&funding
+are_supported_by	<support_with:support&supporting
+sit_on	<support_with:authority&empowering
+are_targeted_by	<seek_as:target&targetting, <identify_as:target&targetting
+are_diagnosed_by	<evaluate_with:diagnosis&diagnosing
+are_evaluated_by	<evaluate_with:checklist&evaluating
+are_examined_by	<evaluate_with:examination&examining
+are_investigated_by	<evaluate_with:investigation&investigating
+are_judged_by	<evaluate_with:judgment&judging
+are_reviewed_by	<evaluate_with:review&reviewing
+are_tested_by	<evaluate_with:test&testing
+are_tested_in	^evaluate_in:tester&testing
+are_tested_on	^evaluate_in:superior&testing
+are_assessed_on	^evaluate_for:assessor&assessing
+are_graded_for	^evaluate_for:grader&grading
+are_tried_for	^evaluate_for:judge&trying
+are_diagnosed_with	^evaluate_with:diagnostician&diagnosing
+are_scored_with	^evaluate_with:scorer&scoring
+are_graded_by	<evaluate_with:grading_scheme&grading
+are_missed_by	imbue_with:loss&saddening
+are_profiled_by	^evaluate_with:profile&profiling, <produce_for:profile*&profiling
+are_remembered_by	imbue_with:nostalgia&hooking, <hold_in:memory&remembering
+mystify	imbue_with:confusion&mystifying, <imbue_with:mystery&wondering
+are_intimidated_by	<oppose_with:intimidation&intimidating
+are_shocked_by	<imbue_with:shock&shocking
+are_terrorized_by	<imbue_with:terror&terrorizing, <damage_with:terror&terrorizing
+are_threatened_by	<oppose_with:threat&threatening, <imbue_with:fear&threatening
+fear	<imbue_with:fear&scaring, propel_from:self*&fearing
+are_coached_by	<provide_to:instruction*&coaching, <enhance_with:instruction&coaching
+are_drilled_by	<provide_to:instruction*&drilling, <enhance_with:instruction&drilling
+are_trained_by	<provide_to:instruction*&training, <enhance_with:instruction&training
+are_trained_for	^enhance_for:trainer&training
+are_trained_in	<enhance_with:instruction&training
+are_appreciated_by	<respect_with:appreciation&appreciating, imbue_with:appreciation&gratifying
+are_thanked_by	<respect_with:gratitude&thanking, imbue_with:gratitude&gratifying
+act_via	<perform_for:duty*&acting
+are_represented_by	<perform_for:representation*&representing, <provide_for:representation*&representing, 
+accept	^<provide_to:giver&giving, obtain_from:giver&accepting
+are_converted_to	respect_as:religious_truth&converting, enter_as:convert&converting
+believe_in	respect_as:truth&believing
+buy_into	respect_as:reality&believing
+pass	respect_as:success&passing
+settle_for	respect_as:settlement&accepting
+sign	respect_as:possibility&signing
+soften_toward	respect_as:person&softening
+take_out	respect_as:obligation&agreeing
+tolerate	respect_as:reality&tolerating
+trust	respect_as:confidante&trusting
+volunteer_for	respect_as:duty&volunteering
+warm_to	respect_as:friend&warming
+welcome	respect_as:visitor&welcoming
+afford	respect_as:possibility&affording
+forgive	respect_as:wrongdoer&forgiving
+are_covered_with	^identify_with:observer&uncovering
+don	^identify_with:observer&recognizing
+insert	provide_as:addition&inserting
+put_on	enhance_with:self*&wearing
+try_on	evaluate_for:wearability&trying
+wear	enhance_with:self*&wearing
+are_married_in	perform_in:marriage*&getting_married
+marry_in	perform_in:marriage*&getting_married
+agree_with	respect_as:viewpoint&agreeing
+align_with	respect_as:faction&aligning
+commit_to	respect_as:master&committing, <obtain_as:follower&recruiting
+develop_loyalty_to	respect_as:cause&committing, <obtain_as:loyalist&impressing
+feel_sorry_for	<imbue_with:sorrow&saddening
+grieve_for	<imbue_with:grief&saddening
+identify_with	respect_as:equal&sympathizing
+live_next_to	respect_as:neighbour&relocating, obtain_as:neighbour&relocating
+marry	respect_as:spouse&marrying, obtain_as:spouse&marrying
+mourn_for	<imbue_with:loss&saddening
+reconnect_with	seek_as:acquaintance&reconnecting, obtain_as:acquaintance&reconnecting
+remarry	respect_as:spouse&remarrying
+show_loyalty_to	respect_as:ally&committing, <obtain_as:ally&attracting
+sing_along_to	<support_with:rhythm&accompanying
+sleep_with	perform_with:sex*&sleeping
+sympathize_with	<imbue_with:sympathy&moving, <obtain_as:ally&moving
+pity	<imbue_with:pity&moving
+appoint	appoint_as:appointee&appointing
+hire	appoint_as:employee&hiring
+recruit	appoint_as:recruit&recruiting
+retain	appoint_as:representative&retaining
+recruit_for	^appoint_for:recruiter&recruiting
+argue_from	oppose_with:opponent*&arguing
+argue_against	oppose_with:argument&arguing
+brief_against	oppose_with:brief&briefing
+claim_against	oppose_with:counterclaim&claiming
+preach_against	oppose_with:sermon&preaching
+testify_against	oppose_with:testimony&testifying
+warn_against	oppose_with:concern&warning
+argue_with	oppose_with:argument&arguing
+argue_using	oppose_with:opponent*&arguing
+are_surrounded_by	obtain_as:following&attracting
+are_wooed_by	attract_as:suitor&attracting, <seek_as:mate&wooing
+attract	attract_as:interested_party&attracting
+charm	attract_with:charm&charming
+enroll	attract_as:enrollee, <enter_as:member&enrolling
+entice	attract_with:enticement&entricing
+invite	provide_to:invitation*&inviting
+seduce	attract_with:seduction&seducing, control_with:seduction&seducing
+tempt	attract_with:temptation&tempting
+charm_with	attract_with:dupe*&charming
+dangle	attract_with:dupe*&dangling
+entice_with	attract_with:interested_party*&enticing
+seduce_with	attract_with:prey*&sedicing
+tempt_with	attract_with:sinner*&tempting
+titillate_with	attract_with:customer*&titillating
+titillate	attract_with:sex&titillating
+adore	respect_with:adoration&adoring
+attend_to	tend_with:patience&attending
+befriend	tend_with:friendship&befriending, respect_as:friend&befriending
+care_for	tend_with:compassion&caring
+cater_to	tend_with:diligence&catering
+fall_in_love_with	respect_with:love&loving, <attract_as:lover&seducing
+hug	tend_with:embrace&hugging
+look_after	tend_with:concern&caring
+love	respect_with:love&loving, tend_with:love&loving
+maintain	tend_with:care&maintaining
+massage	tend_with:massage&massassing
+minister_to	tend_with:dedication&ministering
+pamper	tend_with:indulgence&pampering
+tend	tend_with:oversight&tending
+tend_to	tend_with:patience&tending
+wait_on	tend_with:servility&waiting_one
+are_burdened_with	carry_as:burden&lugging
+carry	carry_as:possession&carrying
+deliver	carry_as:delivery&delivering
+lift	carry_as:weight&lifting
+load	carry_as:load&loading
+load:ship	carry_to:cargo*&loading
+load:gun, load:rifle, load:musket	provide_to:ammunition*&loading
+load:bullet	provide_to:gun&loading
+lug	carry_as:heavy_weight&lugging
+ship	carry_as:shipping_cargo&shipping
+smuggle	carry_as:contraband&smuggling
+transmit	carry_as:message&trasmitting
+transport	carry_as:cargo&transporting
+ship_for	carry_for:cargo*&shipping
+load_at	carry_from:load*&loading
+ship_from	carry_from:cargo*&shipping
+unload_at	carry_to:load*&unloading
+deliver_with	carry_with:delivery*&delivering
+lift_with	carry_with:weight*&lifting
+smuggle_with	carry_with:contraband*&smuggling
+transport_on	carry_with:cargo*&transporting
+transport_via	carry_with:cargo*&transporting
+transport_with	carry_with:cargo*&transporting
+abduct	catch_as:abductee&abducting
+apprehend	catch_as:fugitive&apprehending
+capture	catch_as:captive&capturing
+catch	catch_as:prey&catching
+kidnap	catch_as:kidnap_victim&kidnapping
+pounce_on	catch_as:prey&pouncing
+snatch	catch_as:abductee&snatching
+trap	catch_as:prey&trapping
+catch_with	catch_with:prey*&catching
+fish_with	catch_with:fish*&fishing
+trap_with	catch_with:prey*&trapping
+take_prisoner	catch_as:prisoner&capturing, hold_as:prisoner&capturing
+commit	perform_for:criminal_gain&committing, damage_with:victim*&committing
+perpetrate	perform_for:criminal_gain&perpetrating, damage_with:victim*&perpetrating
+abet	perform_with:crime*&abetting
+collude_with	perform_with:collusion*&colluding
+conspire_with	perform_with:conspiracy*&conspiring
+articulate	communicate_with:language&articulating
+convey	communicate_with:language&conveying
+express	communicate_with:language&expressing
+lodge	communicate_to:official&lodging
+read_out	communicate_to:audience&reading_out
+report	communicate_about:report*&reporting
+say	communicate_as:utterance&saying
+set_out	communicate_with:precision&setting_out
+shout	communicate_with:shout&shouting
+shout_out	communicate_with:shout&shouting
+speak	communicate_with:speech&speaking
+submit	communicate_as:submission&submitting
+swear	communicate_with:solemnity&swearing
+utter	communicate_as:utterance&uttering
+vent	communicate_as:outburst&venting
+admit	communicate_as:admission&admitting
+advise_about	communicate_about:advice*&advising
+argue	communicate_about:argument*&arguing, oppose_about:opponent*&arguing
+argue_about	communicate_about:argument*&arguing, oppose_about:opponent*&arguing
+boast_about	communicate_about:boast*&boasting
+broadcast	communicate_with:broadcast&broadcasting
+chant	communicate_with:chant&chanting
+comment_on	communicate_about:comment*&commenting
+communicate	communicate_about:message*&communicating
+complain_about	communicate_about:complaint*&complaining
+debate	oppose_about:opponent*&debating
+discuss	start_about:discussion*&discussing
+document	produce_about:document*&documenting
+editorialize_about	produce_about:editorial*&editorializing
+gossip_about	communicate_about:gossip*&gossiping
+joke_about	communicate_about:joke*&joking
+photograph	produce_about:photograph*&photographing
+preach	communicate_about:sermon*&preaching
+preach_about	communicate_about:sermon*&preaching
+protest_about	communicate_about:protest*&protesting, oppose_about:opponent*&protesting
+quote	communicate_from:quote*&quoting
+quote_from	communicate_from:quote*&quoting
+recount	communicate_as:entertainment&recounting
+refer_to	communicate_from:reference*&referring
+report_on	communicate_about:report*&reporting
+reveal	communicate_about:secret*&revealing
+shout_about	communicate_with:shout&shouting
+sing_about	perform_about:song*&singing, communicate_about:song*&singing
+snitch_on	communicate_about:secret*&snitching
+speak_about	communicate_about:speech*&speaking
+specify	communicate_about:detail*&specifying
+talk_about	communicate_about:speech*&talking
+tell	communicate_as:entertainment&telling
+testify_about	communicate_about:testimony*&testifying
+vote_on	communicate_about:vote*&voting
+write_about	communicate_about:text*&writing, produce_about:text*&writing
+expound	communicate_about:thesis*&expounding
+recite	communicate_as:entertainment&reciting
+are_heard_in	communicate_at:opinion*&presenting
+argue_in	communicate_at:argument*&arguing
+cry_at	communicate_at:sorrow*&crying
+debate_in	communicate_at:stance*&debating
+hang_out_in	communicate_at:chitchat*&hanging_out
+hang_out_on	communicate_at:chitchat*&hanging_out
+minister_in	communicate_at:pastoral_care*&ministering
+mourn_at	communicate_at:loss*&mourning
+pray_in	communicate_at:prayer*&praying
+preach_from	communicate_at:sermon*&preaching, communicate_from:sermon*&preaching
+preach_in	communicate_at:sermon*&preaching
+present_at	communicate_at:presentation*&presenting
+protest_in	communicate_at:protest*&protesting
+report_in	communicate_at:report*&reporting
+shout_at	oppose_with:shout&shouting, communicate_to:shout*&shouting
+speak_at	communicate_at:speech*&speaking
+speak_from	communicate_at:speech*&speaking
+speak_in	communicate_at:speech*&speaking
+speak_on	communicate_through:opinion*&speaking
+testify_at	communicate_at:testimony*&testifying
+pray_for	communicate_for:prayer*&praying
+propagandize_for	communicate_for:propaganda*&propagandizing, produce_for:propaganda*&propagandizing
+report_for	communicate_for:report*&reporting
+speak_for	communicate_for:announcement*&speaking
+testify_for	communicate_for:testimony*&testifying
+translate_for	communicate_for:translation*&translating, produce_for:translation*&translating
+advertise_in	communicate_through:offering*&advertizing
+advertise_via	communicate_through:advertisement&advertizing
+answer	communicate_to:answer*&answering
+are_contacted_via	obtain_from:alert*&making_contact
+are_published_by	communicate_through:viewpoint*&publishing, produce_for:publication*&publishing
+are_published_in	communicate_through:viewpoint*&publishing
+articulate_with	communicate_with:speech*&articulating
+blow_into	communicate_with:sound*&blowing
+blow_through	communicate_with:sound*&blowing
+broadcast_via	communicate_through:broadcast&broadcasting
+communicate_through	communicate_through:announcement*&communicating
+communicate_via	communicate_through:message*&communicating
+post	communicate_through:message*&posting
+post_on	communicate_through:post*&posting
+preach_on	communicate_through:sermon*&preaching
+propagandize_through	communicate_through:propaganda*&propagandizing
+protest_by	communicate_through:opposition*&protesting
+publish_in	communicate_through:viewpoint*&publishing
+publish_through	communicate_through:book*&publishing
+speak_through	communicate_through:announcement*&speaking
+talk_through	communicate_through:announcement*&talking
+testify_before	communicate_to:testimony*&testifying
+bang	communicate_through:sound*&banging
+blow	communicate_through:sound*&blowing
+address	communicate_to:speech*&addressing
+admit_to	communicate_to:admission*&admitting
+answer_to	communicate_to:answer*&answering
+appeal_to	communicate_to:appeal*&appealing
+apply_to	communicate_to:application*&applying
+argue_before	communicate_to:argument*&arguing
+argue_to	communicate_to:argument*&arguing
+ask	communicate_to:question*&asking
+beg_forgiveness_from	communicate_to:apology*&apologizing
+chat_with	communicate_to:chitchat*&chatting
+complain_to	communicate_to:complaint*&complaining
+confess_to	communicate_to:confession*&confessing
+confide_in	communicate_to:confidence*&confiding, imbue_with:trust&confiding
+invoice	communicate_to:invoice*&invoicing
+invoke	communicate_to:invocation*&invoking, seek_with:invocation&invoking
+leak_to	communicate_to:secret*&leaking
+lobby	communicate_to:special_interest*&lobbying
+pray_to	communicate_to:prayer*&praying
+preach_to	communicate_to:sermon*&preaching
+reach_out_to	communicate_to:approach*&reaching_out
+reply_to	communicate_to:reply*&replying
+report_to	communicate_to:report*&reporting
+respond_to	communicate_to:response*&responding
+seek_advice_from	communicate_to:dilemma*&confiding, seek_from:advice*&consulting
+seek_favor_from	communicate_to:request*, seek_from:favor*&brownnosing
+share_stories_with	communicate_to:story*&storytelling
+snitch_to	communicate_to:secret*&snitching
+speak_to	communicate_to:opinion*&speaking
+swear_to	communicate_about:oath*&swearing
+talk_to	communicate_to:viewpoint*&talking
+whistle_for	communicate_to:whistle*&whistling, seek_with:whistle&whistling
+write_to	communicate_to:text*&writing
+argue_via	communicate_with:argument*&arguing
+bloviate_with	communicate_with:waffle*&bloviating
+communicate_using	communicate_with:viiewpoint*&communicating
+repond_with	communicate_with:response*&responding
+answer_questions_from	communicate_to:answer*&answering
+communicate_with	communicate_with:viewpoint*&communicating
+confer_with	communicate_to:advice*&conferring, seek_from:advice*&conferring
+consult	seek_from:counsel*&consulting
+consult_with	communicate_to:counsel*&consulting, seek_from:counsel*&consulting
+debate_with	communicate_to:argument*&debating, communicate_to:riposte*&debating
+emit	communicate_with:meaning*
+flirt_with	communicate_to:pickup_line*&flirting
+interrogate	communicate_to:tough_question*&interrogating, obtain_from:hard_answer*&interrogating
+interview	communicate_to:question*&interviewing, obtain_from:answer*&interviewing
+question	communicate_to:question*&questioning
+sign_with	<appoint_with:signature&signing
+speak_with	communicate_to:perspective*&speaking
+campaign_against	oppose_with:campaign&campaigning
+challenge	oppose_with:challenge&challenging
+compete_against	oppose_with:competition&competing
+contest	oppose_with:contest&contesting
+contradict	oppose_with:contradiction&contradicting
+fight	oppose_with:vehemence&fighting
+fight_against	oppose_with:violence&fighting
+play_against	oppose_with:game_play&playing, oppose_in:game*&playing
+campaign_in	seek_in:mandate*&campaigning, oppose_in:opponent*&campaigning
+campaign_on	seek_about:mandate*&campaigning, oppose_about:rival*&campaigning
+compete_in	seek_in:win*&competing, oppose_in:competitor*&competing
+fight_at	seek_in:win*&fighting, oppose_in:enemy*&fighting
+fight_in	seek_in:victory*&fighting, oppose_in:enemy*&fighting
+fight_on	seek_in:victory*&fighting, oppose_in:enemy*&fighting
+gamble_at	seek_in:jackpot*&gambling
+gamble_in	seek_in:jackpot*&gambling
+protest_at	seek_in:moral_victory*&protesting, oppose_in:opposition*&protesting
+race_in	seek_in:first_place*&racing
+rampage_at	seek_in:destruction*&rampaging, oppose_in:victim*&rampaging
+compete_for	seek_in:competition&competing
+contend_for	seek_in:contest&contending
+fight_for	oppose_for:enemy*&fighting
+fight_over	oppose_for:enemy*&fighting
+race_for	oppose_for:competitor*&racing, seek_for:first_place*&racing
+race	seek_with:first_place*&racing, control_in:race*
+ride	seek_with:first_place*&racing, control_in:race*
+compete_with	seek_with:win*&competing
+fight_with	seek_with:victory*&fighting
+swim_for	seek_for:first_place*&swimming
+chew	consume_with:teeth&chewing
+devour	consume_with:fang&devouring
+drain	consume_with:puncture&draining
+drink	consume_with:gulp&drinking
+eat	consume_with:bite&eating
+gobble	consume_with:swallow&gobbling
+inject	consume_with:injection&injecting
+munch	consume_with:noisy_bite&munching
+smoke	consume_with:inhalation&smoking
+consume	consume_from:supplier&consuming
+drink_in	consume_at:beverage*&drinking
+eat_at	consume_at:food*&eating
+eat_from	consume_at:food*&eating
+eat_in	consume_at:food*&eating
+inject_into	consume_at:drug*&injecting
+chew_with	consume_with:food*&chewing
+drain_with	consume_with:beverage*&draining
+arrange	control_with:arrangement&arranging
+blackmail	control_with:blackmail&blackmailing
+brainwash	control_with:mind_control&brainwashing, control_of:mind*&brainwashing
+choreograph	control_with:choreography&choreographing, control_of:dancer*&choreographing
+command	control_with:command&commanding
+commandeer	control_with:force&commandeering
+control	control_with:authority&controlling
+curate	control_with:selectivity&curating, control_of:content*&curating
+deescalate	stop_with:deescalation&deescalating, imbue_with:calm&deescalating
+direct	control_with:direction&directing
+dominate	control_with:domination&dominating
+enchant	control_with:magic&enchanting, control_of:mind*&enchanting
+enslave	control_with:slavery&enslaving, control_of:freedom*&enslaving
+enthrall	control_with:enslavement&enthralling, control_of:mind*&enthralling
+experiment_on	control_with:experimentation&experimenting
+front	control_with:charisma&fronting
+govern	control_with:government&governing
+handle	control_with:grasp&handling
+hijack	control_with:threat&hijacking
+host	control_with:presentation&hosting
+lead	control_with:leadership&leading
+manage	control_with:management&managing
+master	control_with:mastery&mastering
+moderate	control_with:moderation&moderating
+officiate_at	control_with:ritual&officiating, control_of:ritual*&officiating
+operate	control_with:operation&operating, control_of:operation*&operating
+oppress	control_with:oppression&oppressing
+orchestrate	control_with:orchestration&orchestrating
+organize	control_with:organization&organizing, control_of:schedule*&organizing
+overrun	control_with:force&overrunning
+oversee	control_with:oversight&overseeing
+overwhelm	control_with:force&overwhelming
+patent	control_with:patent&patenting, seek_for:patent*&patenting
+preside_over	control_with:presidency&presiding
+regulate	control_with:regulation&regulating, control_of:regulation*&regulating
+repress	control_with:repression&repressing
+rule	control_with:edict&ruling
+rule_over	control_with:edict&ruling
+run	control_of:operation*&running
+schedule	control_of:timing*&scheduling
+steer	control_of:direction*&steering
+subjugate	control_with:subjugation&subjugating
+supervise	control_with:supervision&supervising
+suppress	control_with:suppression&suppressing, control_of:freewill*&suppressing
+take_command_of	control_with:command&commanding
+take_over	control_with:take_over&taking_over
+tame	control_with:behavior_modification&taming, imbue_with:docility&taming
+administer	control_of:running*&administering
+constrain	control_with:constraint&constraining, control_of:freedom*&constraining
+cover	control_with:coverage&covering
+limit	control_with:limitation&limiting, control_of:freedom*&limiting
+restrain	control_with:restraint&restraining, control_of:freedom*&restraining
+command_in	control_in:soldier*&commanding
+rule_from	control_in:subject*&ruling
+conduct_with	control_with:orchestra*&conducting
+direct_with	control_with:movement*&directing
+drive_with	control_with:movement*&driving
+enchant_with	control_with:mind*&enchanting, perform_as:enchantment&enchanting
+enforce	control_with:target*&enforcing, respect_as:reality&enforcing
+enthrall_with	control_with:thrall*&enthralling, control_with:mind*&enthralling
+govern_via	control_with:government*&governing
+govern_with	control_with:government*&governing
+impose	seek_with:control*&imposing, respect_as:policy&imposing
+manage_with	control_with:management*&managing
+navigate_with	control_with:direction*&navigating
+operate_with	control_with:operation*&operating
+restrain_with	control_with:detainee*&restraining
+rule_by	control_with:realm*&ruling
+rule_with	control_with:domain*&ruling
+supervise_with	control_with:underling*&supervising
+are_mistaken_for	produce_of:copy*&copying
+copy	produce_of:copy*&copying
+counterfeit	produce_of:forgery*&counterfeiting
+imitate	produce_of:imitation*&imitating
+impersonate	produce_of:impersonation*&impersonating
+mimic	produce_of:impression*&mimicking
+model	produce_of:model*&modelling
+plagiarize	produce_of:direct_copy*&plagiarizing
+portray	produce_of:portrayal*&portraying
+pretend_to_be	produce_of:pretence*&pretending
+repeat	produce_of:repeat*&repeating
+resemble	produce_of:resemblance*&resembling
+shadow	produce_of:shadow*&shadowing
+fill_in_for	produce_of:substitute*&filling_in, support_as:substitute&filling_in
+abhor	communicate_about:abhorrance*&abhorring
+chastise	communicate_to:chastisement*&chastising
+criticize	communicate_to:criticism*&criticizing, communicate_about:criticism*&criticizing
+curse	propel_at:curse*&cursing, seek_for:ruin*&cursing
+despise	communicate_about:hatred*&despising, <imbue_with:hate&enraging
+frown_on	communicate_about:displeasure*&frowning
+hate	communicate_about:hate*&hating, <imbue_with:hate&enraging
+heckle	propel_at:heckle*&heckling, !respect_as:performer&heckling
+humiliate	communicate_to:contempt*&humiliating, seek_for:humiliation*&humiliating
+indict	seek_for:conviction*&indicting, communicate_to:indictment*&indicting
+insult	propel_at:insult*&insulting, communicate_about:insult*&insulting
+laugh_at	communicate_about:ridicule*&ridiculing
+mock	communicate_about:mockery*&mocking
+penalize	damage_with:penalty&penalizing, control_with:penalty&penalizing
+resent	communicate_about:resentment*&resenting, <imbue_with:resentment&alienating
+satirize	produce_about:satire*&satirizing, communicate_about:satire*, damage_with:satire*
+scoff_at	communicate_about:scorn*&scoffing, communicate_to:scorn*&scoffing
+sue	propel_at:lawsuit*&suing, start_against:lawsuit*&suing
+taunt	propel_at:taunt*&taunting, communicate_to:taunt*&taunting
+accuse	communicate_about:accusation*&accusing, communicate_to:accusation*&accusing
+criticize_with	^<communicate_about:victim&criticizing, communicate_to:scorn*&criticizing
+curse_with	propel_at:victim&cursing, seek_with:cursed_outcome*&cursing
+insult_with	propel_at:victim&insulting, communicate_about:insult*insulting
+chop	cut_with:cutting_implement&chopping
+clip	cut_with:cutting_implement&clipping
+cut	cut_with:cutting_implement&cutting
+cut_off	cut_with:cutting_implement&cutting
+cut_open	cut_with:cutting_implement&cutting
+dissect	cut_with:cutting_implement&dissecting
+penetrate	cut_with:pointed_implement&penetrating
+puncture	cut_with:pointed_implement&puncturing
+reduce	seek_in:reduction*&reducing, control_of:quantity*&reducing
+skin	cut_from:skin*&skinning
+slash	cut_with:cutting_implement&slashing
+slice	cut_with:cutting_implement&slicing
+trim	cut_with:cutting_implement&trimming
+divide	cut_with:cutting_implement&dividing, seek_in:reduction*&dividing
+chop_with	cut_with:material*&chopping
+cut_with	cut_with:material*&cutting
+dissect_with	cut_with:material*&dissecting
+pierce_with	cut_with:covering*&piercing
+slash_with	cut_with:covering*&slashing
+slice_with	cut_with:substance*&slicing
+stab_with	cut_with:victim*&stabbing, damage_with:victim*&stabbing
+trim_with	cut_with:material*&trimming
+abuse	damage_with:abuse&abusing
+assault	damage_with:assault&assaulting
+attack	damage_with:attack&attacking
+beat_up	damage_with:violence&beating
+betray	damage_with:betrayal&betraying
+bite	damage_with:teeth&biting
+break	damage_with:destruction&breaking
+cause_trouble_for	damage_with:trouble&troubling
+crash_land_in	damage_with:crash_landing&landing
+crush	damage_with:pressure&crushing
+damage	damage_with:irresponsible_behaviour&damaging
+debase	damage_with:wanton_behaviour&debasing
+deface	damage_with:vandalism&defacing
+delude	damage_with:delusion&deluding
+disfigure	damage_with:scar&disfiguring
+disrupt	damage_with:interruption&disrupting
+distort	damage_with:distortion&distorting
+embarrass	produce_for:embarrassment*&embarrassing, damage_with:embarrassment&embarrassing
+harass	damage_with:harassment&harassing
+hit	damage_with:blow&hitting
+hurt	damage_with:pain&hurting
+invade	damage_with:invasion&invading
+meddle_in	communicate_about:unwanted_advice*&meddling, damage_with:intrusion&meddling
+molest	damage_with:molestation&molesting
+persecute	damage_with:persecution&persecuting
+poison	damage_with:poison&poisoning, <consume_at:poison*&poisoning
+punch	damage_with:fist&punching
+punish	damage_with:punishment&punishing
+sabotage	damage_with:sabotage&sabotaging
+stab	damage_with:cutting_implement&stabbing
+sting	damage_with:pointed_instrument&stinging
+subvert	damage_with:subversion&subverting
+tarnish	damage_with:stain&tarnishing
+torment	damage_with:torment&tormenting
+torture	damage_with:torture&torturing
+victimize	damage_with:mistreatment&victimizing
+violate	damage_with:violation&violating
+whip	damage_with:whip&whipping
+corrupt	damage_with:corruption&corrupting
+attack_in	damage_with:victim*&attacking
+charge_on	damage_with:target*&charging
+rampage_in	damage_with:victim*&rampage
+charge_with	damage_with:target*&charging
+attack_with	damage_with:victim*&attacking
+bite_with	damage_with:victim*&biting
+deface_with	damage_with:edifice*&defacing
+hit_with	damage_withvictim*&hitting
+hurt_with	damage_with:victim*&hurting
+inflict	damage_with:victim*&inflicting
+punch_with	damage_withvictim*&punching
+punish_with	damage_with:victim*&punishing
+sting_with	damage_with:victim*&strining
+torture_with	damage_with:victim*&torturing
+weaponize	damage_with:victim*&weaponizing
+deal_in	perform_in:trade*&dealing, provide_to:buyer&dealing, obtain_from:seller&dealing
+exchange	perform_of:exchange*&exchanging
+trade	perform_of:trade*&trading, provide_to:buyer&trading, obtain_from:seller&trading
+trade_in	perform_of:trade*&trading, provide_to:buyer&trading, obtain_from:seller&trading
+traffic_in	perform_of:trade*&trafficking, provide_to:buyer&trafficking, obtain_from:seller&trafficking
+bargain_with	perform_with:trade*&bargaining, seek_from:bargain*&bargaining
+book_with	obtain_from:reservation*&booking
+deal_with	perform_with:trade*&dealing, seek_from:deal*&dealing
+negotiate_with	perform_with:negotiation*&negotiating, seek_from:settlement*&negotiating
+cheat	deceive_with:fraud&cheating
+cheat_on	deceive_with:&dishonesty&cheating
+deceive	deceive_with:deception&deceiving
+fool	deceive_with:foolery&fooling, !respect_as:genius&fooling
+lead_astray	deceive_with:misdirection&misleading, provide_to:misinformation*&misleading
+lie_to	deceive_with:lie&lying, communicate_to:lie*&lying, provide_to:misinformation*&lying
+mislead	deceive_with:misdirection&misleading, provide_to:misinformation*&misleading
+trick	deceive_with:trickery&tricking
+misrepresent	deceive_with:misrepresentation&misrepresenting
+spread_lies_about	communicate_about:lie*&lying, damage_with:lie&tarnishing
+cheat_with	deceive_with:dupe*&cheating, start_with:affair*&cheating
+cheat_using	deceive_with:dupe*&cheating
+lie_for	deceive_for:dupe*&lying
+deceive_with	deceive_with:dupe*&lying
+exaggerate_with	deceive_with:dupe*&exaggerating
+falsify	deceive_with:dupe*&falsifying
+litigate_for	protect_with:legal_action&litigating
+delegate_to	deploy_with:responsibility&delegating
+deploy	deploy_with:mission&deploying
+dispatch	deploy_with:message&dispatching
+mobilize	deploy_with:mission&mobilizing
+plant	deploy_with:purpose&planting
+delegate	deploy_with:delegate*&delegating
+assassinate	damage_with:murder&assassinating, stop_with:murder&assassinating
+burn	damage_with:fire&burning
+burn_down	damage_with:arson&burning, stop_with:arson&burning
+destroy	damage_with:destruction&destroying, stop_with:destruction&destroying
+execute	damage_with:execution&executing, stop_with:execution&executing
+kill	damage_with:killing, stop_with:killing
+kill_off	damage_with:murder&killing, stop_with:murder&killing
+murder	damage_with:murder&murdering, stop_with:murder&murdering
+ruin	damage_with:ruination&ruining, stop_with:ruination&ruining
+slaughter	damage_with:slaughter&slaughtering, stop_with:slaughter&slaughtering
+slay	damage_with:slaughter&slaying, stop_with:slaughter&slaying
+smash	damage_with:destruction&smashing
+strangle	damage_with:strangulation&strangling, stop_with:asphixiation&strangling
+detonate_in	damage_with:explosion&detonating
+kill_for	damage_for:victim*&assassinating
+sacrifice_to	damage_for:sacrificial_lamb*&sacrificing, stop_for:sacrificial_lamb*&sacrificing
+destroy_with	damage_with:target*&destroying
+detonate	damage_with:target*&detonating
+execute_with	damage_with:victim*&executing, stop_with:victim*&executing
+explode	damage_with:target*&exploding
+kill_with	damage_with:victim*&killing
+demonstrate	display_with:demonstration&demonstrating
+depict	display_with:depiction&depicting
+display	display_with:visibility&displaying
+exhibit	display_with:exhibition&exhibiting
+highlight	display_with:focus&highlighting
+illuminate	display_with:light&illuminating
+mount	display_with:support&mounting
+present_with	display_with:presentation&presenting
+prove	display_with:proof&proving
+show	display_with:show
+show_off	display_with:pride&boasting
+exude	display_with:obviousness&exuding, communicate_with:obviousness&exuding, 
+flaunt	display_with:pride&flaunting, communicate_with:pride &flaunting
+flex	display_with:effort&flexing
+display_at	display_at:artwork*&displaying
+display_in	display_at:artwork*&displaying
+exhibit_at	display_at:product*&exhibiting
+exhibit_in	display_at:product*&exhibiting
+model_in	display_at:self*&modelling
+promote	support_with:promotion&promoting, appoint_with:promotion&promoting
+are_afflicted_with	<imbue_with:pain&afflicting
+endure	<imbue_with:suffering&afflicting
+experience	<imbue_with:experience&affecting
+live_through	<imbue_with:experience&affecting
+shrug_off	<imbue_with:nonchalance&affecting
+succumb_to	<imbue_with:weakness&afflicting
+suffer	<imbue_with:suffering&afflicting
+suffer_from	<imbue_with:suffering&afflicting
+suffer_through	<imbue_with:suffering&afflicting
+suffer_under	<imbue_with:suffering&afflicting
+survive	<imbue_with:experience&affecting
+undergo	<imbue_with:frustration&affecting
+survive_in	<imbue_with:experience&affecting, <protect_from:outside_force&keeping
+participate_in	perform_with:counterpart&participating
+engage_in	perform_with:counterpart&engaging
+date	perform_with:dating_ritual*&dating
+encounter	perform_with:encounter*&encountering
+engage_with	perform_with:engagement*&engaging
+face	perform_with:engagement*&facing
+advance	enhance_with:advancement&advancing
+beautify	enhance_with:beauty&beautifying, tend_with:beauty_treatment&beautifying
+build_up	enhance_with:consolidation&building
+clean	enhance_with:hygiene&cleaning
+decorate	enhance_with:decoration&decorating
+diversify	enhance_with:diversity&diversifying
+dress	enhance_with:fashion&dressing
+dye	enhance_with:dye&colouring, tend_with:dye&colouring
+enhance	enhance_with:effort&enhancing
+exceed	enhance_with:excess&exceeding
+expand	enhance_with:growth&expanding
+go_beyond	enhance_with:advancement&advancing
+hone	enhance_with:improvement&honing
+improve	enhance_with:improvement&improving
+improve_on	enhance_with:improvement&improving
+inflate	enhance_with:growth&inflating
+plow	enhance_with:plow&plowing
+polish	enhance_with:polish&polishing, tend_with:polish&polishing
+refine	enhance_with:refinement&refining
+renew	enhance_with:renewal&renewing
+replenish	enhance_with:renewal&replenishing
+revolutionize	enhance_with:revolution&revolutionizing
+rewrite	enhance_with:rewrite&rewriting
+sensationalize	enhance_with:sensationalism&sensationalizing
+sharpen	enhance_with:sharpness&sharpening
+streamline	enhance_with:smoothness&streamlining
+stretch	enhance_with:growth&stretching
+style	enhance_with:style&styling, tend_with:style&styling
+translate	enhance_with:translation&translating, produce_of:translation*&translating
+update	enhance_with:update&updating
+wash	enhance_with:hygiene&washing
+water	enhance_with:hydration&watering, tend_with:water&watering
+annotate	enhance_with:annotation&annotating, produce_of:annotated_copy*&annotating
+balance	enhance_with:balance&balancing
+fertilize	enhance_with:fertility&fertiizing, tend_with:fertilizer&fertiizing
+formalize	enhance_with:formality&formalizing
+fortify	support_with:fortification&fortifying, enhance_with:strength&fortifying
+foster	enhance_with:nurture&nurturing, tend_with:nurture&nurturing
+clean_with	enhance_with:target*&cleaning
+dry_with	enhance_with:target*&drying
+tighten_with	enhance_with:target*&tightening
+water_with	enhance_with:plant*&watering, tend_with:plant*&watering
+revise	enhance_with:revision&revising, fix_with:revision&revising
+extend	exhance_with:growth&extending
+develop_in	produce_in:product*&developing
+exploit	control_with:exploitation&exploiting, obtain_from:advantage*&exploiting
+invest	enhance_with:investment&investing
+leverage	enhance_with:leverage&leveraging, control_with:target*&leveraging
+misuse	control_with:misuse&misusing, oppose_with:target*&misusing
+overwork	control_with:demand&overworking, control_of:workload*&overworking
+sacrifice	damage_with:sacrifice&sacrificing, stop_with:sacrifice&sacrificing
+starve	control_with:hunger&starving, damage_with:hunger&starving, !provide_to:food*:starving
+take_advantage_of	obtain_from:advantage*&exploiting
+waste	!obtain_from:value*&wasting, !control_with:wisdom&wasting
+bet	provide_as:collateral&betting, seek_with:jackpot*&betting
+gamble	provide_as:collateral&gambling, seek_with:jackpot*&gambling
+ply	perform_with:task*&plying
+spend	obtain_with:possession*&spending
+defraud	deceive_for:profit&defrauding, deceive_with:fraud&defrauding
+alter	fix_with:alteration&altering, enhance_with:alteration&altering
+cure	fix_with:treatment&curing, enhance_with:treatment&curing
+cure_of	fix_for:patient&curing, stop_with:treatment&curing
+dry	enhance_with:dryness&drying
+edit	enhance_with:revision&editing, fix_with:revision&editing
+heal	fix_with:treatment&healing
+operate_on	fix_with:surgery&operating
+repair	fix_with:repair&repairing
+replace	provide_as:replacement&replacing
+resolve	fix_with:solution&resolving
+restore	fix_with:restoration&restoring, enhance_with:freshness&restoring
+salvage	obtain_from:salvage*&salvaging
+settle	fix_with:settlement&settling, stop_with:settlement&settling
+solve	fix_with:solution&solving
+sweep	enhance_with:tidiness&sweeping
+tighten	enhance_with:tightness&tightening
+treat	fix_with:treatment&treating
+weld	fix_with:solder&welding
+correct	fix_with:revision&correcting
+fit	enhance_with:target*&fitting
+edit_with	fix_with:text*&editing
+heal_with	fix_with:ailment*&healing
+solve_with	fix_with:problem*&solving
+treat_with	fix_with:illness*&treating
+weld_with	fix_with:breakage*&welding
+major_in	^inform_about:teacher&teaching, select_as:major&majoring
+read_the_works_of	<inform_about:worldview&educating
+research	seek_about:answer*&researching, seek_in:insight*&researching
+research_in	seek_in:answer*&researching
+specialize_in	respect_as:priority&specializing, select_as:speciality&specializing
+study	^inform_about:teacher&educating, seek_in:insight*&studying
+take_up	select_as:hobby&taking_up, seek_in:expertise*&taking_up
+free	provide_to:freedom*&freeing, imbue_with:freedom&freeing
+let_go_of	provide_to:independence*&letting_go
+release	provide_to:release*&releasing
+unleash	deploy_with:freedom&unleashing, !control_with:leash&unleashing
+unlock	control_with:key&unlocking, imbue_with:openness&unlocking
+unsheath	obtain_from:sheath&unsheathing, carry_as:threat&unsheathing
+untie	imbue_with:freedom&untying
+are_released_from	obtain_from:freedom*&leaving, <provide_with:release&releasing
+accumulate	gather_into:pile&accumulating
+clean_up	gather_into:waste_basket&cleaning
+collate	gather_into:collection&collating
+collect	gather_into:collection&collecting
+combine	gather_into:combination&combining
+compile	gather_into:compilation&compiling
+consolidate	gather_into:consolidation&consolidating
+convene	gather_into:grouping&convening
+garner	enhance_with:self*&garnering
+gather	gather_into:group&gathering
+herd	gather_into:herd&herding
+hoard	gather_into:hoard&hoarding
+maraud_in	gather_into:horde&marauding
+mix	gather_into:mix&mixing, produce_from:ingredient&mixing
+muster	gather_into:cohort&mustering, enhance_with:readiness:mustering
+pack	gather_into:personal_item*&packing
+rack_up	gather_into:total&racking
+restock	gather_into:inventory&restocking
+round_up	gather_into:crowd&rounding_up
+stock	gather_into:inventory&stocking
+store	gather_into:store&storing, hold_in:storage&storing
+sweep_up	gather_into:pile&sweeping
+tally	gather_into:bottom_line&tallying
+meet_at	gather_at:peer*&meeting
+gather_in	gather_in:peer*&gathering
+meet_in	gather_in:peer*&meeting
+collect_on	obtain_from:debtor*&collecting
+compile_with	produce_with:machine_code*&compiling
+herd_with	gather_with:herd*&herding
+sweep_with	gather_with:rubbish*&sweeping
+jump_between	propel_to:self*&jumping
+shift_between	propel_to:self*&shifting
+switch	propel_to:self*&switching
+translate_between	provide_for:translation*&translating
+go_for	perform_with:enthusiasm&going, seek_with:entertainment*&going
+arrive_from	propel_from:self*&arriving
+break_out_of	propel_from:self*&escaping
+come_from	<produce_with:upbringing&raising
+desert_from	propel_from:self*&deserting
+deviate_from	propel_from:self*&deviating, !respect_as:guide&deviating
+disconnect_from	propel_from:self*&disconnecting
+drift_away_from	propel_from:self*&drifting
+embark_at	propel_from:self*&embarking
+escape	propel_from:self*&escaping
+escape_from	propel_from:self*&escaping
+flee_from	propel_from:self*&fleeing
+get_off	propel_from:self*&getting_off
+get_on_at	propel_from:self*&getting_on
+get_out_of	propel_from:self*&getting_out
+graduate_from	propel_from:self*&graduation
+grow_out_of	propel_from:self*&maturing
+jump_from	propel_from:self*&jumping
+leave	propel_from:self*&leaving
+leave_behind	produce_for:follower&leaving
+move_away_from	propel_from:self*&relocating, reject_as:abode&relocating
+move_from	propel_from:self*&relocating
+move_out_of	propel_from:self*&relocating, reject_as:abode&relocating
+quit	propel_from:self*&quitting
+recover_from	^<fix_for:doctor&curing
+resign_from	propel_from:self*&resigning
+retire_from	propel_from:self*&retiring, reject_as:way_of_life&retiring
+retreat_from	propel_from:self*&retreating
+return_from	propel_from:self*&returning
+rise_from	propel_from:self*&rising
+run_away_from	propel_from:self*&running_away,  reject_as:abode&running_away
+step_down_from	propel_from:self*&stepping_down, reject_as:way_of_life&stepping_down
+take_off_from	propel_from:self*&taking_off
+travel_from	propel_from:self*&travelling
+visit_from	propel_from:self*&visiting
+wake_from	propel_from:self*&waking_up
+walk_away_from	propel_from:self*&walking_away
+arrive_in	propel_with:self*&arriving
+arrive_to	propel_to:self*&arriving
+commute_by	propel_with:self*&commuting
+drive	propel_with:self*&driving
+fly	propel_with:self*&flying, propel_through:air&flying
+fly_around_in	<propel_with:self*&flying
+fly_in	<propel_with:self*&flying
+fly_on	<propel_with:self*&flying
+race_on	propel_around:self*&racing, oppose_on:competitor*&racing
+race_using	propel_around:track&racing, oppose_with:competitor*&racing
+ride_in	propel_with:self*&riding
+ride_on	propel_with:self*&riding
+sail_around_in	propel_with:self*&sailing
+sail_in	propel_with:self*&riding
+sail_on	propel_with:self*&riding
+tour_around	propel_around:self*&touring
+travel_in	propel_with:self*&travelling
+wander_around	propel_around:self*&wandering
+drive_on	propel_along:self*&driving
+escape_on	propel_with:self*&escaping
+go_on	propel_along:self*&travelling, propel_around:self*&travelling
+paddle_on	propel_along:self*&paddling
+race_around	propel_around:self*&racing
+set_out_on	propel_along:self*&travelling
+skate_on	propel_along:self*&skating
+ski_down	propel_along:self*&skiing
+ski_on	propel_along:self*&skiing
+slide_down	propel_along:self*&sliding
+slide_on	propel_along:self*&sliding
+travel_on	propel_with:self*&travelling
+undertake	propel_along:self*&undertaking
+walk_on	propel_along:self*&walking
+walk_with	propel_with:self*&walking
+climb	propel_along:self*&climbing
+are_deported_to	^propel_to:government&deporting
+are_sent_to	^propel_to:superior&sending
+arrive_at	produce_with:thought_process&arriving, propel_to:self*&arriving
+attend	propel_to:self*&attending, enter_as:attendee&attending
+check_into	enter_as:guest&checking_in
+descend_into	enter_as:sufferer&succumbing, ^imbue_with:event&pushing
+emigrate_to	enter_as:immigrant&emigrating
+fall_into	enter_as:falling_object&falling, propel_into:self*&falling
+fly_to	propel_to:self*&flying
+frequent	propel_to:self*&frequenting
+go_back_to	propel_to:self*&returning
+go_into	enter_as:beginner&joining
+go_to	propel_to:self*&going
+land_at	propel_to:self*&landing
+lie_on	perform_on:lying_down*
+move_to	propel_to:self*&relocating
+retreat_to	propel_to:self*&retreating
+return_to	propel_to:self*&returning
+stumble_into	enter_as:falling_object&stumbling, propel_into:self*&stumbling
+travel_to	propel_to:self*&travelling
+turn_to	enter_as:convert&turning
+visit	propel_to:self*&visiting
+climb_through	propel_through:self*&climbing
+climb_using	propel_with:self*
+enter_via	propel_through:self*&entering
+fly_using	propel_with:self*&flying
+jump_with	propel_with:self*&jumping
+propel_with	propel_with:self*&propelling
+skate_using	propel_with:self*&skating
+ski_with	propel_with:self*&skiing
+slide_with	propel_with:self*&sliding
+sneak_in_via	propel_through:self*&sneaking
+steer_with	propel_with:self*&steering, control_with:direction*&steering
+accompany	perform_with:shared_task*&accompanying, support_as:companion&accompanying
+are_accompanied_by	<perform_with:shared_task*&accompanying, <support_as:companion&accompanying
+are_escorted_by	<perform_with:shared_journey*&escorting,  <support_as:escort&escorting
+are_escorted_on	perform_with:escort&escorting
+climb_with	<perform_with:climb*&climbing, <support_as:climbing_companion&accompanying
+fly_with	<perform_with:flight*&flying, <support_as:flying_companion&accompanying
+sail_with	<perform_with:seamanship*&sailing, <support_as:shipmate&sailing
+travel_with	<perform_with:shared_journey*&travelling,  <support_as:travel_companion&accompanying
+assist	provide_to:assistance*&assisting, support_with:assistance&assisting
+counsel	provide_to:counsel*&counselling, support_with:counsel&counselling
+help	provide_to:help*&helping, support_with:help&helping
+bury	perform_of:burial*&burying
+conceal	perform_of:concealment*&concealing, !display_in:public&concealing
+cover_up	perform_of:cover_up*&concealing, deceive_about:public*&concealing
+hide	perform_of:concealment*&hiding
+are_sheltered_in	<provide_to:shelter*&sheltering, <protect_from:threat&sheltering
+are_stationed_in	^deploy_in:superior&stationing, perform_in:duty*&working
+hide_in	seek_in:concealment*&hiding, <provide_to:hiding_place*&hiding
+hide_on	seek_in:concealment*&hiding, <provide_to:hiding_place*&hiding
+seek_shelter_in	seek_in:shelter*&sheltering, <provide_to:shelter*&sheltering
+shelter_in	seek_in:shelter*&sheltering, <provide_to:shelter*&sheltering
+avoid	seek_from:freedom*&avoiding, propel_from:self*&avoiding, reject_with:contact*&avoiding
+elude	propel_from:self*&eluding, reject_with:contact*&avoiding
+hide_from	propel_from:self*&hiding, reject_with:contact*&hiding
+are_disguised_with	protect_with:identity*&disguising, <provide_to:disguise*&disguising
+hide_behind	<protect_with:cover&hiding, <provide_to:hiding_place*&hiding
+deposit	hold_in:safe_keeping&depositing
+detain	hold_in:detention&detaining, control_of:freedom*&detaining
+hang_on_to	hold_with:determination&hanging_on
+hold	hold_with:grasp&holding
+hold_onto	hold_with:grasp&holding
+imprison	hold_in:prison&imprisoning, control_of:freedom*&imprisoning
+incarcerate	hold_in:prison&incarcerating, control_of:freedom*&incarcerating
+keep	control_with:determination&keeping
+memorize	hold_in:memory&memorizing
+reserve	obtain_from:reservation*&reserving
+bank_with	hold_in:asset*&banking
+store_in	hold_in:possession*&storing
+identify	identify_as:candidate*&identifying
+rank	identify_with:rank&ranking, perform_of:ordering*&ranking
+recognize	identify_as:target*&recognizing
+register	identify_as:name*&registering
+remember	obtain_from:memory&remembering, perform_of:recollection*&remembering
+understand	identify_with:meaning&understanding, perform_of:interpretation*&understanding
+index	identify_with:index&indexing, perform_of:organization*indexing
+stamp	identify_with:stamp&stamping, perform_of:marking*&stamping
+impress	<respect_for:achievement&admiring, <identify_as:good_candidate&evaluating
+satisfy	provide_to:satisfaction*&satisfying, perform_of:satisfaction*&satisfying
+are_remembered_for	^identify_with:admirer&remembering
+excel_at	perform_with:excellence&excelling
+impress_with	^respect_for:admirer&admiring
+fulfil	respect_as:priority&fulfilling, perform_of:completion*&fulfilling
+guide	provide_to:guidance*&guiding, control_of:direction*&guiding
+indoctrinate	provide_to:indoctrination*&indoctrinating, control_of:belief*&indoctrinating
+influence	provide_to:influence*&influencing,  control_of:thinking*&influencing
+inspire	provide_to:inspiration*&inspiring, imbue_with:inspiration&inspiring
+mentor	provide_to:guidance*&mentoring, control_of:direction*&mentoring
+mold	control_of:shape*&molding, control_with:mold&molding, control_of:development*&molding
+navigate	control_of:direction*&navigating
+navigate_along	propel_along:self*&navigating
+nurture	tend_with:nurture&nurturing, control_of:development*&nurturing
+radicalize	imbue_with:fundamentalism&radicalizing, control_of:belief*&radicalizing
+raise	control_of:upbringing*&raising
+shape	control_of:shape*&shaping
+beat	control_of:shape*&beating
+hammer	control_with:hammer&hammering
+indoctrinate_with	control_with:zealot*&indoctrinating
+inject_with	consume_with:drug*&injecting
+inspire_with	provide_with:inspiration*&inspiring, attract_with:*disciple&inspiring
+shape_with	control_with:shape*&shaping
+manipulate_with	control_with:mind*&manipulating, control_with:behaviour*&manipulating
+manipulate	control_of:thought*&manipulating
+advise	provide_to:advice*&advising, support_with:advice&advising
+are_read_by	inform_with:text&writing, <perform_of:analysis*&reading
+educate	inform_with:syllabus&educating, imbue_with:knowledge&educating
+inform	inform_with:information&informing
+instruct	inform_with:instruction&instructing, control_with:instruction&instructing
+lecture	inform_with:lecture&lecturing
+lecture_to	inform_with:lecture&lecturing
+teach	inform_with:knowledge&teaching
+advise_on	inform_about:client*&advising, communicate_about:advise&advising
+explain	inform_about:student*&explaining, communicate_about:explanation*&explaining
+expose	inform_about:public*&exposing, communicate_about:exposé*&exposing
+teach_about	inform_about:student*&teaching
+teach_at	inform_in:student*&teaching
+teach_in	inform_in:student*&teaching
+enlighten_with	inform_with:student*&enlightening, communicate_about:insight*&enlightening
+explain_with	inform_with:student*&explaining, communicate_through:insight*&explaining
+illuminate_with	inform_with:student*&illuminating, communicate_through:illumination*&illuminating
+teach_with	inform_with:student*&teaching, communicate_through:knowledge*&teaching
+assimilate_into	enter_as:insider&assimilating
+belong_to	enter_as:member&belonging
+collude_in	enter_as:planner&colluding
+conspire_in	enter_as:conspirator&conspiring
+cooperate_in	enter_as:collaborator&cooperating
+enlist_in	enter_as:enlisted_member&enlisting
+enroll_in	enter_as:enrollee&enrolling
+enter	enter_as:contestant&entering
+enter_into	enter_as:contractual_party&entering
+infiltrate	enter_as:spy&infiltrating
+integrate_into	enter_as:new_member&integrating
+join	enter_as:member&joining
+marry_into	enter_as:in_law&marrying
+move_into	enter_as:resident&relocating
+sign_up_for	enter_as:paying_member&signing_up
+split_into	produce_with:*division&splitting
+subscribe_to	obtain_from:subscription*&subscribing, obtain_as:service&subscribing
+are_enrolled_in	enter_as:enrollee&enrolling
+are_deposed_from	^propel_from:opponent&deposing, ^reject_from:opponent&deposing
+lack	!hold_as:asset&lacking
+lose	!hold_as:asset&losing
+run_out_of	!hold_as:asset&depleting, seek_as:replacement&running_out
+are_denied	!obtain_as:asset&failing, ^<!provide_to:benefactor&denying
+read_about	^inform_about:text&informing
+are_addicted_to	seek_with:desperation&craving, <control_of:behaviour*&controlling
+become_dependent_upon	seek_with:dependency&depending
+cling_to	hold_as:necessity&clinging, hold_with:desperation&clinging
+depend_on	seek_as:necessity&depending, imbue_with:importance&depending
+hold_down	perform_with:determination&holding
+owe	^<seek_from:creditor&demanding
+owe_to	<seek_from:repayment*&demanding
+rely_on	seek_as:necessity&depending, perform_using:core_job*&relying
+require	seek_as:special_need&requiring, imbue_with:importance&requiring
+gaze_at	observe_with:fascination&gazing
+gaze_into	observe_with:fascination&gazing, observe_in:image*&gazing
+look_into	observe_in:image*&looking
+monitor	observe_with:oversight&monitoring
+observe	observe_with:care&watching
+patrol	observe_with:suspicion&patrolling, propel_around:self*&patrolling
+peek_at	observe_with:peek&sneaking
+pry_into	observe_with:intrusion&prying
+see	observe_with:curiosity&seeing
+spy_on	observe_with:secrecy&spying
+watch	observe_with:interest&watching
+watch_over	observe_with:oversight&supervising
+spy_for	observe_for:target*&spying
+observe_from	observe_from:target*&peering
+look_through	observe_with:target*&peering
+observe_with	observe_with:curiosity&prying
+patrol_with	observe_with:neighborhood*&patrolling
+pose_before	observe_with:self*&posing
+read_with	observe_with:text*&reading
+spy_with	observe_with:target*&spying
+achieve	obtain_as:status&achieving
+acquire	obtain_as:possession&acquiring
+are_issued_with	^<provide_to:issuer&issuing
+are_seeded_by	<provide_to:rank*&seeding
+are_supplied_with	^<provide_to:supplier&supplying
+attain	obtain_as:status&attaining
+bribe	control_with:bribe&bribing, obtain_with:money&bribing
+buy	obtain_as:possession&buying, obtain_with:money&buying
+confiscate	obtain_from:owner&confiscating, reject_as:contraband&confiscating
+detect	obtain_as:observation&detecting, observe_with:detector&detecting
+dig_up	obtain_as:find&digging
+discover	obtain_as:discovery&searching
+find	obtain_as:possession&finding
+harbor	hold_as:possession&harboring
+have	obtain_as:family_member&parenting
+import	obtain_as:asset&importing
+inherit	obtain_as:asset&inheriting
+license	obtain_as:resource&licensing
+obtain	obtain_as:asset&obtaining
+own	obtain_as:possession&owning
+pay_for	obtain_as:possession&paying
+pay_to_use	obtain_as:resource&paying
+reach	obtain_as:attainment&reaching
+reap	obtain_as:harvest&reaping
+receive	obtain_as:resource&receiving
+recoup	obtain_as:repayment&investing
+rediscover	obtain_as:discovery&rediscovering
+regain	obtain_as:asset&regaining
+rent	obtain_as:resource&renting
+score	obtain_as:credit&scoring
+seize	obtain_as:asset&seizing
+steal	obtain_as:asset&stealing
+take	obtain_as:experience&taking
+win	obtain_as:positive_outcome&winning
+book	obtain_for:reservation*&booking, obtain_as:experience&booking
+commission	obtain_as:possession&commissioning
+commission_as	appoint_as:specialist&commissioning
+extract	obtain_as:resource&extracting
+break_into	obtain_from:asset*&breaking_and_entering
+rob	obtain_from:asset*&robbing
+steal_from	obtain_from:asset*&stealing
+withdraw_from	obtain_from:fund*&withdrawing
+buy_in	obtain_in:possession*&buying
+shop_in	obtain_in:possession*&shopping
+buy_on	obtain_with:possession*&buying
+buy_with	obtain_with:possession*&buying
+bet_on	seek_from:jackpot*&betting
+earn	obtain_from:supplier&earning
+are_paid	obtain_from:payer&earning
+charge	obtain_from:client&charging
+charge:suspect	communicate_to:charge*&charging
+charge:criminal	communicate_to:charge*&charging, identify_as:suspect&charging
+charge:felon	communicate_to:charge*&charging, identify_as:suspect&charging
+charge:defendant	communicate_to:charge*&charging, identify_as:suspect&charging
+charge:passenger	obtain_from:fee*&charging
+uncover	identify_as:truth&uncovering
+buy_off	obtain_as:ally&buying
+carry_out	perform_for:superior&carrying_out
+cause	produce_for:victim&causing, damage_with:victim*&causing
+conduct	perform_as:process&conducting
+conduct:orchestra	control_with:baton&conducting
+dance	perform_as:dance&dancing
+deliver_on	perform_of:delivery*&delivering
+perform	perform_as:activity&performing
+play	perform_as:entertainment&playing
+sing	perform_as:entertainment&singing
+stage	perform_as:theatre&staging
+practice	perform_as:trait&practicing
+dance_in	perform_at:dance*&dancing
+march_in	perform_at:march*&marching
+misbehave_at	perform_at:misbehaviour*&misbehaving
+perform_at	perform_at:routine*&performing
+perform_in	perform_at:routine*&performing
+perform_on	perform_at:routine*&performing
+play_in	perform_at:entertainment*&playing
+sing_in	perform_at:song*&singing
+swim_in	perform_at:swim*&swimming
+dance_for	perform_for:dance*&dancing
+die_for	perform_for:self_sacrifice*&dying
+entertain	perform_for:fun_activity*&entertaining
+make_amends_to	perform_for:restitution*&making_amends, provide_to:restitution*&making_amends
+model_for	perform_for:pose*&modelling
+perform_for	perform_for:routine*&performing
+play_for	perform_for:entertainment*&playing
+pose_for	perform_for:pose*&posing
+score_for	perform_for:goal*&scoring, produce_for:goal*&coring
+service	perform_for:service*&servicing
+undress_for	perform_for:striptease*&undressing
+appear_on	perform_on:act*&appearing
+play_on	perform_on:fun_activity*&playing
+sing_on	perform_on:song*&singing
+dance_to	perform_using:dance*&dancing
+sing_to	perform_for:song*&singing
+play_using	perform_using:fun_activity*&playing
+pluck_with	perform_using:guitar_music*&plucking
+practice_using	perform_using:training*&practicing
+strum_with	perform_using:guitar_music*&strumming
+swim_with	perform_using:swim*&swimming
+exercise	perform_of:exercise*&exercising
+act_with	perform_with:act*&acting
+dance_with	perform_with:dance*&dancing
+entertain_with	perform_with:fun_activity*&entertaining
+perform_above	perform_with:stunt*&performing
+perform_with	perform_with:group_activity*&performing
+play_with	perform_with:team_activity*&playing
+practice_with	perform_with:practice_routine*&practicing
+regale_with	perform_using:storytelling_routine*&regaling
+rehearse_with	perform_with:practice_routine*&rehearsing
+sing_with	perform_with:song*&singing
+persuade	obtain_from:agreement*&persuading, attract_with:persuasion&persuading
+persuade_with	attract_with:believer*&persuading
+advertise_with	inform_with:consumer*&advertising, communicate_through:advertisement*&advertising
+amuse	imbue_with:amusement&amusing, perform_for:amusement*&amusing
+appease	imbue_with:acceptance&appeasing
+curry_favor_with	imbue_with:generosity&currying_favor, tend_with:flattery&currying_favor, seek_from:favor*&currying_favor
+indulge	tend_with:indulgence&indulging
+kiss_up_to	tend_with:flattery&kissing_up, seek_from:favor*&kissing_up
+lick_up_to	imbue_with:generosity&licking_up, seek_from:favor*&licking_up
+pander_to	seek_for:satisfaction*&pandering, tend_with:indulgence&pandering
+please	imbue_with:pleasure&pleasing
+spoil	damage_with:indulgence&spoiling
+spoil:vote	damage_with:misuse&spoiling
+suck_up_to	tend_with:flattery&sucking_up, seek_from:favor*&sucking_up
+amaze	imbue_with:amazement&amazing
+flatter	tend_with:flattery&flattering
+amaze_with	perform_as:spectacle&amazing
+favor	respect_as:favorite&favoring, select_as:favorite&favoring
+advertise	display_with:advertisement&advertising, identify_as:must_have&advertizing
+advertize	display_with:advertisement, identify_as:must_have&advertizing
+market	display_with:publicity&marketing, enhance_with:publicity&marketing, communicate_about:promotion*&marketing
+popularize	enhance_with:publicity&popularizing, identify_as:trend&popularizing
+advertise_at	display_at:advertisement*&advertising
+market_with	identify_with:product*&marketing
+bake	produce_in:oven&baking, produce_from:dough&baking
+blaze	produce_from:spark&blazing
+breed	produce_from:gene&breeding
+brew	produce_in:brewery&brewing, produce_from:ingredient&brewing
+build	produce_from:building_block&building
+carve	produce_from:raw_material&carving
+code	produce_with:computer&coding, produce_from:symbol&coding
+coin	produce_from:word&coining
+compose	produce_from:pattern&composing
+conceive	produce_from:seed&conceiving
+concoct	produce_from:ingredient&concocting
+construct	produce_from:component&constructing
+cook	produce_in:kitchen&cooking, produce_from:ingredient&cooking
+create	produce_from:inspiration&creating
+define	produce_with:definition&defining, produce_from:symbol&defining
+derive	produce_from:axiom&deriving
+design	produce_from:specification&designing
+distill	produce_from:ingredient&distilling, produce_with:still&distilling, produce_in:distillery&distilling
+draw	produce_from:mark&drawing
+drill	produce_with:drill&drilling
+enact	produce_in:parliament&enacting, produce_from:vote&enacting
+fabricate	produce_from:raw_material&fabricating
+fill_out	produce_from:answer&filling_out
+formulate	produce_from:element&formulating
+generate	produce_from:action&generating
+give_birth_to	produce_from:embryo&giving_birth
+grind	produce_in:mill&grinding, produce_from:grain&grinding
+mill:grain	produce_from:flour*&milling
+grow	produce_from:foundation&growing
+harvest	produce_from:seed&harvesting
+hatch	produce_from:seed&hatching
+illustrate	produce_from:marking&illustrating
+implement	produce_from:specification&implementing
+install	produce_from:blueprint&installing
+invent	produce_from:idea&inventing
+knit	produce_from:yarn&knitting, produce_with:knitting_needle&knitting
+make	produce_from:raw_material&making
+manufacture	produce_from:raw_material&manufacturing, produce_in:factory&manufacturing
+match	produce_from:individual&matching
+mill	produce_from:grain&milling, produce_in:mill&milling
+originate	produce_from:inspiration&originating
+paint	produce_from:paint&painting
+pour	produce_for:customer&pouring
+prepare	produce_from:component&preparing
+print	produce_with:printing_press&printing
+produce	produce_from:action&producing
+publish	communicate_to:public, produce_with:printing_press&publishing
+reconstruct	produce_from:fragment&reconstructing
+record	produce_of:record*&recording
+sculpt	produce_from:raw_material&sculpting
+sew	produce_from:yarn&sewing, produce_with:sewing_needle&sewing
+sketch	produce_from:marking&sketching
+snap	produce_with:camera&snapping, produce_from:image&snapping
+snap:camera	producd_with:photograph*&snapping
+stitch	produce_from:stitch&stitching
+synthesize	produce_from:chemical&synthesizing
+tailor	produce_from:fabric&tailoring
+tie	produce_from:rope&tying
+tie:rope	produce_from:knot*&tying
+type	produce_from:keystroke&typing
+weave	produce_from:fibre&weaving
+write	produce_from:word&writing, produce_with:pen&writing
+calculate	produce_from:number&calculating
+develop	produce_from:baseline&developing
+dig	produce_with:shovel&digging
+film	produce_from:image&filming, produce_with:camera&filming
+shoot:film	produce_with:camera&shooting
+program	produce_from:symbol&programming, produce_with:computer&programming
+program_on	produce_for:program*&programming
+cook_for	produce_for:dish*&cooking
+create_for	produce_for:creation*&creating
+design_for	produce_for:design*&designing
+photograph_for	produce_for:photograph*&photographing
+style_for	produce_for:fashion*&styling
+write_for	produce_for:text*&writing
+carve_from	produce_from:sculpture*&carving
+cook_from	produce_from:dish*&cooking
+bake_in	produce_in:baked_good*&baking
+cook_in	produce_in:dish*&cooking
+create_in	produce_in:creation*&creating
+draw_in	produce_in:drawing*&drawing
+manufacture_in	produce_in:product*&manufacturing
+record_in	produce_in:record*&recording
+sculpt_in	produce_in:sculpture*&sculpting
+sketch_in	produce_in:sketch*&sketching
+write_in	produce_in:text*&writing
+fill	produce_in:molding*&filling
+bake_on	produce_on:baked_good*&baking
+build_on	produce_on:edifice*&building
+draw_on	produce_on:illustration*&drawing
+drill_into	produce_on:hole*&drilling
+farm_on	produce_on:crop*&farming
+paint_on	produce_on:illustration*&painting
+print_on	produce_on:print*&printing
+program_on	produce_on:program*&programming
+weave_on	produce_on:weave*&weaving
+write_on	produce_on:text*&writing
+farm	produce_on:harvest*&farming
+bake_with	produce_with:baked_good*&baking
+breed_with	produce_with:breed*&breeding
+brew_with	produce_with:concoction*&brewing
+build_with	produce_with:edifice*&building
+calculate_with	produce_with:calculation*&calculating
+carve_with	produce_with:sculpture*&carving
+code_with	produce_with:code*&coding
+cook_with	produce_with:dish*&cooking
+distill_with	produce_with:concoction*&distilling
+draw_with	produce_with:illustration*&drawing
+drill_with	produce_with:hole*&drilling
+knit_with	produce_with:garment*&knitting
+paint_with	produce_with:picture*&painting
+photograph_with	produce_with:photograph*&photographing
+print_with	produce_with:print*&printing
+program_in	produce_with:program*&programming
+program_with	produce_with:program*&programming
+record_with	produce_with:record*&recording
+sculpt_with	produce_with:sculpture*&carving
+secure_with	produce_with:security_barrier*&securing
+sew_with	produce_with:garment*&sewing
+sketch_with	produce_with:sketch*&sketching
+stitch_with	produce_with:seam*&stitching
+type_with	produce_with:text*&typing
+weave_with	produce_with:fabric*&weaving
+write_with	produce_with:text*&writing
+tally_with	produce_with:tally*&tallying
+tattoo_with	produce_with:tattoo*&tattooing
+film_with	produce_with:film*&filming
+sum	produce_with:sum*&summing
+cast_with	produce_with:spell*&casting, perform_using:spell*&casting
+cast	propel_at:target&casting
+cast:vote	support_with:candidate*&casting
+hurl	propel_at:victim&hurling
+propel	propel_with:forward_motion&propelling
+push	propel_with:push&pushing
+throw	propel_with:throw&throwing
+pitch_for	propel_for:ball*&pitching
+pitch_at	propel_at:ball*&pitching
+throw_to	propel_to:projectile*&throwing
+throw_with	propel_with:projectile*&throwing
+defend	protect_with:defence&defending
+guard	protect_with:oversight&guarding
+insure	protect_with:insurance&insuring
+preserve	protect_with:preservation&preserving
+protect	protect_against:attack&protecting
+rescue	protect_against:danger&rescuing, propel_from:danger&rescuing
+safeguard	protect_against:danger&safeguarding
+save	protect_against:danger&saving, propel_from:danger&saving
+secure	protect_against:risk&securing
+uphold	protect_against:violation&upholding
+defend_against	protect_against:ally*&defending
+mobilize_against	protect_against:ally*&mobilizing
+parry	protect_against:self*&parrying
+protect_against	protect_against:employer*&protecting
+defend_with	protect_with:self*&defending
+save_with	protect_with:resource*&saving
+are_asked_for	^<seek_from:supplicant&asking
+award	provide_to:awardee&awarding
+dispense	provide_to:recipient&dispensing
+distribute	provide_to:recipient&distributing
+donate	provide_to:recipient&donating
+export	provide_to:importer&exporting
+file	provide_to:official&filing, provide_as:official_document&filing
+give	provide_to:recipient&giving
+grant	provide_to:recipient&grant, provide_as:grant&granting
+hand_down	provide_to:recipient&handing_down, provide_as:legacy&handing_down
+issue	provide_to:recipient&issuing
+lend	provide_to:borrower&lending, provide_as:loan&lending
+offer	provide_to:recipient&offering
+offer_up	provide_to:superior&offering
+pass_on	provide_to:recipient&passing_on, provide_as:legacy&passing_on
+peddle	provide_to:customer&peddling
+present	communicate_about:introduction*&presenting, display_with:presentation&presenting
+provide	provide_to:recipient&providing
+put_up	oppose_with:rival*&putting_up
+reload	provide_to:weapon&reloading
+reload:bullet	provide_to:gun&reloading
+return	provide_to:supplier&returning
+return:home	propel_to:self*&returning
+sell	provide_to:customer&selling
+sell_off	provide_to:customer&selling, stop_with:sell_off&selling
+send	propel_to:receiver&sending, provide_to:recipient&sending
+send:envoy, send:messenger, send:emissary, send:delegation	deploy_with:message&sending, propel_to:receiver&sending
+share	provide_to:recipient&sharing
+spread	provide_to:recipient&spreading, communicate_to:public&spreading
+supply	provide_to:recipient&supplying
+transplant	provide_to:recipient&transplanting, obtain_from:donor&transplanting
+apply	provide_to:target&applying, enhance_with:target*&applying
+apply:dressing	enhance_with:wound*&applying
+promise	communicate_about:promise*&promising
+sell_for	provide_for:product*&selling, perform_for:dealing*&selling
+supply_for	provide_for:supply*&supplying
+deliver_in	provide_from:delivery*&delivering, propel_in:delivery*&delivering
+export_from	provide_from:export*&exporting, propel_from:export*&exporting
+sell_at	provide_from:product*&selling
+sell_from	provide_from:product*&selling
+sell_in	provide_from:product*&selling
+sell_on	provide_from:product*&selling
+sell_through	<provide_from:product*&selling
+sell_via	<provide_from:product*&selling
+cater_for	provide_to:food*&catering
+contribute_to	provide_to:contribution*&contributing
+deposit_into	provide_to:fund*&depositing
+distribute_to	provide_to:supply*&distributing, propel_to:delivery*&distributing
+donate_to	provide_to:donation*&donating, support_with:donation&donating
+export_to	provide_to:export*&exporting, propel_to:export*&exporting
+give_to	provide_to:contribution*&giving
+kit_out	provide_to:equipment*&equipping
+lend_to	provide_to:loan*&lending
+pay_out_to	provide_to:pay_out*&paying
+rent_to	provide_to:rental*&renting
+sell_out_to	provide_to:loyalty*&selling_out, obtain_from:bribe*&selling_out
+sell_to	provide_to:product*&selling
+send_to	provide_to:package*&sending, propel_to:package*&sending
+share_with	provide_to:resource*&sharing, support_with:resource&sharing
+ship_to	provide_to:shipment*&shipping, propel_to:cargo*&shipping
+submit_to	provide_to:submission*&submitting
+supply_to	provide_to:supply*&supplying
+serve_with	provide_with:recipient*&serving
+abandon	reject_with:coldness&abandoning, reject_as:outcast&abandoning
+abdicate	reject_with:abdication&abdicating, reject_as:source_of_power&abdicating
+are_exonerated_of	^<reject_for:judge&exonerating
+are_pardoned_of	^<reject_for:governor&pardoning
+ban	reject_as:contraband&banning
+blacklist	reject_as:persona_non_grata&blacklisting
+break_free_of	propel_from:self*&breaking_free&breaking_free, reject_as:controller*&breaking_free
+break_with	reject_as:ally&breaking_with
+cancel	reject_as:mistake&cancelling
+cast_off	reject_as:detritus&casting_off
+cast_out	reject_as:outcast&casting_out, reject_with:coldness&casting_out
+censure	reject_as:heretical_voice&censuring&censuring
+criminalize	reject_as:criminal&criminalizing
+criminalize:sin	reject_as:crime&criminalizing
+default_on	reject_as:bad_debt&defaulting
+denounce	reject_as:persona_non_grata&denouncing
+deny	reject_as:falsehood&denying
+disavow	reject_as:ally&disavowing
+discard	reject_as:detritus&discarding
+dismiss	reject_as:error&dismissing
+dispose_of	reject_as:detritus&disposing
+disprove	reject_as:falsehood&disproving
+disqualify	reject_as:competitor&disqualifying
+divorce	reject_as:partner&divorcing
+drop_out_of	reject_as:framework&dropping_out
+dump	reject_as:detritus&dumping
+eject	reject_as:outcast&ejecting
+eschew	reject_as:mistake&eschewing
+excommunicate	reject_as:communicant&excommunicating
+expel	reject_as:unwanted_member&expelling
+fire	reject_as:employee&firing
+fire:firearm, fire:handgun, fire:gun, fire:pistol, fire:rifle, shoot:firearm, shoot:handgun, shoot:gun, shoot:pistol, shoot:rifle	propel_with:bullet*&firing, damage_with:target*&firing
+fire:musket, shoot:musket	propel_with:ball*&firing
+fire:arrow	propel_with:bow&firing, damage_with:target*&firing
+fire:crossbow, fire:bow	propel_with:arrow*&firing, damage_with:target*&firing
+fire:shot, fire:bullet, shoot:bullet	propel_with:gun&firing
+give_up_on	reject_as:possibility&giving_up
+proscribe	reject_as:contraband&proscribing
+pull_out_of	reject_as:framework&pulling_out
+put_aside	reject_as:goal&putting_aside
+refuse	reject_as:possibility&refusing
+refuse_to_pay	reject_as:creditor&refusing_payment, !provide_to:payment*
+reject	reject_as:possibility&rejecting
+relinquish	reject_as:possession&relinqishing
+renege_on	reject_as:obligation&reneging
+renounce	reject_as:practice&renouncing
+repeal	reject_as:law&repealing
+repel	reject_as:attacker&repelling
+retract	reject_as:weapon&retracting, !damage_with:*victim&retracting
+send_off	reject_as:competitor&sending_off
+shed	reject_as:possession&shedding
+shun	reject_as:possibility&shunning
+split_from	reject_as:partner&splitting
+work_without	reject_as:possibility&eschewing
+alienate	reject_as:ally&alienating
+silence	reject_as:communicant&silencing
+fire_from	propel_from:projectile*&firing
+vote_against	reject_as:possibility&voting_against, damage_with:vote&voting_against
+condemn	reject_as:outcast&condemning
+are_found_in	enter_as:resident&residing, ^seek_in:searcher&finding
+are_sentenced_to	enter_as:convict&doing_time, ^propel_to:judge&sentencing
+bask_in	enter_as:resident&basking, <imbue_with:calm&calming
+dwell_at	enter_as:resident&dwelling
+grow_up_in	enter_as:youth&growing_up, <imbue_with:experience&nurturing
+live_alone_in	enter_as:singleton&living_alone
+live_at	enter_as:resident&living
+live_in	enter_as:resident&living
+live_on	enter_as:resident&living
+move_in	enter_as:occupant&moving
+reside_at	enter_as:resident&residing
+serve_time_in	enter_as:convict&serving_time
+sleep_in	enter_as:sleeper&sleeping
+sleep_on	enter_as:sleeper&sleeping
+spend_time_in	enter_as:visitor&spending_time
+stay_at	enter_as:guest&staying
+stay_in	enter_as:resident&staying
+grow_in	^enhance_with:life&growing
+accommodate	provide_to:accommodation*&accommodating
+live_amongst	enter_as:outsider&living_amongst
+live_with	respect_as:counterpart&living_with
+admire	respect_with:admiration&admiring, respect_as:role_model&admiring
+compliment	respect_with:compliment&complimenting, communicate_to:compliment&complimenting
+look_up_to	respect_as:towering_figure&looking_up
+praise	respect_with:praise&praising, respect_as:role_model&praising
+respect	respect_as:influence&respecting
+revere	respect_as:divine_source&revering
+stand_over	respect_as:obligation&standing_over
+swear_by	respect_as:resource&swearing
+thank	respect_as:benefactor&thanking
+worship	respect_as:divine_source&worshipping
+prioritize	respect_as:priority&prioritizing
+worship_at	respect_at:god*&worshipping
+worship_in	respect_at:god*&worshipping
+pray_with	respect_with:god*&praying
+worship_with	respect_with:god*&worshipping
+enrich	enhance_with:wealth&enriching
+pay:cost, pay:price, pay:rate, pay:tariff	provide_to:supplier&paying
+pay:levy, pay:tax, pay:interest, pay:local_tax	provide_to:creditor&paying
+pay:tithe	provide_to:church&paying, support_with:church*&paying
+pay:fine, pay:penalty	provide_to:authority&paying
+pay:tribute	communicate_about:role_model&paying
+pay:royalty	provide_to:author&paying
+pay:premium	provide_to:premium&paying
+pay:rent	provide_to:landlord&paying
+pay	provide_to:payment*&paying
+pay_out_on	enhance_for:creditor*&paying_out
+repay	enhance_with:repayment&repaying, provide_to:repayment*&repaying
+repay_for	enhance_for:creditor*&repaying
+reward	enhance_with:reward&rewarding, provide_to:reward*&rewarding
+tip	enhance_with:tip&tipping, provide_to:tip*&tipping
+agitate	imbue_with:anger&agitating, control_of:anger*&agitating
+encourage	imbue_with:enthusiasm&encouraging, control_of:enthusiasm*&encouraging
+enthuse	imbue_with:enthusiasm&enthusing, control_of:enthusiasm*&enthusing
+escalate	imbue_with:danger&escalating, enhance_with:scale&escalating
+exacerbate	imbue_with:danger&exacerbating, enhance_with:scale&exacerbating
+ignite	start_with:spark&igniting, imbue_with:fire&igniting
+inflame	imbue_with:fire&inflaming, enhance_with:scale&inflaming
+motivate	imbue_with:motivation&motivating, control_of:motivation*&motivating
+pollinate	imbue_with:pollen&pollinating, provide_to:pollen*&pollinating
+rouse	imbue_with:energy&rousing, control_of:energy*&rousing
+stir	imbue_with:movement&stirring, control_of:movement*&stirring
+stoke	imbue_with:heat&stoking, control_of:heat*&stoking
+incite_with	imbue_with:trouble*&inciting
+inflame_with	imbue_with:fire*&inflaming
+mobilize_with	imbue_with:force*&mobilizing
+motivate_with	control_with:worker*&motivating
+mystify_with	imbue_with:mystery&mystifying
+rouse_with	control_with:follower*&rousing, imbue_with:energy&rousing
+revitalize	imbue_with:freshness&revitalizing
+aim_for	select_as:aim&aiming, seek_as:aim&aiming
+apply_for	seek_with:application&applying
+ask_for	seek_with:request&asking
+aspire_for	select_as:aspiration&aspiring, seek_as:aspiration&aspiring
+aspire_to	seek_as:aspiration&aspiring, identify_as:aspiration&aspiring
+audition_for	seek_with:audition&auditioning, perform_for:audition*&auditioning
+bargain_for	seek_with:negotiation&bargaining, identify_as:bargain&bargaining
+beg_for	seek_with:plea&begging, seek_as:necessity&begging
+browse_for	seek_with:foragebrowsing
+chase	seek_with:haste&chasing, seek_as:target&chasing
+chase_after	seek_with:haste&chasing, seek_as:fugitive&chasing
+claim	seek_as:rightful_possession&claiming
+covet	seek_as:possession&coveting
+crave	seek_as:indulgence&craving
+demand	seek_as:right&demanding
+desire	seek_as:possession&desiring
+dig_for	seek_as:buried_treasure&digging
+dive_for	seek_as:treasure_trove&diving
+dream_of	seek_as:dream&dreaming
+elicit	seek_as:response&eliciting
+file_for	seek_as:official_status&filing
+fish_for	seek_as:catch&fishing
+follow	seek_with:loyalty&following, respect_as:leader&following
+hunger_for	seek_with:appetite&hungering, seek_as:dinner&hungering
+hunt	seek_as:prey&hunting
+hunt_for	seek_as:prey&hunting
+invest_for	seek_as:ROI&investing
+lay_a_trap_for	seek_as:prey&trapping
+listen_for	seek_as:entertainment&listening
+live_for	seek_as:sustenance&living
+lobby_for	seek_as:political_goal&lobbying
+long_for	seek_as:indulgence&longing
+look_for	seek_as:goal&looking
+marry_for	seek_as:true_aim&marrying
+pine_for	seek_as:lost_love&pining
+plead_for	seek_as:indulgence&pleading
+prey_on	seek_as:prey&preying
+pursue	seek_as:moving_target&pursuing
+root_out	seek_as:weed&rooting, reject_as:weed&rooting
+search_for	seek_as:goal&searching
+seek	seek_as:goal&seeking
+seek_out	seek_as:goal&seeking
+shop_for	seek_as:purchase&shopping
+solicit	seek_as:response&soliciting
+stalk	seek_as:obsession&stalking
+strive_for	seek_as:ideal&striving
+sue_for	seek_as:reparation&suing
+thirst_for	seek_as:beverage&thirsting
+trace	seek_as:connection&tracing
+track	seek_as:animal&tracking
+track_down	seek_as:runaway&tracking
+try_out_for	seek_as:fit&trying_out, seek_with:audition&trying_out
+want	seek_as:desire&wanting
+watch_for	seek_as:visual_target&watching
+woo	seek_as:romantic_partner&wooing
+work_toward	seek_as:work_goal&working
+yearn_for	seek_as:desire&yearning
+expect	seek_as:expectation&expecting
+bid_in	seek_in:bargain*&bidding
+browse_in	seek_in:purchase*&browsing
+dig_in	seek_in:find*&digging
+excavate	seek_in:find*&excavating
+fish_in	seek_in:fish*&fishing
+hunt_in	seek_in:prey*&hunting
+search	seek_in:goal*&searching
+explore	seek_in:goal*&exploring
+probe	seek_in:answer*&probing
+dig_with	seek_with:find*&digging
+explore_using	seek_with:goal*&exploring
+explore_with	seek_with:goal*&exploring
+hunt_with	seek_with:prey*&hunting
+investigate_with	seek_with:answer*&investigating
+predict_with	seek_with:prediction*&predicting
+probe_with	seek_with:answer*&probing
+track_with	seek_with:prey*&tracking
+argue_for	communicate_about:argument*&arguing, oppose_about:opponent*&arguing
+call_for	communicate_about:call*&calling, seek_for:response*&calling
+assign	select_for:recipient&assigning, select_as:assignment&assigning
+choose	select_from:menu&choosing, select_as:choice&choosing
+elect	select_from:ballot&electing, select_as:representative&electing
+order_around	control_as:underling&ordering
+order	select_as:outcome&ordering
+pick	select_from:menu&picking, select_as:pick&picking
+pick_up	select_as:find&picking_up
+select	select_as:choice&selecting, select_from:range&selecting
+sign_up	select_as:recruit&signing_up
+vote_for	select_as:candidate&voting, support_with:vote&voting
+establish	start_as:establishment&establishing
+incite	start_as:conflagration&inciting, imbue_with:spark&inciting
+initiate	start_as:process&initiating
+instigate	start_as:brouhaha&instigating
+introduce	start_as:presentation&introducing
+launch	start_as:directed_process&launching
+open	start_as:business&opening
+open:gate, open:door, open:doorway, open:portal, open:gateway	identify_as:access_point&opening
+open:show, open:debate	perform_for:introduction*&opening
+open:parachute	propel_with:self*&opening
+open:account, open:bank_account	start_as:container&opening
+open:file	start_as:document&opening
+open:distribution_line	produce_with:product*&opening, provide_from:product*&opening
+set	start_as:reference_point&setting
+set_up	start_as:framework&setting_up
+sow	start_as:foundation&sowing
+sow_in	start_in:crop*&sowing
+start	start_as:activity&starting
+start_from	propel_from:self*&starting
+set_up_in	start_in:business*&starting
+open_with	start_with:routine*&opening
+arrest	stop_with:arrest_warrant&arresting
+break_up	stop_with:intervention&breaking_up
+call_off	stop_with:cancellation&calling_off
+close	stop_with:closure&closing
+complete	stop_with:completion&completing
+conclude	stop_with:conclusion&concluding
+conquer	stop_with:conquest&conquering, damage_with:conquest&conquering
+crack	stop_with:ingenuity&cracking
+crack:whip	damage_with:whip&whipping, control_with:*underling&cracking
+crash	stop_with:collision&crashing
+defeat	stop_with:superior_force&defeating
+defuse	stop_with:deactivation&defusing
+deplete	stop_with:overuse&depleting
+depose	stop_with:removal&deposing, reject_as:leader&deposing
+deter	stop_with:prevention&deterring, oppose_with:prevention&deterring
+disband	stop_with:disintegration&disbanding
+disperse	stop_with:dispersal&dispersing
+divest	stop_with:divestiture&divesting
+end	stop_with:termination&ending
+extinguish	stop_with:suffocation&extinguishing
+finish	stop_with:completion&finishing
+give_up	stop_with:rejection&giving_up, reject_as:way_of_life&giving_up
+hang_up	stop_with:retirement&retiring
+inhibit	stop_with:inhibition&inhibiting, control_of:growth*&inhibiting
+interrupt	stop_with:interruption&interrupting
+knock_out	stop_with:punch&knocking_out
+land	propel_to:landing_site&landing
+overcome	stop_with:effort&overcoming
+overthrow	stop_with:subversion&overthrowing, reject_as:leader&overthrowing
+prevent	stop_with:prevention&preventing
+put_down	stop_with:decisive_force&putting_down
+rebut	stop_with:rebuttal&rebutting
+revoke	stop_with:revocation&revoking
+shut_down	stop_with:closure&shutting
+stop	stop_with:opposition&stopping
+supplant	stop_with:replacement&supplanting
+thwart	stop_with:opposition&thwarting
+topple	stop_with:force&toppling, reject_as:leader&toppling
+withdraw	stop_with:withdrawal&withdrawing
+withdraw:saving	!provide_to:account&withdrawing
+withdraw:criticism, withdraw:accusation	reject_as:weapon&withdrawing, !damage_with:*victim&withdrawing
+withdraw:support, withdraw:endorsement, withdraw:loyalty, withdraw:finance, withdraw:funding, withdraw:sponsorship, withdraw:help, withdraw:assistance	!support_with:candidate*&withdrawing, !provide_to:candidate&withdrawing
+douse	stop_with:water&dousing
+park_in	propel_into:vehicle*&parking, stop_at:vehicle*&parking
+stop_at	propel_to:vehicle*&stopping, stop_at:vehicle*&stopping
+immobilize_with	stop_with:victim*&immobilizing
+are_challenged_by	<oppose_with:challenge&challenging
+are_confused_by	<imbue_with:confusion&confusing
+are_resisted_by	<oppose_with:resistance&resisting
+disagree_with	oppose_with:disagreement&disagreeing, communicate_to:disageement*&disagreeing
+plot_against	oppose_with:plot&plotting
+push_back	oppose_with:counterforce&pushing_back
+rebel_against	oppose_with:rebellion&rebelling
+resist	oppose_with:resistance&resisting
+rise_against	oppose_with:uprising&rising
+stand_up_to	oppose_with:pluck&standing_up
+struggle_against	oppose_with:struggle&struggling
+struggle_with	oppose_with:struggle&struggling
+turn_against	oppose_with:betrayal&turning
+agitate_for	support_with:agitation&agitating
+nominate	select_for:position&nominating, select_as:nominee&nominating
+pose	select_as:challenge&posing, produce_as:challenge&posing
+postulate	select_as:postulate&postulating, produce_as:postulate&postulating
+predict	select_as:prediction&predicting, produce_as:prediction&predicting
+predict_for	produce_for:prediction*&predicting
+prescribe	select_as:prescription&prescribing
+propose	select_as:plan_of_action&proposing, produce_as:plan_of_action&proposing
+recommend	select_as:recommendation&recommending, produce_as:recommendation&recommending
+suggest	select_as:suggestion&suggesting, produce_as:suggestion&suggesting
+advocate_for	support_as:preference&advocating, support_with:advocacy&advocating
+back	support_as:recipient&backing, support_with:finance&backing
+campaign_for	support_as:candidate&campaigning, support_with:campaign&campaigning
+champion	support_as:ideal&championing
+cheer_for	support_as:flag_carrier&cheering
+finance	support_as:going_concern&financing, support_with:finance&financing
+fund	support_as:going_concern&funding, support_with:fund&funding
+intercede_for	support_with:intercession&interceding, support_as:ward&interceding
+invest_in	support_as:going_concern&investing, support_with:investment&investing
+pay_into	support_with:fund&paying, provide_to:payment*&paying
+root_for	support_as:flag_carrier&rooting
+sponsor	support_as:going_concern&sponsoring, support_with:sponsorship&sponsoring
+support	support_with:contribution&supporting
+take_on	support_as:burden&taking_on
+facilitate	support_with:facility&facilitating, support_as:business&facilitating
+discuss_with	communicate_to:opinion*&discussing, seek_with:agreement*&discussing
+fire_at	propel_at:bullet*&firing
+pick_on	damage_with:predation&picking_on
+shoot_at	propel_at:bullet*&shooting
+swing_at	propel_at:instrument*&swinging
+take_aim_at	seek_as:target&taking_aim, seek_with:aim&taking_aim
+target	select_as:target&targetting, seek_as:target&targetting
+throw_at	propel_at:projectile*&throwing
+aim	seek_with:target*&aiming
+aim_with	identify_with:target*&aiming
+target_with	identify_with:target*&targetting
+analyze	evaluate_with:analysis&analyzing
+assess	evaluate_with:assessment&assessing
+authenticate	evaluate_with:authentication&authenicating
+check	evaluate_with:checklist&checking
+diagnose	evaluate_with:diagnosis&diagnosing, produce_of:diagnosis*&diagnosing, identify_as:cause&diagnosing
+diagnose:symptom, diagnose:pain, diagnose:back_pain, diagnose:back_ache, diagnose:stomach_pain, diagnose:nausea, diagnose:back_ache	identify_of:cause*&diagnosing
+diagnose:patient, diagnose:animal, diagnose:pet, diagnose:child, diagnose:kid	evaluate_with:diagnosis&diagnosing, produce_for:diagnosis*&diagnosing
+doublecheck	evaluate_with:checklist&doublechecking
+evaluate	evaluate_with:checklist&evaluating
+examine	evaluate_with:question&examining
+experiment_with	evaluate_with:experiment&experimenting
+judge	evaluate_with:rulebook&judging
+measure	evaluate_with:yardstick&measuring
+rehearse	perform_for:rehearsal*&rehearsing
+review	evaluate_with:review&reviewing
+taste	evaluate_with:taste_bud&tasting
+test	evaluate_with:test&testing
+verify	evaluate_with:tets&verifying
+grade	evaluate_with:grading_scheme&grading
+review_for	evaluate_for:submission*&reviewing
+analyze_with	evaluate_with:data_source*&analyzing
+diagnose_with	evaluate_with:symptom*&diagnosing, seek_with:diagnosis*&diagnosing
+examine_with	evaluate_with:test_subject*&examining
+measure_with	evaluate_with:phenomenon*&measuring
+test_on	evaluate_with:hypothesis*&testing
+compare_to	evaluate_with:comparison&comparing
+compare_with	evaluate_with:comparison&comparing
+classify	select_for:classification*&classifying, identify_with:classification&classifying
+consider	evaluate_as:possibility&considering, evaluate_with:consideration&considering
+decide	evaluate_as:decision&deciding, produce_for:decision*&deciding
+decide_on	evaluate_as:decision&deciding, produce_for:decision*
+estimate	evaluate_with:calculation&estimating, produce_for:estimate*&estimating
+interpret	evaluate_with:interpretation&interpreting, produce_of:interpretation*&interpreting
+investigate	seek_in:truth*&investigating, evaluate_with:investigation&investigating
+mark	produce_for:grade*&marking, identify_with:mark&marking, evaluate_with:marking_scheme&marking
+miss	!perform_with:contact*&missing
+negotiate	evaluate_with:negotiation&negotiating, seek_for:agreement*&negotiating
+obsess_about	identify_as:obsession&obsessing, seek_about:truth*&obsessing
+plan_for	produce_for:plan*&planning
+plot	produce_of:plot*&plotting
+prepare_for	perform_for:preparation*&preparing, produce_for:preparation&preparing
+reason_about	evaluate_with:reason&reasoning, identify_of:reason*&reasoning, seek_in:truth*&reasoning
+rule_on	produce_for:judgment*&ruling, evaluate_with:law&ruling
+strategize_for	produce_for:strategy*&strategizing, seek_for:strategy*&strategizing
+theorize_about	produce_of:theory*&theorizing, seek_for:theory*&theorizing, evaluate_with:theory&theorizing
+think_about	evaluate_with:thought&thinking, seek_in:answer*&thinking
+anticipate	produce_for:expectation*&anticipating, evaluate_with:anticipation&anticipating
+decode	produce_for:code_key*&decoding, evaluate_with:code_key&decoding, seek_for:code_key*&decoding
+ensure	produce_for:preparation*&ensuring
+plan	produce_for:plan*&planning
+act_on	<control_of:action*&influencing
+classify_into	identify_as:subject*&classifying
+classify_with	identify_with:subject*&classifying, evaluate_with:subject*&classifying
+generalize_from	produce_of:generalization*&generalizing
+reason_from	produce_of:conclusion*&generalizing
+reason_with	evaluate_with:problem*&reasoning, seek_with:solution*&reasoning
+remember_with	identify_with:memory*&remembering
+bully	damage_with:persecution&bullying, oppose_with:persecution&bullying
+charge_at	damage_with:charge&charging
+intimidate	oppose_with:intimidation&intimidating, propel_at:threat*&intimidating
+scare	damage_with:threat&scaring, oppose_with:scare_tactic&scaring
+terrorize	imbue_with:terror&terrorizing, damage_with:terror&terrorizing
+threaten	oppose_with:threat&threatening, propel_at:threat*&threatening
+frighten	damage_with:scare&frightening, oppose_with:scare_tactic&frightening
+frighten_with	damage_with:victim*&frightening, oppose_with:victim*&frightening
+intimidate_with	damage_with:victim*&intimidating, oppose_with:victim*&intimidating
+terrorize_with	damage_with:victim*&terrorizing, oppose_with:victim*&terrorizing
+threaten_with	damage_with:victim*&threatening, oppose_with:victim*&threatening
+bounce_back_from	<!stop_with:finality&impeding, propel_from:self*&bouncing_back
+coach	provide_to:instruction*&coaching, enhance_with:instruction&coaching
+discipline	control_with:discipline&disciplining, enhance_with:discipline&disciplining
+train	provide_to:instruction*&training, enhance_with:instruction&training
+train_for	perform_for:exercise*&training
+exercise_in	perform_in:exercise*&exercising
+exercise_on	perform_in:exercise*&exercising, perform_using:exercise*&exercising
+train_in	perform_in:exercise*&training
+exercise_with	perform_with:exercise*&training
+train_using	perform_using:exercise*&training
+train_with	perform_with:exercise*&training
+work_out_with	perform_with:work_out*&working_out
+cash_out	stop_with:sale&cashing_out, obtain_from:cash_value*&cashing_out
+melt	control_with:heat&melting
+smelt	control_with:heat&smelting
+convert	produce_of:conversion*&converting, produce_from:convert*&converting, attract_as:convert&converting
+melt_with	control_with:substance*&melting, perform_using:liquification*&melting
+plow_with	control_with:field*&plowing, perform_using:fieldwork*&plowing
+smelt_with	control_with:metal*&smelting, perform_using:melting*&smelting
+appreciate	imbue_with:value&appreciating, evaluate_with:appreciation&appreciating, respect_as:valuable&appreciating
+cherish	imbue_with:value&cherishing, protect_with:love&cherishing, respect_as:loved_one&cherishing
+embrace	imbue_with:value&embracing, protect_with:embrace&embracing
+espouse	communicate_about:belief*&espousing
+treasure	imbue_with:value&treasuring, evaluate_with:appreciation&treasuring, respect_as:treasure&treasuring
+value	imbue_with:value&valuing, evaluate_with:appreciation&valuing, respect_as:valuable&valuing
+adhere_to	imbue_with:value&adhering,  <control_of:behaviour*&guiding
+beat_with	damage_with:target*&beating
+brandish	carry_as:weapon&brandishing
+duel_with	oppose_with:rival*&duelling
+fight_using	oppose_with:enemy*&fighting
+shoot	oppose_with:enemy*&shooting, damage_with:enemy*&shooting
+swing	carry_as:hitting_implement&swinging
+use	perform_using:task*&using
+wave	communicate_with:meaning*&waving
+wield	carry_as:weapon&wielding
+work_using	carry_as:tool&working
+become	identify_as:self*&becoming
+convert_to	identify_as:self*&converting
+serve_as	identify_as:self*&serving
+train_as	identify_as:self*&training
+work_as	identify_as:self*&working
+act_in	perform_in:act*&acting
+operate_from	perform_in:work*&operating
+operate_in	perform_in:work*&operating
+serve_in	perform_in:service*&serving
+serve_on	perform_on:service*&serving
+star_in	perform_in:acting*&starring, <identify_as:star&casting
+work_from	perform_in:work*&working
+work_in	perform_in:work*&working
+work_on	perform_on:work*&working
+work_within	perform_in:work*&working
+act_for	perform_for:action*&acting
+answer_telephones_for	perform_for:telephone_duty*&answering
+drill_for	seek_with:drill&drilling
+drive_for	perform_for:chauffeuring*, propel_with:car&driving
+fly_for	perform_for:flight*&flying, propel_with:aircraft&flying
+navigate_for	perform_for:navigation*&navigating, control_of:direction*&navigating
+negotiate_for	perform_for:negotiation*&negotiating, obtain_for:deal*&negotiating
+represent	perform_for:representation*&representing, obtain_for:agreement*&representing
+serve	perform_for:service*, <control_with:order
+shill_for	produce_for:propaganda*&shilling, obtain_for:publicity*&shilling
+sweat_for	perform_for:hard_labour*&sweating
+work_for	perform_for:work*&working, <control_with:order&ordering
+work_under	perform_for:work*&working, <control_with:order&ordering
+experiment_in	perform_in:experiment*&experimenting
+practice_in	perform_in:duty*&practicing
+collaborate_with	perform_with:collaboration*&collaborating
+compromise_with	perform_with:compromise*&compromising, identify_with:compromise*&compromising
+star_with	perform_with:acting*&starring
+work_with	perform_with:work*&working
+study_with	perform_with:study*&studying
+are_concerned_about	<imbue_with:worry&concerning
+are_daunted_by	<imbue_with:apprehension&daunting
+are_embarrassed_by	<imbue_with:embarrassment&embarrassing, <damage_with:embarrassment&embarrassing
+are_moved_by	<imbue_with:sympathy&moving
+cry_for	<imbue_with:sorrow&saddening, produce_for:tear*&crying
+grow_suspicious_of	<imbue_with:suspicion&alarming, identify_as:suspect&suspecting
+regret	<imbue_with:regret&saddening, <damage_with:consequence&saddening
+repent	<imbue_with:remorse&moving, seek_for:forgiveness*&repenting, perform_for:penance*&repenting
+whine_about	communicate_about:whine*&whining
+worry_about	<imbue_with:worry&concerning
+are_devoted_to	respect_with:devotion&venerating
