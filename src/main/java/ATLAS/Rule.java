@@ -44,9 +44,16 @@ public class Rule {
             }
         }
 
-        String[] ampSplit = rightSide.split("&");
-        String leftOfAmp = ampSplit[0];
-        byWord = ampSplit[1];
+        String leftOfAmp;
+        if(rightSide.contains("&")){
+            String[] ampSplit = rightSide.split("&");
+            leftOfAmp = ampSplit[0];
+            byWord = ampSplit[1];
+        }
+        else{
+            leftOfAmp = rightSide;
+            byWord = null;
+        }
 
         String[] colonSplit = leftOfAmp.split(":");
         String verbPreposition = colonSplit[0];
@@ -62,34 +69,7 @@ public class Rule {
         preposition = vp[1];
     }
 
-    Map<String, List<Rule>> ruleMap = new HashMap<>();
 
-    public void loadRules(String filename) throws Exception {
-        Scanner scanner = new Scanner(new File(filename));
-
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine().trim();
-
-            if(line.isEmpty()){
-                continue;
-            }
-
-            String[] parts = line.split("\\s+", 2);
-            String predicate = parts[0];
-            String rightSide = parts[1];
-
-            String[] ruleParts = rightSide.split(",");
-
-            for(String rulePart : ruleParts){
-                rulePart = rulePart.trim();
-
-                Rule r = new Rule(predicate + " " + rulePart);
-                ruleMap.putIfAbsent(r.originalPredicate, new ArrayList<Rule>());
-                ruleMap.get(r.originalPredicate).add(r);
-
-            }
-        }
-    }
 
 
 
