@@ -1,7 +1,11 @@
 package ATLAS;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.*;
+
 public class Rule {
-    String OriginalPredicate;
+    String originalPredicate;
     String newVerb;
     String preposition;
     String colonArgument;
@@ -17,7 +21,7 @@ public class Rule {
 
     private void parseRule(String line){
         String[] parts = line.split(" ");
-        OriginalPredicate = parts[0];
+        originalPredicate = parts[0];
 
         String rightSide = parts[1];
 
@@ -53,5 +57,36 @@ public class Rule {
         newVerb = vp[0];
         preposition = vp[1];
     }
+
+    Map<String, List<Rule>> ruleMap = new HashMap<>();
+
+    public void loadRules(String filename) throws Exception {
+        Scanner scanner = new Scanner(new File(filename));
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine().trim();
+
+            if(line.isEmpty()){
+                continue;
+            }
+
+            String[] parts = line.split("\\s+", 2);
+            String predicate = parts[0];
+            String rightSide = parts[1];
+
+            String[] ruleParts = rightSide.split(",");
+
+            for(String rulePart : ruleParts){
+                rulePart = rulePart.trim();
+
+                Rule r = new Rule(predicate + " " + rulePart);
+                ruleMap.putIfAbsent(r.originalPredicate, new ArrayList<Rule>());
+                ruleMap.get(r.originalPredicate).add(r);
+
+            }
+        }
+    }
+
+
 
 }
