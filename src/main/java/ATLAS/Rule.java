@@ -25,26 +25,30 @@ public class Rule {
 
         String rightSide = parts[1];
 
-        if(rightSide.startsWith("!")){
-            negate = true;
-            rightSide = rightSide.substring(1);
+        while(!rightSide.isEmpty()){
+            char c = rightSide.charAt(0);
+            if(c == '!'){
+                negate = true;
+                rightSide = rightSide.substring(1);
+            }
+            else if(c == '<'){
+                swap = true;
+                rightSide = rightSide.substring(1);
+            }
+            else if(c == '^'){
+                insert = true;
+                rightSide = rightSide.substring(1);
+            }
+            else{
+                break;
+            }
         }
 
-        if(rightSide.startsWith("<")){
-            swap = true;
-            rightSide = rightSide.substring(1);
-        }
+        String[] ampSplit = rightSide.split("&");
+        String leftOfAmp = ampSplit[0];
+        byWord = ampSplit[1];
 
-        if(rightSide.startsWith("^")){
-            insert = true;
-            rightSide = rightSide.substring(1);
-        }
-
-        String[] bySplit = rightSide.split(" ");
-        String left = bySplit[0];
-        byWord = bySplit[1];
-
-        String[] colonSplit = rightSide.split(":");
+        String[] colonSplit = leftOfAmp.split(":");
         String verbPreposition = colonSplit[0];
         colonArgument = colonSplit[1];
 
