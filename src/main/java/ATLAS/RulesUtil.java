@@ -45,7 +45,7 @@ public class RulesUtil {
         return Collections.unmodifiableMap(ruleMap);
     }
 
-    public List<Node> rewrite(String str) throws ParseException {
+    public List<List<Node>> rewrite(String str) throws ParseException {
 
         Parse p = new Parse();
         Node root = p.parse(str);
@@ -79,33 +79,37 @@ public class RulesUtil {
 
         List<List<List<Node>>> combinations = cartesianProduct(perNodeOptions);
 
-        List<Node> results = new ArrayList<>();
+        List<List<Node>> results = new ArrayList<>();
         for (List<List<Node>> combo : combinations) {
 
             List<Node> chain = new ArrayList<>();
             for (List<Node> subChain : combo) {
                 chain.addAll(subChain);
+                System.out.println(chain);
             }
             // fix depths and link
             for (int i = 0; i < chain.size(); i++) {
                 chain.get(i).depth = i;
                 chain.get(i).children = (i + 1 < chain.size()) ? chain.get(i + 1) : null;
             }
-            results.add(chain.getFirst());
+//            Parse p1 = new Parse();
+//            System.out.println((p1.toFlat(chain.getFirst())));
+            results.add(chain);
         }
+
         return results;
 
     }
 
-    private <Node> List<List<Node>> cartesianProduct(List<List<Node>> LoList) {
-        List<List<Node>> result = new ArrayList<>();
+    private <T> List<List<T>> cartesianProduct(List<List<T>> LoList) {
+        List<List<T>> result = new ArrayList<>();
         result.add(new ArrayList<>());
 
-        for (List<Node> options : LoList) {
-            List<List<Node>> newResult = new ArrayList<>();
-            for (List<Node> existing : result) {
-                for (Node option : options) {
-                    List<Node> combo = new ArrayList<>(existing);
+        for (List<T> options : LoList) {
+            List<List<T>> newResult = new ArrayList<>();
+            for (List<T> existing : result) {
+                for (T option : options) {
+                    List<T> combo = new ArrayList<>(existing);
                     combo.add(option);
                     newResult.add(combo);
                 }

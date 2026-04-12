@@ -43,31 +43,30 @@ public class Main {
 
         Map<String, List<Rule>> ruleMap =  rulesUtil.getRuleMap();
 
-        int i = 0;
-//        for (Map.Entry<String, List<Rule>> entry : ruleMap.entrySet()) {
-//            if (i > 5) break;
-//            System.out.println(entry);
-//            i++;
-//
-//        }
-//        for (Map.Entry<String, List<Rule>> entry : ruleMap.entrySet()) {
-//            System.out.println("KEY: " + entry.getKey());
-//            for (Rule r : entry.getValue()) {
-//                System.out.println("  RULE: " + r);
-//            }
-//        }
-//        for(Rule r : rulesUtil.getRules("load")){
-//            System.out.println(r.toString());
-//        }
 
-        List<Node> out = rulesUtil.rewrite("(are_chronicled_by *hero myth (are_enslaved_by vigilante tragedy))");
-        Parse parse = new Parse();
+        List<List<Node>> out = rulesUtil.rewrite("(are_chronicled_by *hero myth (are_enslaved_by vigilante tragedy))");
 
-        for (Node node : out) {
-//            System.out.println(node.children.toString());
-            System.out.println(parse.printIndent(node));
-            System.out.println(parse.toFlat(node));
+        System.out.println();
+        for (List<Node> n : out) {
+            for (Node node : n) {
+                System.out.println(node);
+            }
+            System.out.println();
         }
+        for (List<Node> n : out) {
+            Parse z = new Parse();
+            System.out.println(z.printIndent(Utility.listToChain(n)));
+            System.out.println();
+        }
+
+
+
+//        for (Node node : out) {
+//            Parse parse = new Parse();
+////            System.out.println(node.children.toString());
+//            System.out.println(parse.printIndent(node));
+//            System.out.println(parse.toFlat(node));
+//        }
 
 
     }
