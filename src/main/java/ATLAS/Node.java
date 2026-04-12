@@ -17,4 +17,10 @@ public class Node{
     public String toString(){
         return "[" + Predicate + "] [" + keyword + "] :" + depth;
     }
+
+    public Node copyShallow() {
+        Node copy = new Node(this.Predicate, this.keyword, this.depth);
+        copy.children = null;
+        return copy;
+    }
 }

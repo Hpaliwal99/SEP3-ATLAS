@@ -56,14 +56,15 @@ public class Main {
 //                System.out.println("  RULE: " + r);
 //            }
 //        }
-        for(Rule r : rulesUtil.getRules("load")){
-            System.out.println(r.toString());
-        }
+//        for(Rule r : rulesUtil.getRules("load")){
+//            System.out.println(r.toString());
+//        }
 
-        List<Node> out = rulesUtil.rewrite("(are_chronicled_in *hero myth)");
+        List<Node> out = rulesUtil.rewrite("(are_chronicled_by *hero myth (are_enslaved_by vigilante tragedy))");
         Parse parse = new Parse();
 
         for (Node node : out) {
+//            System.out.println(node.children.toString());
             System.out.println(parse.printIndent(node));
             System.out.println(parse.toFlat(node));
         }

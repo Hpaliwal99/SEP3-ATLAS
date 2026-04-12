@@ -50,47 +50,69 @@ public class RulesUtil {
         Parse p = new Parse();
         Node root = p.parse(str);
 
-        List<List<Node>> ReWriteOps = new ArrayList<>();
-        for (Node cur = root; cur != null; cur = cur.children) {
+        List<Node> originalNodes = Utility.flattenChain(root);
+
+        List<List<List<Node>>> perNodeOptions = new ArrayList<>();
+
+        for (Node cur : originalNodes) {
 
             // Stripping .0 from predicate
             String cleanPredicate = cur.Predicate.contains(".") ? cur.Predicate.substring(0, cur.Predicate.lastIndexOf(".")) : cur.Predicate.split(" ")[0];
             System.out.println(cleanPredicate);
 
+
             List<Rule> rules = getRules(cleanPredicate);
             System.out.println(rules);
-            List<Node> ModdedNode = new ArrayList<>();
+            List<List<Node>> ModdedOptionsNode = new ArrayList<>();
             if (!rules.isEmpty()) {
                 for (Rule r : rules) {
                     Node res = applyRule(r, cur);
-                    ModdedNode.add(res);
-                    ModdedNode.add(res.children);
-                    ModdedNode.add(res.children.children);
-                    ReWriteOps.add(ModdedNode);
+                    ModdedOptionsNode.add(Utility.flattenChain(res));
                 }
-                    cur = ModdedNode.getLast();
             } else {
-                ModdedNode.add(cur);
-                ReWriteOps.add(ModdedNode);
+                ModdedOptionsNode.add(Collections.singletonList(cur.copyShallow()));
             }
-            System.out.println("Size of ModdedNode: " + ModdedNode.size());
+
+            perNodeOptions.add(ModdedOptionsNode);
+            System.out.println("Size of ModdedNode: " + ModdedOptionsNode.size());
         }
 
-        //TODO: add Cartesian Prod here
+        List<List<List<Node>>> combinations = cartesianProduct(perNodeOptions);
 
         List<Node> results = new ArrayList<>();
-        for (List<Node> combo : ReWriteOps) {
-            int i;
-            for ( i = 0; i < combo.size() - 1; i++) {
-                combo.get(i).depth = i;
-                combo.get(i).children = combo.get(i + 1);
+        for (List<List<Node>> combo : combinations) {
+
+            List<Node> chain = new ArrayList<>();
+            for (List<Node> subChain : combo) {
+                chain.addAll(subChain);
             }
-                combo.getLast().depth = i;
-            combo.getLast().children = null;
-            results.add(combo.getFirst());
+            // fix depths and link
+            for (int i = 0; i < chain.size(); i++) {
+                chain.get(i).depth = i;
+                chain.get(i).children = (i + 1 < chain.size()) ? chain.get(i + 1) : null;
+            }
+            results.add(chain.getFirst());
         }
         return results;
 
+    }
+
+    private <Node> List<List<Node>> cartesianProduct(List<List<Node>> LoList) {
+        List<List<Node>> result = new ArrayList<>();
+        result.add(new ArrayList<>());
+
+        for (List<Node> options : LoList) {
+            List<List<Node>> newResult = new ArrayList<>();
+            for (List<Node> existing : result) {
+                for (Node option : options) {
+                    List<Node> combo = new ArrayList<>(existing);
+                    combo.add(option);
+                    newResult.add(combo);
+                }
+            }
+            result = newResult;
+        }
+        return result;
     }
 
     //exercise      perform_of:exercise*&exercising
@@ -103,19 +125,23 @@ public class RulesUtil {
         Node result;
         Node next = cur.children;
 
+        System.out.println();
+        System.out.println(r.toString());
+        System.out.println();
+
         String[] strsplit = cur.Predicate.trim().split("\\s+");
         System.out.println("strsplit = " + Arrays.toString(strsplit));
 
         String argMid = strsplit.length > 1 ? strsplit[1] : ""; // Middle word
         String argKey = cur.keyword; // Last/key word
-        System.out.println("Before -> Mid = " + argMid + " Key = " + argKey);
+//        System.out.println("Before -> Mid = " + argMid + " Key = " + argKey);
 
         //Swap middle and last/key
         if (r.swap) {
             String tmp = argMid;
             argMid = argKey;
             argKey = tmp;
-            System.out.println("After -> Mid = " + argMid + " Key = " + argKey);
+//            System.out.println("After -> Mid = " + argMid + " Key = " + argKey);
         }
 
         // Assign keywords for rewritten Nodes
@@ -167,18 +193,20 @@ public class RulesUtil {
         Node newChild;
 
         result = new Node("by", r.byWord, cur.depth);
-//        System.out.println(result.toString());
-        //TODO: Add not
+
+
         if (r.negate) {
             newChild = new Node("not (" + r.newVerb + " " + argMid, MainKey, cur.depth+1);
         } else {
             newChild = new Node(r.newVerb + " " + argMid, MainKey, cur.depth+1);
         }
-//        System.out.println(newChild.toString());
-        newChild.children = new Node(r.preposition, NextKey, cur.depth+2);
-//        System.out.println(newChild.children.toString());
-        newChild.children.children = next;
         result.children = newChild;
+
+        if (r.preposition != null) {
+            newChild.children = new Node(r.preposition, NextKey, cur.depth+2);
+            newChild.children.children = null;
+        }
+
 //        System.out.println(result.toString());
 //        System.out.println(result.children.toString());
 //        System.out.println(result.children.children.toString());

@@ -167,6 +167,13 @@ public class Utility {
         return Arrays.deepToString(list.toArray());
     }
 
+    public static List<Node> flattenChain(Node head) {
+        List<Node> list = new ArrayList<>();
+        for (Node n = head; n != null; n = n.children) {
+            list.add(n);
+        }
+        return list;
+    }
 }
 
 

@@ -30,7 +30,7 @@ public class TestRulesUtil {
         List<Node> out = rulesUtil.rewrite(input);
 
         Parse parse = new Parse();
-        String result = parse.toFlat(out.get(0));
+        String result = parse.toFlat(out.getFirst());
 
         assertEquals(expected, result, "Rewrite output not as expected");
     }
