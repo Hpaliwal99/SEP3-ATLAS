@@ -92,8 +92,7 @@ public class RulesUtil {
                 chain.get(i).depth = i;
                 chain.get(i).children = (i + 1 < chain.size()) ? chain.get(i + 1) : null;
             }
-//            Parse p1 = new Parse();
-//            System.out.println((p1.toFlat(chain.getFirst())));
+
             results.add(chain);
         }
 
@@ -138,14 +137,13 @@ public class RulesUtil {
 
         String argMid = strsplit.length > 1 ? strsplit[1] : ""; // Middle word
         String argKey = cur.keyword; // Last/key word
-//        System.out.println("Before -> Mid = " + argMid + " Key = " + argKey);
+
 
         //Swap middle and last/key
         if (r.swap) {
             String tmp = argMid;
             argMid = argKey;
             argKey = tmp;
-//            System.out.println("After -> Mid = " + argMid + " Key = " + argKey);
         }
 
         // Assign keywords for rewritten Nodes
@@ -210,10 +208,6 @@ public class RulesUtil {
             newChild.children = new Node(r.preposition, NextKey, cur.depth+2);
             newChild.children.children = null;
         }
-
-//        System.out.println(result.toString());
-//        System.out.println(result.children.toString());
-//        System.out.println(result.children.children.toString());
 
         return result;
     }

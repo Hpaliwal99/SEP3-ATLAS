@@ -5,8 +5,7 @@ import java.util.Map;
 import java.util.Objects;
 
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) throws Exception {
 //
@@ -55,18 +54,12 @@ public class Main {
         }
         for (List<Node> n : out) {
             Parse z = new Parse();
-            System.out.println(z.printIndent(Utility.listToChain(n)));
+            System.out.println(z.toFlat(Utility.listToChain(n)));
             System.out.println();
         }
 
 
 
-//        for (Node node : out) {
-//            Parse parse = new Parse();
-////            System.out.println(node.children.toString());
-//            System.out.println(parse.printIndent(node));
-//            System.out.println(parse.toFlat(node));
-//        }
 
 
     }
