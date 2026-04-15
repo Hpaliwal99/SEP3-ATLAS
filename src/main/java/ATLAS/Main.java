@@ -37,26 +37,37 @@ public class Main {
 //        System.out.println(Utility.toStringLL(Utility.getKeywordMapping(parse1, parse2))); //make custom toString
 //        System.out.println(Utility.StringCompare(input1, input2));
 //        System.out.println(Utility.toStringLL(Utility.getStringKeywordMapping(input1,input2)));
-        RulesUtil rulesUtil = new RulesUtil();
-        rulesUtil.loadRules("src/main/java/ATLAS/rewrite rules.txt");
+//        RulesUtil rulesUtil = new RulesUtil();
+//        rulesUtil.loadRules("src/main/java/ATLAS/knowledge.txt");
 
-        Map<String, List<Rule>> ruleMap =  rulesUtil.getRuleMap();
+//        Map<String, List<Rule>> ruleMap =  rulesUtil.getRuleMap();
 
 
-        List<List<Node>> out = rulesUtil.rewrite("(are_chronicled_by *hero myth (are_enslaved_by vigilante tragedy))");
+//        List<List<Node>> out = rulesUtil.rewrite("(are_chronicled_by *hero myth (are_enslaved_by vigilante tragedy))");
+//
+//        System.out.println();
+//        for (List<Node> n : out) {
+//            for (Node node : n) {
+//                System.out.println(node);
+//            }
+//            System.out.println();
+//        }
+//        for (List<Node> n : out) {
+//            Parse z = new Parse();
+//            System.out.println(z.toFlat(Utility.listToChain(n)));
+//            System.out.println();
+//        }
+        KnowledgeBase kb = new KnowledgeBase();
+        kb.load("src/main/java/ATLAS/knowledge.txt");
 
-        System.out.println();
-        for (List<Node> n : out) {
-            for (Node node : n) {
-                System.out.println(node);
-            }
-            System.out.println();
+        // 4.2 - get all structures about a topic
+        List<Node> heroStructures = kb.getStructures("hero");
+        System.out.println("Structures about hero");
+        for (Node n : heroStructures) {
+
+            System.out.println(n.toString());
         }
-        for (List<Node> n : out) {
-            Parse z = new Parse();
-            System.out.println(z.toFlat(Utility.listToChain(n)));
-            System.out.println();
-        }
+
 
 
 
