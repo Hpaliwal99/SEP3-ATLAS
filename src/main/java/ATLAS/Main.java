@@ -61,14 +61,23 @@ public class Main {
         kb.load("src/main/java/ATLAS/knowledge.txt");
 
         // 4.2 - get all structures about a topic
-        List<Node> heroStructures = kb.getStructures("hero");
-        System.out.println("Structures about hero");
-        for (Node n : heroStructures) {
+//        List<Node> heroStructures = kb.getStructures("hero");
+//        List<String> sources = kb.getSources("hero");
+//        System.out.println("Possible sources for hero: " + sources);
+//        System.out.println("Structures about hero");
+//        for (Node n : heroStructures) {
+//
+//            System.out.println(n.toString());
+//        }
+//        List<String> ranked = kb.rankSources("hero");
+//        System.out.println("Ranked sources for hero: " + ranked);
+        Map<String, List<String>> allRankings = kb.rankAllTopics();
 
-            System.out.println(n.toString());
+        for (Map.Entry<String, List<String>> entry : allRankings.entrySet()) {
+            System.out.println("Target: " + entry.getKey());
+            System.out.println("Ranked sources: " + entry.getValue());
+            System.out.println();
         }
-
-
 
 
 
