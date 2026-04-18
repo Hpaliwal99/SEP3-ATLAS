@@ -47,12 +47,12 @@ public class KnowledgeBase {
         Node cur = node;
         while(cur != null) {
             if(cur.keyword != null && cur.keyword.startsWith("*")) {
-                topics.add(cur.keyword.substring(1));
+                topics.add(cur.keyword.substring(1).intern());
             }
             if(cur.Predicate != null) {
                 for(String word : cur.Predicate.split("\\s+")){
                     if(word.startsWith("*")) {
-                        topics.add(word.substring(1));
+                        topics.add(word.substring(1).intern());
                     }
                 }
             }
@@ -66,12 +66,19 @@ public class KnowledgeBase {
         return index.getOrDefault(topic, new ArrayList<>());
     }
 
-    // Hash Struct. Not hashing yet?
+    // Strip Struct for hashmap
     private String shapeHash(Node node) {
-        if(node == null) return "";
+        StringBuffer sb = new StringBuffer();
+        buildHash(node, sb);
+        return sb.toString().intern();
+    }
 
+    private void buildHash(Node node, StringBuffer sb) {
+        if (node == null) return;
         String pred = node.Predicate.split("\\s+")[0];
-        return "(" + pred + shapeHash(node.children) + ")";
+        sb.append('(').append(pred);
+        buildHash(node.children, sb);
+        sb.append(')');
     }
 
     // get relevant topics from structs
@@ -81,7 +88,7 @@ public class KnowledgeBase {
 
         for(Node node : targetStructures) {
             String shape = shapeHash(node);
-            List<Node> matches = shapeIndex.getOrDefault(shape, new ArrayList<>());
+            List<Node> matches = shapeIndex.getOrDefault(shape, Collections.emptyList());
 
             for(Node match : matches) {
                 List<String> topics = findTopics(match);
@@ -99,24 +106,12 @@ public class KnowledgeBase {
     public Double richness(Node node) {
         if (node == null) return 0.0;
 
-        // count nodes at each relative depth from this node's root
-        Map<Integer, Integer> countPerDepth = new HashMap<>();
-        Node cur = node;
-        int relativeDepth = 0;
-        while (cur != null) {
-            countPerDepth.merge(relativeDepth, 1, Integer::sum);
-            cur = cur.children;
-            relativeDepth++;
+        // Single pass: count depth directly, no intermediate Map needed
+        double sum = 0.0;
+        int depth = 0;
+        for (Node cur = node; cur != null; cur = cur.children, depth++) {
+            sum += Math.pow(10, depth);   // one node per depth level in a chain
         }
-
-        // sum count_i * 10^i
-        double sum = 0;
-        for (Map.Entry<Integer, Integer> entry : countPerDepth.entrySet()) {
-            int depth = entry.getKey();
-            int count = entry.getValue();
-            sum += count * Math.pow(10, depth);
-        }
-
         return Math.log10(sum);
     }
 
@@ -128,13 +123,11 @@ public class KnowledgeBase {
         for(Node node : targetStructures) {
             String shape = shapeHash(node);
             List<Node> matches = shapeIndex.getOrDefault(shape, new ArrayList<>());
-
+            double r3 = Math.pow(richness(node), 3);
             for(Node match : matches) {
-                List<String> topics = findTopics(match);
-                for(String topic : topics) {
+                for(String topic : findTopics(match)) {
                     if(!topic.equals(target)) {
-                        Double r = richness(node);
-                        scores.merge(topic, Math.pow(r, 3), Double::sum);
+                        scores.merge(topic, r3, Double::sum);
                     }
                 }
             }
