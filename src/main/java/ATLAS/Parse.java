@@ -67,7 +67,7 @@ public class Parse {
         int index = 0;
 
         LinkedList<String[]> tokens = Utility.tokenizer(input);
-        System.out.println(Utility.toStringLL(tokens));
+//        System.out.println(Utility.toStringLL(tokens));
 
         String predicate = "";
         String keyword = "";
@@ -116,9 +116,7 @@ public class Parse {
         while (current != null) {
             sb.append(current.depth).append(" ");  //Debug for depth/line count
 
-            for(int i = 0; i < current.depth; i++){
-                sb.append("  ");
-            }
+            sb.append("  ".repeat(Math.max(0, current.depth)));
             sb.append("(");
             sb.append(current.Predicate);
             if(current.keyword != null){

@@ -171,6 +171,7 @@ public class Utility {
         if (nodes == null || nodes.isEmpty()) return null;
 
         for (int i = 0; i < nodes.size() - 1; i++) {
+            nodes.get(i).depth = i;
             nodes.get(i).children = nodes.get(i + 1);
         }
         nodes.getLast().children = null;

@@ -7,33 +7,40 @@ public class KnowledgeBase {
     Map<String, List<Node>> index = new HashMap<>();
     Map<String, List<Node>> shapeIndex = new HashMap<>();
 
+    // Load from file
     public void load(String filename) throws Exception {
+        RulesUtil rulesUtil = new RulesUtil();
+        rulesUtil.loadRules("src/main/java/ATLAS/rewrite rules.txt");
+
         Scanner scanner = new Scanner(new File(filename));
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine().trim();
+            line = line.split("\t")[1].trim();
+//            System.out.println(line);
             if(line.isEmpty()) continue;
 
-            Parse p = new Parse();
-            Node root = p.parse(line);
+            List<Node> combos = rulesUtil.rewrite(line);
+            for (Node root : combos) {
 
-            List<String> topics = findTopics(root);
-            String shape = shapeHash(root);
-            System.out.println("Shape: " + shape);
+                List<String> topics = findTopics(root);
+                String shape = shapeHash(root);
+//                System.out.println("Shape: " + shape);
 
-            shapeIndex.putIfAbsent(shape, new ArrayList<>());
-            shapeIndex.get(shape).add(root);
-
-//            System.out.println("Line: " + line);
-//            System.out.println("Topics found: " + topics);
-            System.out.println();
-            for(String topic : topics) {
-                index.putIfAbsent(topic, new ArrayList<>());
-                index.get(topic).add(root);
+                shapeIndex.putIfAbsent(shape, new ArrayList<>());
+                shapeIndex.get(shape).add(root);
+    //            System.out.println("Line: " + line);
+    //            System.out.println("Topics found: " + topics);
+//                System.out.println();
+                for(String topic : topics) {
+                    index.putIfAbsent(topic, new ArrayList<>());
+                    index.get(topic).add(root);
+                }
             }
         }
     }
 
+    // Extract topic from node struct
     private List<String> findTopics(Node node) {
         List<String> topics = new ArrayList<>();
 
@@ -54,10 +61,12 @@ public class KnowledgeBase {
         return topics;
     }
 
+    // Get structs from topic
     public List<Node> getStructures(String topic) {
         return index.getOrDefault(topic, new ArrayList<>());
     }
 
+    // Hash Struct. Not hashing yet?
     private String shapeHash(Node node) {
         if(node == null) return "";
 
@@ -65,6 +74,7 @@ public class KnowledgeBase {
         return "(" + pred + shapeHash(node.children) + ")";
     }
 
+    // get relevant topics from structs
     public List<String> getSources(String target) {
         List<Node> targetStructures = getStructures(target);
         Set<String> sources = new HashSet<>();
@@ -85,7 +95,8 @@ public class KnowledgeBase {
         return new ArrayList<>(sources);
     }
 
-    private Double richness(Node node) {
+    // Calculate richness of struct
+    public Double richness(Node node) {
         if (node == null) return 0.0;
 
         // count nodes at each relative depth from this node's root
@@ -106,9 +117,10 @@ public class KnowledgeBase {
             sum += count * Math.pow(10, depth);
         }
 
-        return (Double) Math.log10(sum);
+        return Math.log10(sum);
     }
 
+    // Rank Topics by richness
     public List<String> rankSources(String target) {
         List<Node> targetStructures = getStructures(target);
         Map<String, Double> scores = new HashMap<>();
@@ -122,7 +134,7 @@ public class KnowledgeBase {
                 for(String topic : topics) {
                     if(!topic.equals(target)) {
                         Double r = richness(node);
-                        scores.merge(topic, (Double) Math.pow(r, 3), Double::sum);
+                        scores.merge(topic, Math.pow(r, 3), Double::sum);
                     }
                 }
             }
@@ -130,12 +142,15 @@ public class KnowledgeBase {
         List<String> ranked = new ArrayList<>(scores.keySet());
         ranked.sort((a, b) -> Double.compare(scores.get(b), scores.get(a)));
 
+        System.out.println(target);
         for(String s : ranked) {
-            System.out.println(s + " -> score: " + scores.get(s));
+            System.out.println(String.format("%.4f",scores.get(s)) + " -> score: " + s);
         }
+        System.out.println();
         return ranked;
     }
 
+    // rank all topics against each other.
     public Map<String, List<String>> rankAllTopics() {
         Map<String, List<String>> allRankings = new HashMap<>();
 

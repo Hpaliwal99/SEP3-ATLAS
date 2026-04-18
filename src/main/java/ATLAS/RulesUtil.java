@@ -45,7 +45,7 @@ public class RulesUtil {
         return Collections.unmodifiableMap(ruleMap);
     }
 
-    public List<List<Node>> rewrite(String str) throws ParseException {
+    public List<Node> rewrite(String str) throws ParseException {
 
         Parse p = new Parse();
         Node root = p.parse(str);
@@ -58,11 +58,11 @@ public class RulesUtil {
 
             // Stripping .0 from predicate
             String cleanPredicate = cur.Predicate.contains(".") ? cur.Predicate.substring(0, cur.Predicate.lastIndexOf(".")) : cur.Predicate.split(" ")[0];
-            System.out.println(cleanPredicate);
+//            System.out.println(cleanPredicate);
 
 
             List<Rule> rules = getRules(cleanPredicate);
-            System.out.println(rules);
+//            System.out.println(rules);
             List<List<Node>> ModdedOptionsNode = new ArrayList<>();
             if (!rules.isEmpty()) {
                 for (Rule r : rules) {
@@ -74,26 +74,21 @@ public class RulesUtil {
             }
 
             perNodeOptions.add(ModdedOptionsNode);
-            System.out.println("Size of ModdedNode: " + ModdedOptionsNode.size());
+//            System.out.println("Size of ModdedNode: " + ModdedOptionsNode.size());
         }
 
         List<List<List<Node>>> combinations = cartesianProduct(perNodeOptions);
 
-        List<List<Node>> results = new ArrayList<>();
+        List<Node> results = new ArrayList<>();
         for (List<List<Node>> combo : combinations) {
 
             List<Node> chain = new ArrayList<>();
             for (List<Node> subChain : combo) {
                 chain.addAll(subChain);
-                System.out.println(chain);
+//                System.out.println(chain);
             }
             // fix depths and link
-            for (int i = 0; i < chain.size(); i++) {
-                chain.get(i).depth = i;
-                chain.get(i).children = (i + 1 < chain.size()) ? chain.get(i + 1) : null;
-            }
-
-            results.add(chain);
+            results.add(Utility.listToChain(chain));
         }
 
         return results;
@@ -128,12 +123,12 @@ public class RulesUtil {
         Node result;
         Node next = cur.children;
 
-        System.out.println();
-        System.out.println(r.toString());
-        System.out.println();
+//        System.out.println();
+//        System.out.println(r.toString());
+//        System.out.println();
 
         String[] strsplit = cur.Predicate.trim().split("\\s+");
-        System.out.println("strsplit = " + Arrays.toString(strsplit));
+//        System.out.println("strsplit = " + Arrays.toString(strsplit));
 
         String argMid = strsplit.length > 1 ? strsplit[1] : ""; // Middle word
         String argKey = cur.keyword; // Last/key word
@@ -188,9 +183,9 @@ public class RulesUtil {
         }
 
 
-        System.out.println(argMid);
-        System.out.println(MainKey);
-        System.out.println(NextKey);
+//        System.out.println(argMid);
+//        System.out.println(MainKey);
+//        System.out.println(NextKey);
 
         Node newChild;
 
