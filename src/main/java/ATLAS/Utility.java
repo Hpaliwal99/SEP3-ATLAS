@@ -170,13 +170,18 @@ public class Utility {
     public static Node listToChain(List<Node> nodes) {
         if (nodes == null || nodes.isEmpty()) return null;
 
-        for (int i = 0; i < nodes.size() - 1; i++) {
-            nodes.get(i).depth = i;
-            nodes.get(i).children = nodes.get(i + 1);
+        List<Node> copies = new ArrayList<>();
+        for (Node n : nodes) {
+            copies.add(n.deepCopy());
         }
-        nodes.getLast().children = null;
 
-        return nodes.getFirst();
+        for (int i = 0; i < copies.size() - 1; i++) {
+            copies.get(i).depth = i;
+            copies.get(i).children = copies.get(i + 1);
+        }
+        copies.getLast().children = null;
+
+        return copies.getFirst();
     }
 
     public static List<Node> flattenChain(Node head) {

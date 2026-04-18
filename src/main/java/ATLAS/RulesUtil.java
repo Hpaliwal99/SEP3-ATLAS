@@ -70,7 +70,7 @@ public class RulesUtil {
                     ModdedOptionsNode.add(Utility.flattenChain(res));
                 }
             } else {
-                ModdedOptionsNode.add(Collections.singletonList(cur.copyShallow()));
+                ModdedOptionsNode.add(Collections.singletonList(cur.deepCopy()));
             }
 
             perNodeOptions.add(ModdedOptionsNode);
@@ -121,7 +121,7 @@ public class RulesUtil {
     //byWord = exercising
     public Node applyRule(Rule r, Node cur) {
         Node result;
-        Node next = cur.children;
+        Node next = cur.children != null ? cur.children.deepCopy() : null;
 
 //        System.out.println();
 //        System.out.println(r.toString());

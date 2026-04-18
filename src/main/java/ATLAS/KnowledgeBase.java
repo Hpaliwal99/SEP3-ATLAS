@@ -16,7 +16,7 @@ public class KnowledgeBase {
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine().trim();
-            line = line.split("\t")[1].trim();
+//            line = line.split("\t")[1].trim();
 //            System.out.println(line);
             if(line.isEmpty()) continue;
 

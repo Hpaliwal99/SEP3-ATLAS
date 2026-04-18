@@ -28,10 +28,10 @@ public class TestRulesUtil {
         RulesUtil rulesUtil = new RulesUtil();
         rulesUtil.loadRules("src/main/java/ATLAS/rewrite rules.txt");
 
-        List<List<Node>> out = rulesUtil.rewrite(input);
+        List<Node> out = rulesUtil.rewrite(input);
 
         Parse parse = new Parse();
-        String result = parse.toFlat(out.getFirst().getFirst());
+        String result = parse.toFlat(out.getFirst());
 
         assertEquals(expected, result, "Rewrite output not as expected");
     }
@@ -51,13 +51,13 @@ public class TestRulesUtil {
         RulesUtil rulesUtil = new RulesUtil();
         rulesUtil.loadRules("src/main/java/ATLAS/rewrite rules.txt");
 
-        List<List<Node>> out = rulesUtil.rewrite(input);
+        List<Node> out = rulesUtil.rewrite(input);
 
         Parse parse = new Parse();
         List<String> thingy = new ArrayList<>();
-        for (List<Node> n : out) {
+        for (Node n : out) {
             Parse z = new Parse();
-            thingy.add(z.toFlat(Utility.listToChain(n)));
+            thingy.add(z.toFlat(n));
         }
 //        String result = parse.toFlat(out.getFirst().getFirst());
         List<String> exp = List.of(expected.split("\n"));

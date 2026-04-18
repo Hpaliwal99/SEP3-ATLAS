@@ -23,4 +23,10 @@ public class Node{
         copy.children = null;
         return copy;
     }
+
+    public Node deepCopy() {
+        Node copy = new Node(this.Predicate, this.keyword, this.depth);
+        copy.children = (this.children != null) ? this.children.deepCopy() : null;
+        return copy;
+    }
 }
