@@ -59,7 +59,8 @@ public class Main {
 //        }
 
         KnowledgeBase kb = new KnowledgeBase();
-        kb.load("src/main/java/ATLAS/structured domains.txt");
+//        kb.load("src/main/java/ATLAS/structured domains.txt");
+        kb.load("src/main/java/ATLAS/knowledge.txt");
 
         // 4.2 - get all structures about a topic
 //        List<Node> heroStructures = kb.getStructures("hero");
@@ -76,17 +77,17 @@ public class Main {
 //        System.out.println("\nindex: " + kb.index);
 //        System.out.println("\nShape: " + kb.shapeIndex);
 
-        List<String> rankbytarget = kb.rankSources("hero");
+//        List<String> rankbytarget = kb.rankSources("hero");
 
-        System.out.println("rankbytarget: " + rankbytarget);
+//        System.out.println("rankbytarget: " + rankbytarget);
 
-//        Map<String, List<String>> allRankings = kb.rankAllTopics();
-//
-//        for (Map.Entry<String, List<String>> entry : allRankings.entrySet()) {
-//            System.out.println("Target: " + entry.getKey());
-//            System.out.println("Ranked sources: " + entry.getValue());
-//            System.out.println();
-//        }
+        Map<String, List<String>> allRankings = kb.rankAllTopics();
+
+        for (Map.Entry<String, List<String>> entry : allRankings.entrySet()) {
+            System.out.println("Target: " + entry.getKey());
+            System.out.println("Ranked sources: " + entry.getValue());
+            System.out.println();
+        }
 
 
 
