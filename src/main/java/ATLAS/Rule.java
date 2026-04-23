@@ -11,11 +11,13 @@ public class Rule {
     String colonArgument;
     boolean starAfterWord;
     String byWord;
+    String context;
     boolean negate;
     boolean swap;
     boolean insert;
 
     public Rule(String line){
+        this.context=null;
         parseRule(line);
     }
 

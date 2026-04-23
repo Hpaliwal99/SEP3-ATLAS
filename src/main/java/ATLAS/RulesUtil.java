@@ -28,7 +28,15 @@ public class RulesUtil {
                 rulePart = rulePart.trim();
 
                 Rule r = new Rule(predicate + " " + rulePart);
-                String basePredicate = predicate.split(":")[0];
+                String basePredicate;
+                if (predicate.contains(":")) {
+                    String[] predsplit = predicate.split(":");
+                    basePredicate = predsplit[0];
+                    r.context = String.join("*", predsplit[1]);
+                }
+                else {
+                    basePredicate = predicate;
+                }
 
                 ruleMap.putIfAbsent(basePredicate, new ArrayList<Rule>());
                 ruleMap.get(basePredicate).add(r);
@@ -66,8 +74,10 @@ public class RulesUtil {
             List<List<Node>> ModdedOptionsNode = new ArrayList<>();
             if (!rules.isEmpty()) {
                 for (Rule r : rules) {
-                    Node res = applyRule(r, cur);
-                    ModdedOptionsNode.add(Utility.flattenChain(res));
+                    if ( r.context == null || Objects.equals(r.context, p.getTopic()) ) {
+                        Node res = applyRule(r, cur);
+                        ModdedOptionsNode.add(Utility.flattenChain(res));
+                    }
                 }
             } else {
                 ModdedOptionsNode.add(Collections.singletonList(cur.deepCopy()));
