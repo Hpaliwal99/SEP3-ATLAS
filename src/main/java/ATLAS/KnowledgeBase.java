@@ -67,7 +67,7 @@ public class KnowledgeBase {
     }
 
     // Strip Struct for hashmap
-    private String shapeHash(Node node) {
+    public String shapeHash(Node node) {
         StringBuffer sb = new StringBuffer();
         buildHash(node, sb);
         return sb.toString().intern();
