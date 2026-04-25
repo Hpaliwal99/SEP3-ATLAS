@@ -5,14 +5,15 @@ import java.util.*;
 
 public class Analogy {
 
+    private final int DEFAULT_N = 3;
     private KnowledgeBase kb;
     private Map<String, Map<String, String>> rankedAnalogies;
 
     public Analogy() throws Exception {
         this.kb = new KnowledgeBase();
         kb.load("src/main/java/ATLAS/knowledge.txt");
-
     }
+
     public boolean isConsistent(Map<String, String> a, Map<String, String> b) {
         for (Map.Entry<String, String> e : b.entrySet()) {
             if (a.containsKey(e.getKey()) && !a.get(e.getKey()).equals(e.getValue()))
@@ -44,12 +45,11 @@ public class Analogy {
                 System.out.println("Hash match: " + sHash);
 
                 // hashes match, now compare keywords
-                Parse pS = new Parse();
-                Parse pT = new Parse();
-                pS.parse(pS.toFlat(sNode));
-                pT.parse(pT.toFlat(tNode));
+                Parse p = new Parse();
+                String pS = p.toFlat(sNode);
+                String pT = p.toFlat(tNode);
 
-                LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
+                LinkedList<String[]> pairs = Utility.getStringKeywordMapping(pS, pT);
                 System.out.println("Pairs: " + Utility.toStringLL(pairs));
                 if (pairs.isEmpty()) continue;
 
@@ -73,7 +73,7 @@ public class Analogy {
         return best;
     }
 
-    public List<Map<String, String>> rankedAnalogies(String S, String T) throws Exception {
+    public List<Map<String, String>> rankedAnalogies(String S, String T, int n) throws Exception {
         List<Node> sStructures = kb.getStructures(S);
         List<Node> tStructures = kb.getStructures(T);
 
@@ -81,81 +81,69 @@ public class Analogy {
         sStructures.sort((a, b) -> Double.compare(kb.richness(b), kb.richness(a)));
 
         // Step 2: for each S structure as seed, find all matching T structures and coalesce
-        List<Map.Entry<Map<String, String>, Double>> scoredComposites = new ArrayList<>();
+        List<Map.Entry<Map<String, String>, Integer>> scoredComposites = new ArrayList<>();
 
+        int flag = 0;
         for (Node seedNode : sStructures) {
+            if (flag == n) break;
             Map<String, String> composite = new LinkedHashMap<>();
-            double score = 0.0;
+
 
             // try to map this S structure against every T structure
-            for (Node tNode : tStructures) {
-                if (!kb.shapeHash(seedNode).equals(kb.shapeHash(tNode))) continue;
-
-                Parse pS = new Parse();
-                Parse pT = new Parse();
-                pS.parse(pS.toFlat(seedNode));
-                pT.parse(pT.toFlat(tNode));
-
-                LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
-                if (pairs.isEmpty()) continue;
-
-                Map<String, String> mapping = new LinkedHashMap<>();
-                for (String[] pair : pairs) mapping.put(pair[0], pair[1]);
-
-                if (isConsistent(composite, mapping)) {
-                    composite.putAll(mapping);
-                    score += kb.richness(seedNode);
-                }
-            }
+            Combiner(tStructures, seedNode, composite, seedNode);
 
             // now try to coalesce other S structures into this composite
             for (Node otherS : sStructures) {
                 if (otherS == seedNode) continue;
 
-                for (Node tNode : tStructures) {
-                    if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) continue;
-
-                    Parse pS = new Parse();
-                    Parse pT = new Parse();
-                    pS.parse(pS.toFlat(otherS));
-                    pT.parse(pT.toFlat(tNode));
-
-                    LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
-                    if (pairs.isEmpty()) continue;
-
-                    Map<String, String> mapping = new LinkedHashMap<>();
-                    for (String[] pair : pairs) mapping.put(pair[0], pair[1]);
-
-                    if (isConsistent(composite, mapping)) {
-                        composite.putAll(mapping);
-                        score += kb.richness(otherS);
-                    }
-                }
+                Combiner(tStructures, seedNode, composite, otherS);
             }
 
             if (!composite.isEmpty()) {
-                scoredComposites.add(Map.entry(composite, score));
+                scoredComposites.add(Map.entry(composite, composite.size()));
             }
+            flag++;
         }
 
         // Step 3: rank by score descending
-        scoredComposites.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+        scoredComposites.sort((a, b) -> Double.compare(b.getKey().size(), a.getKey().size()));
 
         // Step 4: deduplicate
         List<Map<String, String>> ranked = new ArrayList<>();
-        for (Map.Entry<Map<String, String>, Double> e : scoredComposites) {
+        for (Map.Entry<Map<String, String>, Integer> e : scoredComposites) {
             if (!ranked.contains(e.getKey())) ranked.add(e.getKey());
-            System.out.println("Score: " + String.format("%.4f", e.getValue()) + " -> " + e.getKey());
+            System.out.println("Score: " +  e.getValue() + " -> " + e.getKey());
         }
 
         return ranked;
+    }
+
+    private void Combiner(List<Node> tStructures, Node seedNode, Map<String, String> composite, Node otherS) throws ParseException {
+        for (Node tNode : tStructures) {
+            if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) continue;
+
+            Parse p = new Parse();
+            String pS = p.toFlat(seedNode);
+            String pT = p.toFlat(tNode);
+
+            LinkedList<String[]> pairs = Utility.getStringKeywordMapping(pS, pT);
+            if (pairs.isEmpty()) continue;
+
+            Map<String, String> mapping = new LinkedHashMap<>();
+            for (String[] pair : pairs) mapping.put(pair[0], pair[1]);
+
+            if (isConsistent(composite, mapping)) {
+                composite.putAll(mapping);
+
+            }
+        }
     }
 
     public List<Map.Entry<String, Integer>> topSources(String S) throws Exception {
         Map<String, Integer> topics = new  HashMap<>();
         for (Map.Entry<String, List<Node>> entry : kb.getIndex().entrySet()) {
             String key = entry.getKey();
-            List<Map<String, String>> count = rankedAnalogies(S, key);
+            List<Map<String, String>> count = rankedAnalogies(S, key, DEFAULT_N);
             if (!count.isEmpty()) {
                 topics.put(key, count.getFirst().size());
             }
