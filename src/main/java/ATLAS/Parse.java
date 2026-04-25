@@ -9,6 +9,8 @@ public class Parse {
     private Queue<String> keywords = new LinkedList<>();
 
 
+    private String topic;
+
     private Node head = null;
 
     public Queue<String> getPredicates() {
@@ -21,6 +23,10 @@ public class Parse {
 
     public Node getHead() {
         return this.head;
+    }
+
+    public String getTopic() {
+        return topic;
     }
 
     private void checkInput(String input) throws ParseException {
@@ -76,16 +82,18 @@ public class Parse {
 
         for (String[] tokenList : tokens) {
             if (tokenList.length >= 2) {
+                this.topic = String.valueOf(Arrays.stream(tokenList).filter(s -> s.contains("*")).findAny()).strip();
+                System.out.println(topic);
                 keyword = tokenList[tokenList.length - 1];
                 predicate = String.join(" ", Arrays.copyOfRange(tokenList, 0, tokenList.length - 1));
 //                System.out.println(predicate); // Debug Line
-                predicates.add(predicate);
-                keywords.add(keyword);
+                this.predicates.add(predicate);
+                this.keywords.add(keyword);
             } else if (tokenList.length == 1) {
                 predicate = tokenList[0];
                 keyword = "";
-                keywords.add(keyword);
-                predicates.add(predicate);
+                this.keywords.add(keyword);
+                this.predicates.add(predicate);
             }
             if (index == 0) {
                 this.head = new Node(predicate, keyword, index);
@@ -98,6 +106,7 @@ public class Parse {
 
             }
         }
+
         if(this.head == null){
             throw new ParseException("parsing produced nothing", 0);
         }
@@ -125,9 +134,7 @@ public class Parse {
             }
 
             if (current.children == null){
-                for (int i = 0; i <= current.depth; i++){
-                    sb.append(")");
-                }
+                sb.append(")".repeat(Math.max(0, current.depth + 1)));
             }
             sb.append("\n");
 
