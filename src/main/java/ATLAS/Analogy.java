@@ -1,7 +1,7 @@
 package ATLAS;
 
+import java.text.ParseException;
 import java.util.*;
-
 
 public class Analogy {
 
@@ -77,16 +77,23 @@ public class Analogy {
         List<Node> sStructures = kb.getStructures(S);
         List<Node> tStructures = kb.getStructures(T);
 
-        // Step 1: collect all individual mappings with their richness score
-        List<Map.Entry<Map<String, String>, Double>> scoredMappings = new ArrayList<>();
+        // Step 1: sort S structures by richness descending
+        sStructures.sort((a, b) -> Double.compare(kb.richness(b), kb.richness(a)));
 
-        for (Node sNode : sStructures) {
+        // Step 2: for each S structure as seed, find all matching T structures and coalesce
+        List<Map.Entry<Map<String, String>, Double>> scoredComposites = new ArrayList<>();
+
+        for (Node seedNode : sStructures) {
+            Map<String, String> composite = new LinkedHashMap<>();
+            double score = 0.0;
+
+            // try to map this S structure against every T structure
             for (Node tNode : tStructures) {
-                if (!kb.shapeHash(sNode).equals(kb.shapeHash(tNode))) continue;
+                if (!kb.shapeHash(seedNode).equals(kb.shapeHash(tNode))) continue;
 
                 Parse pS = new Parse();
                 Parse pT = new Parse();
-                pS.parse(pS.toFlat(sNode));
+                pS.parse(pS.toFlat(seedNode));
                 pT.parse(pT.toFlat(tNode));
 
                 LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
@@ -95,43 +102,50 @@ public class Analogy {
                 Map<String, String> mapping = new LinkedHashMap<>();
                 for (String[] pair : pairs) mapping.put(pair[0], pair[1]);
 
-                double richness = kb.richness(sNode);
-                scoredMappings.add(Map.entry(mapping, richness));
-            }
-        }
-
-        // Step 2: sort by richness descending
-        scoredMappings.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
-
-        // Step 3: for each starting point, greedily coalesce
-        List<Map<String, String>> composites = new ArrayList<>();
-
-        for (int start = 0; start < scoredMappings.size(); start++) {
-            Map<String, String> composite = new LinkedHashMap<>(scoredMappings.get(start).getKey());
-
-            for (int i = 0; i < scoredMappings.size(); i++) {
-                if (i == start) continue;
-                Map<String, String> candidate = scoredMappings.get(i).getKey();
-                if (isConsistent(composite, candidate)) {
-                    composite.putAll(candidate);
+                if (isConsistent(composite, mapping)) {
+                    composite.putAll(mapping);
+                    score += kb.richness(seedNode);
                 }
             }
 
-            composites.add(composite);
+            // now try to coalesce other S structures into this composite
+            for (Node otherS : sStructures) {
+                if (otherS == seedNode) continue;
+
+                for (Node tNode : tStructures) {
+                    if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) continue;
+
+                    Parse pS = new Parse();
+                    Parse pT = new Parse();
+                    pS.parse(pS.toFlat(otherS));
+                    pT.parse(pT.toFlat(tNode));
+
+                    LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
+                    if (pairs.isEmpty()) continue;
+
+                    Map<String, String> mapping = new LinkedHashMap<>();
+                    for (String[] pair : pairs) mapping.put(pair[0], pair[1]);
+
+                    if (isConsistent(composite, mapping)) {
+                        composite.putAll(mapping);
+                        score += kb.richness(otherS);
+                    }
+                }
+            }
+
+            if (!composite.isEmpty()) {
+                scoredComposites.add(Map.entry(composite, score));
+            }
         }
 
-        // Step 4: rank composites by number of distinct mappings
-        composites.sort((a, b) -> Integer.compare(b.size(), a.size()));
+        // Step 3: rank by score descending
+        scoredComposites.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
 
-        // Step 5: deduplicate identical composites
+        // Step 4: deduplicate
         List<Map<String, String>> ranked = new ArrayList<>();
-        for (Map<String, String> c : composites) {
-            if (!ranked.contains(c)) ranked.add(c);
-        }
-
-        System.out.println("Ranked analogies for " + S + " -> " + T + ":");
-        for (int i = 0; i < ranked.size(); i++) {
-            System.out.println("#" + (i + 1) + " (" + ranked.get(i).size() + " mappings): " + ranked.get(i));
+        for (Map.Entry<Map<String, String>, Double> e : scoredComposites) {
+            if (!ranked.contains(e.getKey())) ranked.add(e.getKey());
+            System.out.println("Score: " + String.format("%.4f", e.getValue()) + " -> " + e.getKey());
         }
 
         return ranked;
