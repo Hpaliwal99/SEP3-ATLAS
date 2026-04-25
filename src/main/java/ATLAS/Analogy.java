@@ -1,10 +1,18 @@
 package ATLAS;
 
-import java.text.ParseException;
 import java.util.*;
+
 
 public class Analogy {
 
+    private KnowledgeBase kb;
+    private Map<String, Map<String, String>> rankedAnalogies;
+
+    public Analogy() throws Exception {
+        this.kb = new KnowledgeBase();
+        kb.load("src/main/java/ATLAS/knowledge.txt");
+
+    }
     public boolean isConsistent(Map<String, String> a, Map<String, String> b) {
         for (Map.Entry<String, String> e : b.entrySet()) {
             if (a.containsKey(e.getKey()) && !a.get(e.getKey()).equals(e.getValue()))
@@ -15,8 +23,7 @@ public class Analogy {
         return true;
     }
     public Map<String, String> bestAnalogy(String S, String T) throws Exception {
-        KnowledgeBase kb = new KnowledgeBase();
-        kb.load("src/main/java/ATLAS/knowledge.txt");
+
         List<Node> sStructures = kb.getStructures(S);
         List<Node> tStructures = kb.getStructures(T);
 
@@ -67,8 +74,6 @@ public class Analogy {
     }
 
     public List<Map<String, String>> rankedAnalogies(String S, String T) throws Exception {
-        KnowledgeBase kb = new KnowledgeBase();
-        kb.load("src/main/java/ATLAS/knowledge.txt");
         List<Node> sStructures = kb.getStructures(S);
         List<Node> tStructures = kb.getStructures(T);
 
@@ -124,11 +129,27 @@ public class Analogy {
             if (!ranked.contains(c)) ranked.add(c);
         }
 
-
         System.out.println("Ranked analogies for " + S + " -> " + T + ":");
         for (int i = 0; i < ranked.size(); i++) {
             System.out.println("#" + (i + 1) + " (" + ranked.get(i).size() + " mappings): " + ranked.get(i));
         }
 
         return ranked;
-    }}
+    }
+
+    public List<Map.Entry<String, Integer>> topSources(String S) throws Exception {
+        Map<String, Integer> topics = new  HashMap<>();
+        for (Map.Entry<String, List<Node>> entry : kb.getIndex().entrySet()) {
+            String key = entry.getKey();
+            List<Map<String, String>> count = rankedAnalogies(S, key);
+            if (!count.isEmpty()) {
+                topics.put(key, count.getFirst().size());
+            }
+        }
+
+        List<Map.Entry<String, Integer>> SortedTopics = new ArrayList<>(topics.entrySet());
+        SortedTopics.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
+
+        return SortedTopics;
+    }
+}

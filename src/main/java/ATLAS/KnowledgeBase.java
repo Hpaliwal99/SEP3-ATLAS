@@ -4,8 +4,17 @@ import java.io.File;
 import java.util.*;
 
 public class KnowledgeBase {
-    Map<String, List<Node>> index = new HashMap<>();
-    Map<String, List<Node>> shapeIndex = new HashMap<>();
+
+    private Map<String, List<Node>> index = new HashMap<>();
+    private Map<String, List<Node>> shapeIndex = new HashMap<>();
+
+    public Map<String, List<Node>> getIndex() {
+        return index;
+    }
+
+    public Map<String, List<Node>> getShapeIndex() {
+        return shapeIndex;
+    }
 
     // Load from file
     public void load(String filename) throws Exception {
