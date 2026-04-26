@@ -31,7 +31,7 @@ public class Utility {
 
         //check depth is the same
         if(tokensA.size() != tokensB.size()){
-            System.out.println("[StringCompare] Depth mismatch: A has " + tokensA.size() + " group(s), B has " + tokensB.size() + " group(s). -> false");
+//            System.out.println("[StringCompare] Depth mismatch: A has " + tokensA.size() + " group(s), B has " + tokensB.size() + " group(s). -> false");
             return false;
         }
         String predicate = "";
@@ -43,24 +43,24 @@ public class Utility {
             String[] TB = tokensB.get(i);
 
             if(TA.length != TB.length){
-                System.out.println("[StringCompare] Token length mismatch at group " + i + ": A=" + Arrays.toString(TA) + ", B=" + Arrays.toString(TB) + " -> false");
+//                System.out.println("[StringCompare] Token length mismatch at group " + i + ": A=" + Arrays.toString(TA) + ", B=" + Arrays.toString(TB) + " -> false");
                 return false;
             }
             if(TA.length == 1 ){
                 if(!TA[0].equals(TB[0])){
-                    System.out.println("[StringCompare] Single-token mismatch at group " + i + ": \"" + TA[0] + "\" vs \"" + TB[0] + "\" -> false");
+//                    System.out.println("[StringCompare] Single-token mismatch at group " + i + ": \"" + TA[0] + "\" vs \"" + TB[0] + "\" -> false");
                     return false;
                 }
             }
             else if(TA.length >= 2){
                 for(int j = 0; j < TA.length - 1; j++){
                     if(!TA[j].equals(TB[j]) && !TA[j].contains("*")){
-                        System.out.println("[StringCompare] Predicate mismatch at group " + i + ", position " + j + ": \"" + TA[j] + "\" vs \"" + TB[j] + "\" -> false");
+//                        System.out.println("[StringCompare] Predicate mismatch at group " + i + ", position " + j + ": \"" + TA[j] + "\" vs \"" + TB[j] + "\" -> false");
                         return false;
                     }
                 }
                 if(TA[TA.length-1].charAt(0) == '*' ^ TB[TB.length-1].charAt(0) == '*'){
-                    System.out.println("[StringCompare] Wildcard mismatch at group " + i + ": A last=\"" + TA[TA.length - 1] + "\", B last=\"" + TB[TB.length - 1] + "\" -> false");
+//                    System.out.println("[StringCompare] Wildcard mismatch at group " + i + ": A last=\"" + TA[TA.length - 1] + "\", B last=\"" + TB[TB.length - 1] + "\" -> false");
                     return false;
                 }
 
