@@ -18,7 +18,6 @@ public class TestKnowledgeBase {
 
     @BeforeAll
     static void loadKnowledgeBase() throws Exception {
-
         kb = new KnowledgeBase();
         kb.load("src/main/java/ATLAS/knowledge.txt");
     }

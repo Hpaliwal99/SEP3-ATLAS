@@ -83,7 +83,7 @@ public class Parse {
         for (String[] tokenList : tokens) {
             if (tokenList.length >= 2) {
                 this.topic = String.valueOf(Arrays.stream(tokenList).filter(s -> s.contains("*")).findAny()).strip();
-                System.out.println(topic);
+//                System.out.println(topic);
                 keyword = tokenList[tokenList.length - 1];
                 predicate = String.join(" ", Arrays.copyOfRange(tokenList, 0, tokenList.length - 1));
 //                System.out.println(predicate); // Debug Line

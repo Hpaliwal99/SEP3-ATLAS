@@ -83,11 +83,14 @@ public class Main {
         Analogy analogy = new Analogy();
 //        Map<String, String> result = analogy.bestAnalogy("priest", "scientist");
 //        System.out.println(result);
-//        List<Map<String, String>> ranked = analogy.rankedAnalogies("priest", "programmer");
+//        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "programmer");
 //        System.out.println(ranked);
 
-        List<Map.Entry<String,Integer>> list = analogy.topSources("priest");
-        System.out.println(list);
+        List<Map.Entry<String,Integer>> list = analogy.topSources("king");
+//        for (Map.Entry<String,Integer> e : list) {
+//            System.out.println(e.getKey() + ": " + e.getValue());
+//        }
+        System.out.println(list.toString());
 //        Map<String, List<String>> allRankings = kb.rankAllTopics();
 //
 //        for (Map.Entry<String, List<String>> entry : allRankings.entrySet()) {

@@ -16,8 +16,8 @@ public class Utility {
         if(tokensA.length == 0){
             throw new ParseException("No tokens found after stripping parentheses.", 0);
         }
-        for(int i = 0; i < tokensA.length; i++){
-            tokens.add(tokensA[i].split(" "));
+        for (String s : tokensA) {
+            tokens.add(s.split(" "));
         }
         return tokens;
     }
@@ -54,7 +54,7 @@ public class Utility {
             }
             else if(TA.length >= 2){
                 for(int j = 0; j < TA.length - 1; j++){
-                    if(!TA[j].equals(TB[j])){
+                    if(!TA[j].equals(TB[j]) && !TA[j].contains("*")){
                         System.out.println("[StringCompare] Predicate mismatch at group " + i + ", position " + j + ": \"" + TA[j] + "\" vs \"" + TB[j] + "\" -> false");
                         return false;
                     }
