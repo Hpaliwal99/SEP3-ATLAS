@@ -82,17 +82,21 @@ public class Main {
 //        System.out.println("rankbytarget: " + rankbytarget);
 
         Analogy analogy = new Analogy();
+        List<Node> candidates = new ArrayList<>();
 //        Map<String, String> result = analogy.bestAnalogy("priest", "scientist");
 //        System.out.println(result);
-        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "artist", 4);
+        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "artist", 4, candidates);
         System.out.println(ranked + "\n");
 
-        List<Node> candidates = analogy.getCandidateInferences(5);
+        candidates = analogy.getCandidateInferences(5);
 
         Parse parse = new Parse();
         for (Node node : candidates) {
             System.out.println(parse.printIndent(node));
         }
+
+        ranked = analogy.greedyMatching("priest", "artist", 4, candidates);
+        System.out.println(ranked + "\n");
 
 //        List<Map.Entry<String,Integer>> list = analogy.topSources("historian");
 //        for (Map.Entry<String,Integer> e : list) {

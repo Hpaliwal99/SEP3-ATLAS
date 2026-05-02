@@ -26,10 +26,13 @@ public class Analogy {
         return true;
     }
 
-    public List<Map<String, String>> greedyMatching(String S, String T, int n) throws Exception {
+    public List<Map<String, String>> greedyMatching(String S, String T, int n, List<Node> newStruct) throws Exception {
         List<Node> sStructures = kb.getStructures(S);
         List<Node> tStructures = kb.getStructures(T);
 
+        if(!newStruct.isEmpty()){
+            tStructures.addAll(newStruct);
+        }
         // Sort by richness
         sStructures.sort((a, b) -> Double.compare(kb.richness(b), kb.richness(a)));
 
@@ -95,7 +98,7 @@ public class Analogy {
         for (Map.Entry<String, List<Node>> entry : kb.getIndex().entrySet()) {
             String key = entry.getKey();
             if (S.equals(key)) continue;
-            List<Map<String, String>> count = greedyMatching(S, key, DEFAULT_N);
+            List<Map<String, String>> count = greedyMatching(S, key, DEFAULT_N, null);
             if (!count.isEmpty()) {
                 topics.put(key, count.getFirst().size());
             }
