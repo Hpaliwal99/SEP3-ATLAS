@@ -132,7 +132,7 @@ public class KnowledgeBase {
     }
 
     // Rank Topics by richness
-    public List<String> rankSources(String target, List<No>) {
+    public List<String> rankSources(String target) {
         List<Node> targetStructures = getStructures(target);
         Map<String, Double> scores = new HashMap<>();
 
@@ -148,18 +148,7 @@ public class KnowledgeBase {
                 }
             }
         }
-        for(Node node : targetStructures) {
-            String shape = shapeHash(node);
-            List<Node> matches = shapeIndex.getOrDefault(shape, new ArrayList<>());
-            double r3 = Math.pow(richness(node), 3);
-            for(Node match : matches) {
-                for(String topic : findTopics(match)) {
-                    if(!topic.equals(target)) {
-                        scores.merge(topic, r3, Double::sum);
-                    }
-                }
-            }
-        }
+
 
 
         List<String> ranked = new ArrayList<>(scores.keySet());
