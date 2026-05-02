@@ -64,12 +64,11 @@ public class Parse {
 
     public Node parse(String input) throws ParseException {
         checkInput(input);
-        this.head = parseNode(input);
+        this.head = parseString(input);
         return this.head;
     }
 
-
-    private Node parseNode(String input) throws ParseException {
+    private Node parseString(String input) throws ParseException {
         int index = 0;
 
         LinkedList<String[]> tokens = Utility.tokenizer(input);
@@ -112,6 +111,18 @@ public class Parse {
         }
 
         return this.head;
+    }
+
+    // Stores Node info from an already parsed node to parse instance
+    public void parseNode(Node node) throws ParseException {
+        while (node != null) {
+            this.keywords.add(node.keyword);
+            this.predicates.add(node.Predicate);
+            if (node.Topic != null) {
+                this.topic = node.Topic;
+            }
+            node = node.children;
+        }
     }
 
     public String printIndent(Node node){
