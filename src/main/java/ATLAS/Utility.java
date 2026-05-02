@@ -106,7 +106,7 @@ public class Utility {
         }
 
         if (p1.getPredicates().size() != p2.getPredicates().size()) {
-            System.out.println("[compare] Predicate count mismatch: p1=" + p1.getPredicates().size() + ", p2=" + p2.getPredicates().size() + " -> false");
+//            System.out.println("[compare] Predicate count mismatch: p1=" + p1.getPredicates().size() + ", p2=" + p2.getPredicates().size() + " -> false");
             return false;
         }
 
@@ -120,7 +120,7 @@ public class Utility {
                 continue;
             }
             if(p1Keyword.charAt(0) == '*' ^ p2Keyword.charAt(0) == '*'){
-                System.out.println("[compare] Wildcard mismatch at keyword index " + i + ": p1=\"" + p1Keyword + "\", p2=\"" + p2Keyword + "\" -> false");
+//                System.out.println("[compare] Wildcard mismatch at keyword index " + i + ": p1=\"" + p1Keyword + "\", p2=\"" + p2Keyword + "\" -> false");
                 return false;
             }
         }
@@ -155,7 +155,7 @@ public class Utility {
             }
 
         } else {
-            System.out.println("Structure not equal");
+//            System.out.println("Structure not equal");
             return result;
         }
 

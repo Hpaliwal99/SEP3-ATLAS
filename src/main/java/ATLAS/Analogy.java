@@ -6,7 +6,7 @@ import java.util.*;
 public class Analogy {
 
     private final int DEFAULT_N = 3;
-    private final String KB_PATH = "src/main/java/ATLAS/knowledge.txt";
+    private final String KB_PATH = "src/main/java/ATLAS/structured domains.txt";
     private KnowledgeBase kb;
     private List<Map<String, String>> rankedAnalogies = new ArrayList<>();
     private Set<Node> unMatchedStruct = new  HashSet<>();
@@ -57,6 +57,7 @@ public class Analogy {
             }
             flag++;
         }
+        System.out.println("Done with matching");
 
         // Sort by number of mappings
         scoredComposites.sort((a, b) -> Double.compare(b.getKey().size(), a.getKey().size()));
@@ -74,13 +75,20 @@ public class Analogy {
     private void Combiner(List<Node> tStructures, Node seedNode, Map<String, String> composite, Node otherS) throws ParseException {
         for (Node tNode : tStructures) {
 
-            if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) unMatchedStruct.add(otherS);
+            if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) {
+                unMatchedStruct.add(otherS);
+                continue;
+            }
 
-            Parse p = new Parse();
-            String pS = p.toFlat(seedNode);
-            String pT = p.toFlat(tNode);
+//            Parse p = new Parse();
+            Parse pS = new Parse();
+            Parse pT = new Parse();
+            pS.parseNode(otherS);
+            pT.parseNode(tNode);
 
-            LinkedList<String[]> pairs = Utility.getStringKeywordMapping(pS, pT);
+
+            LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
+//            LinkedList<String[]> pairs = Utility.getStringKeywordMapping(p.toFlat(otherS), p.toFlat(tNode));
             if (pairs.isEmpty()) continue;
 
             Map<String, String> mapping = new LinkedHashMap<>();
@@ -117,7 +125,10 @@ public class Analogy {
         candidateStructures.sort((a, b) -> Double.compare(kb.richness(a), kb.richness(b)));
 
         List<Node> candidates = new ArrayList<>();
+        int count = 0;
         for (Node seedNode : candidateStructures) {
+            count++;
+            if (count == n) break;
             Parse p = new Parse();
             p.parseNode(seedNode);
 

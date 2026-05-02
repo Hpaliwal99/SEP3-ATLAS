@@ -9,7 +9,7 @@ public class Parse {
     private Queue<String> keywords = new LinkedList<>();
 
 
-    private String topic;
+    private String topic = "";
 
     private Node head = null;
 
@@ -115,10 +115,11 @@ public class Parse {
 
     // Stores Node info from an already parsed node to parse instance
     public void parseNode(Node node) throws ParseException {
+        this.head = node;
         while (node != null) {
             this.keywords.add(node.keyword);
             this.predicates.add(node.Predicate);
-            if (node.Topic != null) {
+            if (node.Topic.isEmpty()) {
                 this.topic = node.Topic;
             }
             node = node.children;

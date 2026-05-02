@@ -23,9 +23,15 @@ public class KnowledgeBase {
 
         Scanner scanner = new Scanner(new File(filename));
 
+        int count = 0;
         while (scanner.hasNextLine()) {
+            count++;
             String line = scanner.nextLine().trim();
-//            line = line.split("\t")[1].trim();
+            try {
+                line = line.split("\t")[1].trim();
+            }  catch (Exception e) {
+                System.out.println(count + "\t" + line);
+            }
 //            System.out.println(line);
             if(line.isEmpty()) continue;
 
@@ -47,6 +53,7 @@ public class KnowledgeBase {
                 }
             }
         }
+        System.out.println("Loaded " + count + " lines from " + filename + "\n");
     }
 
     // Extract topic from node struct
@@ -125,7 +132,7 @@ public class KnowledgeBase {
     }
 
     // Rank Topics by richness
-    public List<String> rankSources(String target) {
+    public List<String> rankSources(String target, List<No>) {
         List<Node> targetStructures = getStructures(target);
         Map<String, Double> scores = new HashMap<>();
 
@@ -141,6 +148,20 @@ public class KnowledgeBase {
                 }
             }
         }
+        for(Node node : targetStructures) {
+            String shape = shapeHash(node);
+            List<Node> matches = shapeIndex.getOrDefault(shape, new ArrayList<>());
+            double r3 = Math.pow(richness(node), 3);
+            for(Node match : matches) {
+                for(String topic : findTopics(match)) {
+                    if(!topic.equals(target)) {
+                        scores.merge(topic, r3, Double::sum);
+                    }
+                }
+            }
+        }
+
+
         List<String> ranked = new ArrayList<>(scores.keySet());
         ranked.sort((a, b) -> Double.compare(scores.get(b), scores.get(a)));
 

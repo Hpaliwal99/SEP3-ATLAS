@@ -85,7 +85,7 @@ public class Main {
         List<Node> candidates = new ArrayList<>();
 //        Map<String, String> result = analogy.bestAnalogy("priest", "scientist");
 //        System.out.println(result);
-        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "artist", 4, candidates);
+        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "worshipper", 1, candidates);
         System.out.println(ranked + "\n");
 
         candidates = analogy.getCandidateInferences(5);
@@ -95,8 +95,8 @@ public class Main {
             System.out.println(parse.printIndent(node));
         }
 
-        ranked = analogy.greedyMatching("priest", "artist", 4, candidates);
-        System.out.println(ranked + "\n");
+        ranked = analogy.greedyMatching("priest", "worshipper", 1, candidates);
+//        System.out.println(ranked + "\n");
 
 //        List<Map.Entry<String,Integer>> list = analogy.topSources("historian");
 //        for (Map.Entry<String,Integer> e : list) {

@@ -2,18 +2,25 @@ package ATLAS;
 import java.util.*;
 
 public class Node{
-    String Predicate;
-    String keyword;
-    String Topic = null;
+    String Predicate = "";
+    String keyword = "";
+    String Topic = "";
     Node children = null;
     int depth = 0;
 
-    public Node(String predicate, String keyword, int index){
+    public Node(String predicate, String Keyword, int index){
         if (predicate.contains("*")){
-            this.Topic = predicate.split("\\*")[1].trim();
+            int idx = predicate.indexOf('*');
+            this.Topic = predicate.substring(idx + 1).trim();
+//            this.Topic = predicate.split("\\*")[1].split("\\s+")[0].trim();
         }
+
+        if (Keyword != null && Keyword.contains("*") ) {
+            this.Topic = predicate.substring(1).trim();
+//            this.Topic = predicate.split("\\*")[1].split("\\s+")[0].trim();
+        }
+        this.keyword = (Keyword ==  null) ? "" : Keyword;
         this.Predicate = predicate;
-        this.keyword = keyword;
         this.depth = index;
         this.children = null;
     }
