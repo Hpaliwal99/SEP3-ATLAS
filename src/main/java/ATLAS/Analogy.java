@@ -8,7 +8,8 @@ public class Analogy {
     private final int DEFAULT_N = 3;
     private final String KB_PATH = "src/main/java/ATLAS/knowledge.txt";
     private KnowledgeBase kb;
-    private Map<String, Map<String, String>> rankedAnalogies;
+    private List<Map<String, String>> rankedAnalogies = new ArrayList<>();
+    private Set<Node> unMatchedStruct = new  HashSet<>();
 
     public Analogy() throws Exception {
         this.kb = new KnowledgeBase();
@@ -63,13 +64,14 @@ public class Analogy {
             if (!ranked.contains(e.getKey())) ranked.add(e.getKey());
             System.out.println("Score: " +  e.getValue() + " -> " + e.getKey());
         }
-
+        rankedAnalogies = ranked;
         return ranked;
     }
 
     private void Combiner(List<Node> tStructures, Node seedNode, Map<String, String> composite, Node otherS) throws ParseException {
         for (Node tNode : tStructures) {
-            if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) continue;
+
+            if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) unMatchedStruct.add(otherS);
 
             Parse p = new Parse();
             String pS = p.toFlat(seedNode);
@@ -103,5 +105,33 @@ public class Analogy {
         SortedTopics.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
 
         return SortedTopics;
+    }
+
+    public List<Node> getCandidateInferences(int n) throws Exception {
+        if (rankedAnalogies.isEmpty()) throw new Exception("No mappings found! run greedyMatching first or change topics.");
+
+        List<Node> candidateStructures = new ArrayList<>(unMatchedStruct);
+        candidateStructures.sort((a, b) -> Double.compare(kb.richness(a), kb.richness(b)));
+
+        List<Node> candidates = new ArrayList<>();
+        for (Node seedNode : candidateStructures) {
+            Parse p = new Parse();
+            p.parseNode(seedNode);
+
+            Node candidate = seedNode.deepCopy();
+            Node cand_Iter = candidate;
+            boolean flag = true;
+            while (cand_Iter != null) {
+                String keyT = rankedAnalogies.getFirst().getOrDefault(cand_Iter.keyword,"");
+                if (keyT.isEmpty()) flag=false;
+                cand_Iter.keyword = keyT;
+                cand_Iter = cand_Iter.children;
+            }
+            if (flag) {
+                candidates.add(candidate);
+            }
+        }
+
+        return candidates;
     }
 }

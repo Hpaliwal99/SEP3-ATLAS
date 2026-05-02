@@ -1,5 +1,6 @@
 package ATLAS;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -83,8 +84,15 @@ public class Main {
         Analogy analogy = new Analogy();
 //        Map<String, String> result = analogy.bestAnalogy("priest", "scientist");
 //        System.out.println(result);
-        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "programmer", 4);
-        System.out.println(ranked);
+        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "artist", 4);
+        System.out.println(ranked + "\n");
+
+        List<Node> candidates = analogy.getCandidateInferences(5);
+
+        Parse parse = new Parse();
+        for (Node node : candidates) {
+            System.out.println(parse.printIndent(node));
+        }
 
 //        List<Map.Entry<String,Integer>> list = analogy.topSources("historian");
 //        for (Map.Entry<String,Integer> e : list) {
