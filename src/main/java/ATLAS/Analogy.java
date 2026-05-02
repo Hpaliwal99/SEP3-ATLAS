@@ -30,9 +30,22 @@ public class Analogy {
         List<Node> sStructures = kb.getStructures(S);
         List<Node> tStructures = kb.getStructures(T);
 
-        if(!newStruct.isEmpty()){
+        if(newStruct != null && !newStruct.isEmpty()){
             tStructures.addAll(newStruct);
         }
+
+        // precompute all hashes once
+        Map<Node, String> sHashes = new HashMap<>();
+        Map<Node, String> tHashes = new HashMap<>();
+        for (Node n1 : sStructures) sHashes.put(n1, kb.shapeHash(n1));
+        for (Node n1 : tStructures) tHashes.put(n1, kb.shapeHash(n1));
+
+        // group T structures by hash for O(1) lookup
+        Map<String, List<Node>> tByHash = new HashMap<>();
+        for (Node n1 : tStructures) {
+            tByHash.computeIfAbsent(tHashes.get(n1), k -> new ArrayList<>()).add(n1);
+        }
+
         // Sort by richness
         sStructures.sort((a, b) -> Double.compare(kb.richness(b), kb.richness(a)));
 
@@ -44,12 +57,11 @@ public class Analogy {
             if (flag == n) break;
             Map<String, String> composite = new LinkedHashMap<>();
 
-            Combiner(tStructures, seedNode, composite, seedNode);
+            Combiner(tByHash, sHashes.get(seedNode), composite, seedNode);
 
             for (Node otherS : sStructures) {
                 if (otherS == seedNode) continue;
-
-                Combiner(tStructures, seedNode, composite, otherS);
+                Combiner(tByHash, sHashes.get(otherS), composite, otherS);
             }
 
             if (!composite.isEmpty()) {
@@ -72,23 +84,22 @@ public class Analogy {
         return ranked;
     }
 
-    private void Combiner(List<Node> tStructures, Node seedNode, Map<String, String> composite, Node otherS) throws ParseException {
-        for (Node tNode : tStructures) {
+    private void Combiner(Map<String, List<Node>> tByHash, String sHash, Map<String, String> composite, Node otherS) throws ParseException {
+        // O(1) lookup instead of iterating all T structures
+        List<Node> candidates = tByHash.getOrDefault(sHash, Collections.emptyList());
 
-            if (!kb.shapeHash(otherS).equals(kb.shapeHash(tNode))) {
-                unMatchedStruct.add(otherS);
-                continue;
-            }
+        if (candidates.isEmpty()) {
+            unMatchedStruct.add(otherS);
+            return;
+        }
 
-//            Parse p = new Parse();
+        for (Node tNode : candidates) {
             Parse pS = new Parse();
             Parse pT = new Parse();
             pS.parseNode(otherS);
             pT.parseNode(tNode);
 
-
             LinkedList<String[]> pairs = Utility.getKeywordMapping(pS, pT);
-//            LinkedList<String[]> pairs = Utility.getStringKeywordMapping(p.toFlat(otherS), p.toFlat(tNode));
             if (pairs.isEmpty()) continue;
 
             Map<String, String> mapping = new LinkedHashMap<>();
@@ -96,7 +107,6 @@ public class Analogy {
 
             if (isConsistent(composite, mapping)) {
                 composite.putAll(mapping);
-
             }
         }
     }
