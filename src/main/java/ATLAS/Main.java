@@ -85,18 +85,38 @@ public class Main {
         List<Node> candidates = new ArrayList<>();
 //        Map<String, String> result = analogy.bestAnalogy("priest", "scientist");
 //        System.out.println(result);
-        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "worshipper", 1, candidates);
+        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "doctor", 7, candidates);
         System.out.println(ranked + "\n");
 
-        candidates = analogy.getCandidateInferences(5);
+        candidates = analogy.getCandidateInferences(10);
 
         Parse parse = new Parse();
         for (Node node : candidates) {
             System.out.println(parse.printIndent(node));
         }
 
-        ranked = analogy.greedyMatching("priest", "worshipper", 1, candidates);
 //        System.out.println(ranked + "\n");
+        List<List<Node>> coalesced = analogy.coalesceInferences(candidates);
+        if (coalesced.isEmpty()) {
+            System.out.println("No candidates found");
+        }
+        else {
+            for  (List<Node> candidateCandidates : coalesced) {
+                for (Node node : candidateCandidates) {
+                    System.out.println(parse.toFlat(node) + "\n");
+                }
+            }
+        }
+
+        KnowledgeBase kb = new KnowledgeBase();
+        System.out.println("Original quality " + kb.quality("priest", "doctor") + "\n");
+        System.out.println("Inference quality " + kb.Infquality(coalesced.getFirst()) + "\n");
+
+        List<Map.Entry<List<Node>, Double>> newranked = analogy.rankCoalescedInferences(coalesced);
+
+        for (var entry : newranked) {
+            System.out.printf("Score: %.4f -> %s%n", entry.getValue(), entry.getKey());
+        }
 
 //        List<Map.Entry<String,Integer>> list = analogy.topSources("historian");
 //        for (Map.Entry<String,Integer> e : list) {

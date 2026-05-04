@@ -1,12 +1,16 @@
 package ATLAS;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.util.*;
 
 public class KnowledgeBase {
 
-    private Map<String, List<Node>> index = new HashMap<>();
-    private Map<String, List<Node>> shapeIndex = new HashMap<>();
+    private final Map<String, List<Node>> index = new HashMap<>();
+    private final Map<String, List<Node>> shapeIndex = new HashMap<>();
+
+    private final double INFERENCE_POWER = Config.inferencePower();
 
     public Map<String, List<Node>> getIndex() {
         return index;
@@ -19,7 +23,31 @@ public class KnowledgeBase {
     // Load from file
     public void load(String filename) throws Exception {
         RulesUtil rulesUtil = new RulesUtil();
-        rulesUtil.loadRules("src/main/java/ATLAS/rewrite rules.txt");
+        rulesUtil.loadRules(Config.rulesPath());
+
+//        try (BufferedReader br = new BufferedReader(new FileReader(filename), 1 << 16)) {
+//            String line;
+//            int count = 0;
+//            while ((line = br.readLine()) != null) {
+//                count++;
+//                String[] parts = line.split("\t", 2);
+//                if (parts.length < 2) {
+//                    System.out.println(count + "\t" + line);
+//                    continue;
+//                }
+//                line = parts[1].trim();
+//                if (line.isEmpty()) continue;
+//
+//                List<Node> combos = rulesUtil.rewrite(line);
+//                for (Node root : combos) {
+//                    List<String> topics = findTopics(root);
+//                    String shape = shapeHash(root);
+//                    shapeIndex.computeIfAbsent(shape, k -> new ArrayList<>()).add(root);
+//                    for (String topic: topics) {
+//                        index.computeIfAbsent(topic, k -> new ArrayList<>()).add(root);
+//                    }
+//                }
+//            }
 
         Scanner scanner = new Scanner(new File(filename));
 
@@ -30,7 +58,7 @@ public class KnowledgeBase {
             try {
                 line = line.split("\t")[1].trim();
             }  catch (Exception e) {
-                System.out.println(count + "\t" + line);
+                System.out.println(count + ":\t" + line);
             }
 //            System.out.println(line);
             if(line.isEmpty()) continue;
@@ -53,7 +81,8 @@ public class KnowledgeBase {
                 }
             }
         }
-        System.out.println("Loaded " + count + " lines from " + filename + "\n");
+            System.out.println("Loaded " + count + " lines from " + filename + "\n");
+
     }
 
     // Extract topic from node struct
@@ -84,12 +113,12 @@ public class KnowledgeBase {
 
     // Strip Struct for hashmap
     public String shapeHash(Node node) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         buildHash(node, sb);
         return sb.toString().intern();
     }
 
-    private void buildHash(Node node, StringBuffer sb) {
+    private void buildHash(Node node, StringBuilder sb) {
         if (node == null) return;
         String pred = node.Predicate.split("\\s+")[0];
         sb.append('(').append(pred);
@@ -97,7 +126,7 @@ public class KnowledgeBase {
         sb.append(')');
     }
 
-    // get relevant topics from structs
+    // get relevant topics from target
     public List<String> getSources(String target) {
         List<Node> targetStructures = getStructures(target);
         Set<String> sources = new HashSet<>();
@@ -126,7 +155,13 @@ public class KnowledgeBase {
         double sum = 0.0;
         int depth = 0;
         for (Node cur = node; cur != null; cur = cur.children, depth++) {
-            sum += Math.pow(10, depth);   // one node per depth level in a chain
+            int count = 0;
+            count = cur.Predicate.trim().split(" ").length;
+            if (!cur.Topic.isEmpty()) {
+                count--;
+            }
+            sum += count * Math.pow(10, depth);   // one node per depth level in a chain
+//            sum += Math.pow(10, depth);
         }
         return Math.log10(sum);
     }
@@ -175,4 +210,40 @@ public class KnowledgeBase {
 
         return allRankings;
     }
+
+    public Double quality (String target, String source) {
+        List<Node> targetStructures = getStructures(target);
+        double score = 0.0;
+
+        for(Node node : targetStructures) {
+            String shape = shapeHash(node);
+            List<Node> matches = shapeIndex.getOrDefault(shape, Collections.emptyList());
+            double r3 = Math.pow(richness(node), 3);
+            for(Node match : matches) {
+                List<String> topics = findTopics(match);
+                for(String topic : topics) {
+                    if(topic.equals(source)) {
+                        score += r3;
+                    }
+                }
+            }
+        }
+
+        return score;
+    }
+
+    public Double Infquality(List<Node> colCand) {
+
+        double InfScore = 0.0;
+        if(colCand.isEmpty()) return InfScore;
+
+        for (Node node : colCand) {
+            double rI = Math.pow(richness(node), INFERENCE_POWER);
+            InfScore += rI;
+        }
+
+        return InfScore;
+    }
+
+
 }

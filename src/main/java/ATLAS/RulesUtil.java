@@ -6,6 +6,7 @@ import java.util.*;
 
 public class RulesUtil {
     Map<String, List<Rule>> ruleMap = new HashMap<>();
+    private final Map<String, List<Node>> rewriteCache = new HashMap<>();
 
     public void loadRules(String filename) throws Exception {
         Scanner scanner = new Scanner(new File(filename));
@@ -54,6 +55,8 @@ public class RulesUtil {
     }
 
     public List<Node> rewrite(String str) throws ParseException {
+        List<Node> cached = rewriteCache.get(str);
+        if (cached != null) return cached;
 
         Parse p = new Parse();
         Node root = p.parse(str);
@@ -101,6 +104,7 @@ public class RulesUtil {
             results.add(Utility.listToChain(chain));
         }
 
+        rewriteCache.put(str, results);
         return results;
 
     }
