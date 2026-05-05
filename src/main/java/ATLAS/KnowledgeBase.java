@@ -222,7 +222,7 @@ public class KnowledgeBase {
             for(Node match : matches) {
                 List<String> topics = findTopics(match);
                 for(String topic : topics) {
-                    if(topic.equals(source)) {
+                    if(!topic.equals(target)) {
                         score += r3;
                     }
                 }

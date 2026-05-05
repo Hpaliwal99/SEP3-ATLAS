@@ -85,14 +85,15 @@ public class Main {
         List<Node> candidates = new ArrayList<>();
 //        Map<String, String> result = analogy.bestAnalogy("priest", "scientist");
 //        System.out.println(result);
-        List<Map<String, String>> ranked = analogy.greedyMatching("priest", "doctor", 7, candidates);
+        List<Map<String, String>> ranked = analogy.greedyMatching("priest",     "doctor", 7);
         System.out.println(ranked + "\n");
 
         candidates = analogy.getCandidateInferences(10);
 
+        System.out.println("Found " + candidates.size() + " candidates");
         Parse parse = new Parse();
         for (Node node : candidates) {
-            System.out.println(parse.printIndent(node));
+            System.out.println(parse.toFlat(node));
         }
 
 //        System.out.println(ranked + "\n");
@@ -101,6 +102,7 @@ public class Main {
             System.out.println("No candidates found");
         }
         else {
+            System.out.println("\nFound " + coalesced.size() + " candidate group(s)");
             for  (List<Node> candidateCandidates : coalesced) {
                 for (Node node : candidateCandidates) {
                     System.out.println(parse.toFlat(node) + "\n");
@@ -109,11 +111,16 @@ public class Main {
         }
 
         KnowledgeBase kb = new KnowledgeBase();
-        System.out.println("Original quality " + kb.quality("priest", "doctor") + "\n");
-        System.out.println("Inference quality " + kb.Infquality(coalesced.getFirst()) + "\n");
+        if (!coalesced.isEmpty()) {
+            System.out.println("Inference quality " + kb.Infquality(coalesced.getFirst()) + "\n");
+        }
+        else {
+            System.out.println("No inferences found");
+        }
 
         List<Map.Entry<List<Node>, Double>> newranked = analogy.rankCoalescedInferences(coalesced);
 
+        System.out.println("Ranked " + newranked.size() + " coalesced inferences");
         for (var entry : newranked) {
             System.out.printf("Score: %.4f -> %s%n", entry.getValue(), entry.getKey());
         }

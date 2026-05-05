@@ -8,12 +8,23 @@ public class Analogy {
     private final int DEFAULT_N = Config.defaultN();
     private final String KB_PATH = Config.kbPath();
 //    private final String KB_PATH = "src/main/java/ATLAS/knowledge.txt";
-    private KnowledgeBase kb;
+    public KnowledgeBase kb;
     private List<Map<String, String>> rankedAnalogies = new ArrayList<>();
-    private Set<Node> unMatchedStruct = new  HashSet<>();
-    private Set<Node> matchedStruct = new  HashSet<>();
+    private Set<Node> unMatchedStruct = new LinkedHashSet<>();
+    private Set<Node> matchedStruct = new  LinkedHashSet<>();
     private final double INFERENCE_POWER = Config.inferencePower();
 
+    public Set<Node> getUnMatchedStruct() {
+        return unMatchedStruct;
+    }
+
+    public Set<Node> getMatchedStruct() {
+        return matchedStruct;
+    }
+
+    public List<Map<String, String>> getRankedAnalogies() {
+        return rankedAnalogies;
+    }
 
     public Analogy() throws Exception {
         this.kb = new KnowledgeBase();
@@ -30,11 +41,18 @@ public class Analogy {
         return true;
     }
 
-    public List<Map<String, String>> greedyMatching(String S, String T, int n, List<Node> newStruct) throws Exception {
+    public List<Map<String, String>> greedyMatching(String S, String T, int n) throws Exception {
         unMatchedStruct.clear();
         matchedStruct.clear();
         List<Node> sStructures = new ArrayList<>(kb.getStructures(S));
         List<Node> tStructures = new ArrayList<>(kb.getStructures(T));
+
+        // For consistent output
+        sStructures.sort((a, b) -> {
+            int cmp = Double.compare(kb.richness(b), kb.richness(a));
+            if (cmp != 0) return cmp;
+            return kb.shapeHash(a).compareTo(kb.shapeHash(b)); // stable tiebreak
+        });
 
 //        if(newStruct != null && !newStruct.isEmpty()){
 //            tStructures.addAll(newStruct);
@@ -47,7 +65,7 @@ public class Analogy {
         for (Node n1 : tStructures) tHashes.put(n1, kb.shapeHash(n1));
 
         // group T structures by hash for O(1) lookup
-        Map<String, List<Node>> tByHash = new HashMap<>();
+        Map<String, List<Node>> tByHash = new LinkedHashMap<>();
         for (Node n1 : tStructures) {
             tByHash.computeIfAbsent(tHashes.get(n1), k -> new ArrayList<>()).add(n1);
         }
@@ -123,7 +141,7 @@ public class Analogy {
         for (Map.Entry<String, List<Node>> entry : kb.getIndex().entrySet()) {
             String key = entry.getKey();
             if (S.equals(key)) continue;
-            List<Map<String, String>> count = greedyMatching(S, key, DEFAULT_N, null);
+            List<Map<String, String>> count = greedyMatching(S, key, DEFAULT_N);
             if (!count.isEmpty()) {
                 topics.put(key, count.getFirst().size());
             }
@@ -148,7 +166,11 @@ public class Analogy {
         }
 
         List<Node> candidateStructures = new ArrayList<>(unMatchedStruct);
-        candidateStructures.sort((a, b) -> Double.compare(kb.richness(b), kb.richness(a)));
+        candidateStructures.sort((a, b) -> {
+            int cmp = Double.compare(kb.richness(b), kb.richness(a));
+            if (cmp != 0) return cmp;
+            return new Parse().toFlat(a).compareTo(new Parse().toFlat(b));
+        });
 
         List<Node> candidates = new ArrayList<>();
         int count = 0;
@@ -163,7 +185,14 @@ public class Analogy {
             boolean flag = true;
             while (cand_Iter != null) {
                 String keyT = rankedAnalogies.getFirst().getOrDefault(cand_Iter.keyword,"");
-                if (keyT.isEmpty()) flag=false;
+                if (cand_Iter.keyword == null || cand_Iter.keyword.isEmpty()) {
+                    cand_Iter = cand_Iter.children;
+                    continue;
+                }
+                if (keyT.isEmpty()) {
+                    flag=false;
+//                    System.out.println("No Mapping for keyword ->" + cand_Iter.keyword);
+                }
                 cand_Iter.keyword = keyT;
                 cand_Iter = cand_Iter.children;
             }
@@ -207,6 +236,7 @@ public class Analogy {
         return groups;
     }
 
+    // Returns coalesced groups ranked, if candidates have same richness, returns all with best richness
     public List<Map.Entry<List<Node>, Double>> rankCoalescedInferences(
             List<List<Node>> coalescedGroups) {
 
@@ -222,7 +252,7 @@ public class Analogy {
         return scored;
     }
 
-    private double CombinedQuality(Set<Node> matched, List<Node> inferences) {
+    public double CombinedQuality(Set<Node> matched, List<Node> inferences) {
         double base = matched.stream()
                 .mapToDouble(n -> Math.pow(kb.richness(n), 3))
                 .sum();

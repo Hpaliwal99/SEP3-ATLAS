@@ -77,7 +77,7 @@ class TestAnalogy {
                         int expectedFirstSize,
                         Map<String, String> expectedEntries) throws Exception {
 
-        List<Map<String, String>> result = analogy.greedyMatching(S, T, n,new ArrayList<>());
+        List<Map<String, String>> result = analogy.greedyMatching(S, T, n);
 
         // TC-9 sentinel: historian produces no mappings at all
         if (expectedFirstSize == -1) {
